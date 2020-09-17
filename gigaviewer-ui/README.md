@@ -2,7 +2,7 @@
 
 ## Setup
 
-Run `yarn` in `/gigaviewer-ui` to install dependencies
+Run `yarn` in `/gigaviewer-ui` to install dependencies.
 
 Ensure you have Node installed. ONLY use yarn as a package manager (using npm may cause clashes).
 
