@@ -16,12 +16,12 @@ export const MenuItems = [
   },
   {
     title: 'Sign Up',
-    url: '#',
+    url: '/signup',
     cName: 'nav-link',
   },
   {
     title: 'Upload',
-    url: '#',
+    url: '/upload',
     cName: 'nav-link-mobile',
   },
 ];

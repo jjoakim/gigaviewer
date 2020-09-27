@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { About, Home, Login } from './pages/index';
+import { About, Home, Login, Signup, Upload } from './pages';
 import { TopNavbar } from './components/top-navbar';
 import { Route, Switch } from 'react-router-dom';
 
@@ -14,6 +14,8 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/upload" component={Upload} />
       </div>
     </Switch>
   );

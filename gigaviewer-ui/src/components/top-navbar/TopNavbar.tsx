@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 
-import NavButton from './NavButton';
+// import NavButton from './NavButton';
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
   faBars,
   faMicroscope,
+  faUpload,
 } from '@fortawesome/free-solid-svg-icons';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
+import { CloudUpload } from '@material-ui/icons';
 import { MenuItems } from './utils';
 import './style.css';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({ button: { margin: theme.spacing(1) } })
+);
 
 const TopNavbar = () => {
   const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
 
+  const classes = useStyles();
+
   const handleMenuIconClicked = () => {
     setIsMenuIconClicked(!isMenuIconClicked);
   };
-
-  const handleUpload = () => {};
 
   return (
     <nav className="navbar-items">
@@ -47,14 +55,25 @@ const TopNavbar = () => {
         })}
       </ul>
 
-      <NavButton
+      <Button
+        variant="contained"
+        color="default"
+        className={classes.button}
+        startIcon={<CloudUpload />}
+        component={Link}
+        to="/upload"
+      >
+        Upload
+      </Button>
+
+      {/* <NavButton
         onClick={handleUpload}
         type="button"
         buttonStyle="btn--primary"
         buttonSize="btn--medium"
       >
         Upload
-      </NavButton>
+      </NavButton> */}
     </nav>
   );
 };
