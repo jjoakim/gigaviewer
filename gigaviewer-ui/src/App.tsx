@@ -17,6 +17,6 @@ const App = () => {
       </div>
     </Switch>
   );
-}
+};
 
 export default App;
