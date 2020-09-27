@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import './utils';
 import './style.css';
 import { BUTTON_SIZES, BUTTON_STYLES } from './utils';
-import { type } from 'os';
 
 interface PublicProps {
     children: any;
