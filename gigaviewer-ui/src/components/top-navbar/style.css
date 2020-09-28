@@ -9,10 +9,11 @@
 }
 
 .navbar-logo {
-  color: white;
+  color: #eceff1;
   justify-self: start;
-  margin-left: 20px;
+  margin-left: 10px;
   cursor: pointer;
+  width: 40vw; /* default none */
 }
 
 .menu-icon {
@@ -27,7 +28,7 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  width: 70vw;
+  width: 40vw; /* default 60 */
   justify-content: end;
   margin-right: 2rem;
 }
