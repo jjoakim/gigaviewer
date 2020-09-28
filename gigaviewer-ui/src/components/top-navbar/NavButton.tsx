@@ -1,33 +1,18 @@
 import React from 'react';
 
-import './utils';
-import './style.css';
-import { BUTTON_SIZES, BUTTON_STYLES } from './utils';
+import { UIButton as Button } from 'components/ui-toolbox';
+import { UPLOAD_BUTTON_PROPS } from './utils';
 
-interface PublicProps {
-  children: any;
-  type: 'button' | 'submit' | 'reset';
-  onClick: () => void;
-  buttonStyle: string;
-  buttonSize: string;
-}
+import { Link } from 'react-router-dom';
+import { CloudUpload } from '@material-ui/icons';
 
-const NavButton = (props: PublicProps) => {
-  const checkButtonStyle = BUTTON_STYLES.includes(props.buttonStyle)
-    ? props.buttonStyle
-    : BUTTON_STYLES[0];
-  const checkButtonSize = BUTTON_SIZES.includes(props.buttonSize)
-    ? props.buttonSize
-    : BUTTON_SIZES[0];
-
+const NavButton = () => {
   return (
-    <button
-      className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-      onClick={props.onClick}
-      type={props.type}
-    >
-      {props.children}
-    </button>
+    <Button
+      component={Link}
+      startIcon={<CloudUpload />}
+      {...UPLOAD_BUTTON_PROPS}
+    />
   );
 };
 

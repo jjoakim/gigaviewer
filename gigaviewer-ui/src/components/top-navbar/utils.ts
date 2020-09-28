@@ -1,3 +1,13 @@
+import { PublicProps } from 'components/ui-toolbox/ui-button';
+
+export const UPLOAD_BUTTON_PROPS: PublicProps = {
+  color: 'default',
+  size: 'medium',
+  text: 'Upload',
+  to: '/upload',
+  variant: 'contained',
+};
+
 export const MenuItems = [
   {
     title: 'Home',
@@ -25,7 +35,3 @@ export const MenuItems = [
     cName: 'nav-link-mobile',
   },
 ];
-
-export const BUTTON_STYLES = ['btn--primary', 'btn--outline'];
-
-export const BUTTON_SIZES = ['btn--medium', 'btn--large'];

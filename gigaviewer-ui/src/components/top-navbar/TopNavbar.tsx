@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-import { UIButton as NavButton } from 'components/ui-toolbox';
+import NavButton from './NavButton';
 
-import { CloudUpload } from '@material-ui/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
   faBars,
   faMicroscope,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MenuItems } from './utils';
 import './style.css';
 
@@ -50,15 +48,9 @@ const TopNavbar = () => {
         })}
       </ul>
 
-      <NavButton
-        variant="contained"
-        color="default"
-        component={Link}
-        text="Upload"
-        to="/upload"
-        size="medium"
-        startIcon={<CloudUpload />}
-      />
+      <div className="navbar-upload">
+        <NavButton />
+      </div>
     </nav>
   );
 };

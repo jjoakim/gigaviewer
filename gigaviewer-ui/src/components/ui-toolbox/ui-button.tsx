@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 
-interface PublicProps {
+export interface PublicProps {
   color: 'default' | 'inherit' | 'primary' | 'secondary' | undefined;
-  component: any;
+  component?: any;
   size: 'small' | 'medium' | 'large';
   startIcon?: any; // icon on button
   text: string;

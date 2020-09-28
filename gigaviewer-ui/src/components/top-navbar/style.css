@@ -44,6 +44,10 @@
   transition: all 0.2s ease-out;
 }
 
+.navbar-upload {
+  margin-left: -20px;
+}
+
 .nav-link-mobile {
   display: none;
 }
@@ -121,56 +125,7 @@
     transition: 250ms;
   }
 
-  Button {
+  .navbar-upload {
     display: none;
   }
-}
-
-/* BUTTON STYLING  */
-
-:root {
-  --primary: #cfd8dc;
-}
-
-.btn {
-  padding: 8px 20px;
-  border-radius: 4px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  padding: 8px 20px;
-  transition: all 0.3s ease-out;
-  background: #546e7a;
-  color: white;
-  transition: 250ms;
-}
-
-.btn--primary {
-  background-color: var(--primary);
-}
-
-.btn--outline {
-  padding: 8px 20px;
-  border-radius: 4px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid var(--primary);
-  transition: all 0.3s ease-out;
-}
-
-.btn--medium {
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: 18px;
-  color: #263238;
-}
-
-.btn--large {
-  padding: 12px 26px;
-  border-radius: 4px;
-  font-size: 20px;
-  color: white;
 }
