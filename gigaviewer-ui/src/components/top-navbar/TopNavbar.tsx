@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 
-// import NavButton from './NavButton';
 import { Link } from 'react-router-dom';
+import { UIButton as NavButton } from 'components/ui-toolbox';
 
+import { CloudUpload } from '@material-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTimes,
   faBars,
   faMicroscope,
-  faUpload,
 } from '@fortawesome/free-solid-svg-icons';
-import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
-import { CloudUpload } from '@material-ui/icons';
 import { MenuItems } from './utils';
 import './style.css';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({ button: { margin: theme.spacing(1) } })
-);
-
+/**
+ * The static, naviation bar at top of the single page web app
+ */
 const TopNavbar = () => {
   const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
-
-  const classes = useStyles();
 
   const handleMenuIconClicked = () => {
     setIsMenuIconClicked(!isMenuIconClicked);
@@ -55,25 +50,15 @@ const TopNavbar = () => {
         })}
       </ul>
 
-      <Button
+      <NavButton
         variant="contained"
         color="default"
-        className={classes.button}
-        startIcon={<CloudUpload />}
         component={Link}
+        text="Upload"
         to="/upload"
-      >
-        Upload
-      </Button>
-
-      {/* <NavButton
-        onClick={handleUpload}
-        type="button"
-        buttonStyle="btn--primary"
-        buttonSize="btn--medium"
-      >
-        Upload
-      </NavButton> */}
+        size="medium"
+        startIcon={<CloudUpload />}
+      />
     </nav>
   );
 };
