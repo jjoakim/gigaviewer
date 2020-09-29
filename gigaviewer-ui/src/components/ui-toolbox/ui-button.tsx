@@ -27,7 +27,7 @@ const UIButton = (props: PublicProps) => {
   const { variant, color, component, text, to, size, startIcon } = props;
   return (
     <Button
-      variant={props.variant}
+      variant={variant}
       color={color}
       className={classes.button}
       component={component}
