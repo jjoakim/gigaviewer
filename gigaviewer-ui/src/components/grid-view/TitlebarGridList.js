@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 
-
 export default function TitlebarGridList() {
   const classes = useStyles();
   const [count, setCount] = useState(0);
@@ -53,11 +52,10 @@ export default function TitlebarGridList() {
     setWidth(window.innerWidth);
   };
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
     resizeWindow();
-    window.addEventListener("resize", resizeWindow);
+    window.addEventListener('resize', resizeWindow);
     console.log(window.innerWidth);
-    return () => window.removeEventListener("resize", resizeWindow);
+    return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
   console.log(window.innerWidth);
@@ -67,8 +65,13 @@ export default function TitlebarGridList() {
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button> */}
-      <GridList cellHeight={200} className={classes.gridList} cols={width/300} spacing={6}>
-      {/* <GridList cellHeight={'200'} className={classes.gridList} cols={6}> */}
+      <GridList
+        cellHeight={200}
+        className={classes.gridList}
+        cols={width / 300}
+        spacing={6}
+      >
+        {/* <GridList cellHeight={'200'} className={classes.gridList} cols={6}> */}
         {/* <GridListTile key="Subheader" cols={4} style={{ height: 'auto' }}>
           <ListSubheader component="div">LA Lakers Legends</ListSubheader>
         </GridListTile> */}
@@ -79,7 +82,10 @@ export default function TitlebarGridList() {
               title={tile.title}
               subtitle={<span>by: {tile.author}</span>}
               actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                <IconButton
+                  aria-label={`info about ${tile.title}`}
+                  className={classes.icon}
+                >
                   <InfoIcon />
                 </IconButton>
               }
