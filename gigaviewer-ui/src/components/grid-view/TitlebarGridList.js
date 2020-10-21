@@ -46,11 +46,12 @@ const useStyles = makeStyles((theme) => ({
 export default function TitlebarGridList() {
   const classes = useStyles();
   const [count, setCount] = useState(0);
-  //const [width, setWidth] = useState(1);
   const [width, setWidth] = useState(0);
-  let resizeWindow = () => {
+
+  function resizeWindow() {
     setWidth(window.innerWidth);
-  };
+  }
+  
   useEffect(() => {
     document.title = `You clicked ${count} times`;
     resizeWindow();
@@ -59,13 +60,15 @@ export default function TitlebarGridList() {
     return () => window.removeEventListener("resize", resizeWindow);
   }, []);
 
-  let consoleGrid = (e) => {
-    console.log(e);
+  function consoleGrid(author) {
+    console.log(author);
     console.log('GRID');
-  };
-  let consoleIcon = () => {
+  }
+
+  function consoleIcon(e) {
+    e.stopPropagation();
     console.log('ICON');
-  };
+  }
 
   return (
     <div className={classes.root}>
@@ -77,7 +80,7 @@ export default function TitlebarGridList() {
               title={tile.title}
               subtitle={<span>by: {tile.author}</span>}
               actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon} onClick={() => {consoleIcon()}}>
+                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon} onClick={consoleIcon}>
                   <InfoIcon />
                 </IconButton>
               }
