@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -42,22 +43,19 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 
-
 export default function TitlebarGridList() {
   const classes = useStyles();
-  const [count, setCount] = useState(0);
   const [width, setWidth] = useState(0);
 
   function resizeWindow() {
     setWidth(window.innerWidth);
   }
-  
+
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
     resizeWindow();
-    window.addEventListener("resize", resizeWindow);
+    window.addEventListener('resize', resizeWindow);
     console.log(window.innerWidth);
-    return () => window.removeEventListener("resize", resizeWindow);
+    return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
   function consoleGrid(author) {
@@ -71,16 +69,33 @@ export default function TitlebarGridList() {
   }
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <div className={classes.root}>
-      <GridList cellHeight={200} className={classes.gridList} cols={Math.round(width/300)} spacing={6}>
+      <GridList
+        cellHeight={200}
+        className={classes.gridList}
+        cols={Math.round(width / 300)}
+        spacing={6}
+      >
         {tileData.map((tile) => (
-          <GridListTile key={tile.img} onClick={() => {consoleGrid(tile.author)}}>
-            <img src={tile.img} alt={tile.title}/>
+          <GridListTile
+            key={tile.img}
+            onClick={() => {
+              consoleGrid(tile.author);
+            }}
+          >
+            <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
+              // eslint-disable-next-line react/jsx-one-expression-per-line
+              subtitle={<span> by: {tile.author}</span>}
               actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon} onClick={consoleIcon}>
+                // eslint-disable-next-line react/jsx-wrap-multilines
+                <IconButton
+                  aria-label={`info about ${tile.title}`}
+                  className={classes.icon}
+                  onClick={consoleIcon}
+                >
                   <InfoIcon />
                 </IconButton>
               }
