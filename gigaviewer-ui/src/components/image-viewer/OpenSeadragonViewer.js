@@ -1,5 +1,5 @@
-import OpenSeaDragon from 'openseadragon';
-import React, { useEffect, useState } from 'react';
+import OpenSeaDragon from "openseadragon";
+import React, { useEffect, useState } from "react";
 
 const OpenSeaDragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState(null);
