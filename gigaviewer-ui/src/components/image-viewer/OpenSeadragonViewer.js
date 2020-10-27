@@ -1,7 +1,7 @@
-import OpenSeaDragon from "openseadragon";
-import React, { useEffect, useState } from "react";
+import OpenSeaDragon from 'openseadragon';
+import React, { useEffect, useState } from 'react';
 
-const OpenSeaDragonViewer = ({ image }) => {
+export default function OpenSeaDragonViewer({ image }) {
   const [viewer, setViewer] = useState(null);
 
   useEffect(() => {
@@ -9,8 +9,7 @@ const OpenSeaDragonViewer = ({ image }) => {
       viewer.open(image.source);
     }
   }, [image]);
-  const InitOpenseadragon = () => {
-    viewer && viewer.destroy();
+  function InitOpenseadragon() {
     setViewer(
       OpenSeaDragon({
         id: 'openSeaDragon',
@@ -22,13 +21,19 @@ const OpenSeaDragonViewer = ({ image }) => {
         minZoomLevel: 1,
         visibilityRatio: 1,
         zoomPerScroll: 2,
+        zoomInButton: 'zoom-in',
+        zoomOutButton: 'zoom-out',
+        homeButton: 'home',
+        fullPageButton: 'full-page',
+        nextButton: 'next',
+        previousButton: 'previous',
       })
     );
-  };
+  }
   useEffect(() => {
     InitOpenseadragon();
     return () => {
-      viewer && viewer.destroy();
+      viewer.destroy();
     };
   }, []);
   return (
@@ -41,6 +46,6 @@ const OpenSeaDragonViewer = ({ image }) => {
       }}
     />
   );
-};
+}
 // eslint-disable-next-line import/prefer-default-export
 export { OpenSeaDragonViewer };
