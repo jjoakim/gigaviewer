@@ -8,11 +8,11 @@ interface PublicProps {
 }
 
 const Viewer = (props: PublicProps) => {
-    const [currFrame, setFrame] = useState(props.imgSrc);
+    const [currFrame, setFrame] = useState('https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/');
 
     return (
         <div>
-
+            <OpenSeaDragonViewer image={currFrame} />
         </div>
     );
 };

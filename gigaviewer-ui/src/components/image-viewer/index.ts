@@ -1,3 +1,3 @@
 import OpenSeaDragonViewer from './OpenSeadragonViewer';
 
-export { OpenSeaDragonViewer };
+export default OpenSeaDragonViewer;
