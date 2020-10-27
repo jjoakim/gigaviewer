@@ -9,6 +9,7 @@ export default function OpenSeaDragonViewer({ image }) {
       viewer.open(image.source);
     }
   }, [image]);
+
   function InitOpenseadragon() {
     setViewer(
       OpenSeaDragon({
@@ -30,12 +31,14 @@ export default function OpenSeaDragonViewer({ image }) {
       })
     );
   }
+
   useEffect(() => {
     InitOpenseadragon();
     return () => {
       viewer.destroy();
     };
   }, []);
+  
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <div
