@@ -1,7 +1,7 @@
 import OpenSeaDragon from 'openseadragon';
 import React, { useEffect, useState } from 'react';
 
-export default function OpenSeaDragonViewer({ image }) {
+export default function OpenSeadragonViewer({ image }) {
   const [viewer, setViewer] = useState(null);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function OpenSeaDragonViewer({ image }) {
       viewer.destroy();
     };
   }, []);
-  
+
   return (
     // eslint-disable-next-line react/jsx-filename-extension
     <div
