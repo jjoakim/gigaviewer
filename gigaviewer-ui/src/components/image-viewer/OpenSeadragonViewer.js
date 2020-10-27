@@ -43,4 +43,4 @@ const OpenSeaDragonViewer = ({ image }) => {
   );
 };
 // eslint-disable-next-line import/prefer-default-export
-export { OpenSeaDragonViewer };
+export default OpenSeaDragonViewer;
