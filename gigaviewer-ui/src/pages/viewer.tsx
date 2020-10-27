@@ -12,7 +12,7 @@ const Viewer = (props: PublicProps) => {
 
     return (
         <div>
-            <OpenSeaDragonViewer image={currFrame} />
+            <OpenSeaDragonViewer image={'https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/'} />
         </div>
     );
 };
