@@ -32,7 +32,6 @@ const OpenSeaDragonViewer = ({ image }) => {
     };
   }, []);
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div
       id="openSeaDragon"
       style={{
@@ -42,5 +41,5 @@ const OpenSeaDragonViewer = ({ image }) => {
     />
   );
 };
-// eslint-disable-next-line import/prefer-default-export
+
 export default OpenSeaDragonViewer;
