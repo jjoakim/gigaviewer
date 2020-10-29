@@ -16,42 +16,51 @@ import './style.css';
  */
 const TopNavbar = () => {
   const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
+  const [isViewerPage, setIsViewerPage] = useState(false);
 
   const handleMenuIconClicked = () => {
     setIsMenuIconClicked(!isMenuIconClicked);
   };
 
+  const toggleNavbarType = () => {
+    setIsViewerPage(!isViewerPage);
+  }
+
   return (
-    <nav className="navbar-items">
-      <h1 className="navbar-logo">
-        Gigaviewer
-        <FontAwesomeIcon icon={faMicroscope} />
-      </h1>
+    <div>
+      {(!isViewerPage) ? <nav className="navbar-items">
+        <h1 className="navbar-logo">
+          Gigaviewer
+          <FontAwesomeIcon icon={faMicroscope} />
+        </h1>
 
-      <div className="menu-icon" onClick={handleMenuIconClicked}>
-        {isMenuIconClicked ? (
-          <FontAwesomeIcon icon={faTimes} />
-        ) : (
-          <FontAwesomeIcon icon={faBars} />
-        )}
-      </div>
+        <div className="menu-icon" onClick={handleMenuIconClicked}>
+          {isMenuIconClicked ? (
+            <FontAwesomeIcon icon={faTimes} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
+        </div>
 
-      <ul className={isMenuIconClicked ? 'nav-menu active' : 'nav-menu'}>
-        {MenuItems.map((item, index) => {
-          return (
-            <li key={index}>
-              <a className={item.cName} href={item.url}>
-                {item.title}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+        <ul className={isMenuIconClicked ? 'nav-menu active' : 'nav-menu'}>
+          {MenuItems.map((item, index) => {
+            return (
+              <li key={index}>
+                <a className={item.cName} href={item.url}>
+                  {item.title}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-      <div className="navbar-upload">
-        <NavButton />
-      </div>
-    </nav>
+        <div className="navbar-upload">
+          <NavButton />
+        </div>
+      </nav>
+      :
+      <div>off</div>}
+    </div>
   );
 };
 

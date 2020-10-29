@@ -10,7 +10,7 @@ const OpenSeadragonViewer = ({ image }) => {
     }
   }, [image]);
 
-  
+
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
 
@@ -53,4 +53,4 @@ const OpenSeadragonViewer = ({ image }) => {
   );
 };
 
-export default OpenSeaDragonViewer;
+export default OpenSeadragonViewer;
