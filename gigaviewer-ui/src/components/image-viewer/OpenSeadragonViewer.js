@@ -1,7 +1,7 @@
 import OpenSeaDragon from 'openseadragon';
 import React, { useEffect, useState } from 'react';
 
-export default function OpenSeadragonViewer({ image }) {
+const OpenSeadragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState(null);
 
   useEffect(() => {
@@ -10,7 +10,10 @@ export default function OpenSeadragonViewer({ image }) {
     }
   }, [image]);
 
-  function InitOpenseadragon() {
+  
+  const InitOpenseadragon = () => {
+    viewer && viewer.destroy();
+
     setViewer(
       OpenSeaDragon({
         id: 'openSeaDragon',
@@ -35,7 +38,7 @@ export default function OpenSeadragonViewer({ image }) {
   useEffect(() => {
     InitOpenseadragon();
     return () => {
-      viewer.destroy();
+      viewer && viewer.destroy();
     };
   }, []);
 
