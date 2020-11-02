@@ -1,3 +1,4 @@
 import OpenSeaDragonViewer from './OpenSeadragonViewer';
+import ImageViewer from './ImageViewer';
 
-export default OpenSeaDragonViewer;
+export { ImageViewer, OpenSeaDragonViewer};
