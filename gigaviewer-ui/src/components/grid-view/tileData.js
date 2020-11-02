@@ -9,6 +9,7 @@ const tileData = [
     img: lebronImage,
     title: 'Lebron James',
     author: 'fernando',
+    idx: 0,
     cols: 2,
     featured: true,
   },
@@ -16,11 +17,13 @@ const tileData = [
     img: carusoImage,
     title: 'Alex Caruso',
     author: 'zapata',
+    idx: 1,
   },
   {
     img: kobeImage,
     title: 'Kobe Bryant',
     author: '24',
+    idx: 2,
   },
   {
     img: monaImage,

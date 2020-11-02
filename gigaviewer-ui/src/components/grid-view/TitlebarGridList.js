@@ -81,7 +81,7 @@ export default function TitlebarGridList() {
           <GridListTile
             key={tile.img}
             onClick={() => {
-              consoleGrid(tile.author);
+              consoleGrid(tile.idx);
             }}
           >
             <img src={tile.img} alt={tile.title} />
