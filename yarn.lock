@@ -42,6 +42,11 @@
   resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.34.tgz#05e4f79f465c2007884374d4795452f995720bbe"
   integrity sha512-lYUtmJ9BqUN688fGY1U1HZoWT1/Jrmgigx2loq4ZcJpICECm/Om3V314BxdzypO0u5PORKGMM6x0OXaljV1YFg==
 
+"@types/openseadragon@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@types/openseadragon/-/openseadragon-2.4.5.tgz#aa62f1494b491fe6f9c8ec9140fd14897b557794"
+  integrity sha512-Excacasw35eubkCeaULd5+fcRHtgJX3uKpSVG0Zw1C3ciMYQA1X0klcYJAFKctvY6+x3sLVYJpeFnw5N9dSavg==
+
 "@types/prop-types@*", "@types/prop-types@^15.7.3":
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
