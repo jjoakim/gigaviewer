@@ -2,7 +2,7 @@ import React from 'react';
 
 import { About, Home, Login, Signup, Upload, Viewer } from './pages';
 import { TopNavbar } from './components/top-navbar';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 
 import './App.css';
 
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Switch>
       <div className="App">
-        <TopNavbar></TopNavbar>
+        <TopNavbar isViewerMode={useLocation().pathname === '/viewer'}></TopNavbar>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
