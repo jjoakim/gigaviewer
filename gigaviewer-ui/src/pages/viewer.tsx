@@ -58,9 +58,8 @@ const Viewer = (props: PublicProps) => {
         justifyContent: 'space-between',
       }}
     >
-      <h2>Test Images</h2>
       <div>
-        <Box position="absolute" top="15%" left="20%" zIndex="modal">
+        <Box position="absolute" top="80px" left="0%" zIndex="modal">
           <OpenSeaDragonViewer image={manifest} />
         </Box>
       </div>

@@ -7,6 +7,8 @@ import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HomeIcon from '@material-ui/icons/Home';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,12 +20,28 @@ const useStyles = makeStyles((theme) => ({
 
 const OpenSeadragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState(null);
-
+  
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
     }
   }, [image]);
+
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  function resizeWindow() {
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
+  }
+
+  useEffect(() => {
+    resizeWindow();
+    window.addEventListener('resize', resizeWindow);
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    return () => window.removeEventListener('resize', resizeWindow);
+  }, []);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -36,7 +54,7 @@ const OpenSeadragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        defaultZoomLevel: 1,
+        defaultZoomLevel: 0.7,
         minZoomLevel: 0.7,
         visibilityRatio: 1,
         zoomPerScroll: 2,
@@ -46,7 +64,6 @@ const OpenSeadragonViewer = ({ image }) => {
         fullPageButton: 'full-page',
         nextButton: 'next',
         previousButton: 'previous',
-        // toolbar: 'toolbarDiv',
       })
     );
   };
@@ -62,35 +79,40 @@ const OpenSeadragonViewer = ({ image }) => {
 
   return (
     <div>
-      <div id="openSeaDragon"
-      style={{
-        height: '600px',
-        width: '900px',
-      }}>
+      <Box height={height-80} width={width} id="openSeaDragon">
         <div className={classes.root}>
-          <Box position="absolute" top="2%" left="2%" zIndex="tooltip">
+        <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
+            <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous">
+              <ArrowBackIcon style={{ fontSize: 60 }} />
+            </IconButton>
+          </Box>
+          <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
+            <IconButton color="primary" aria-label="next" disableRipple="true" id="next">
+              <ArrowForwardIcon style={{ fontSize: 60 }} />
+            </IconButton>
+          </Box>
+          <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom in" disableRipple="true" id="zoom-in">
               <AddCircleOutlineIcon style={{ fontSize: 60 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="2%" left="12%" zIndex="tooltip">
+          <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom out" disableRipple="true" id="zoom-out">
               <RemoveCircleOutlineIcon style={{ fontSize: 60 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="2%" left="22%" zIndex="tooltip">
+          <Box position="absolute" top="0%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="default zoom" disableRipple="true" id="home">
               <HomeIcon style={{ fontSize: 60 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="2%" left="32%" zIndex="tooltip">
+          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple="true" id="full-page">
               <FullscreenIcon style={{ fontSize: 60 }} />
             </IconButton>
           </Box>
         </div>
-        
-      </div>
+      </Box>
     </div>
   );
 };
