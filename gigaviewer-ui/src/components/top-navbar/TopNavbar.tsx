@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import NavButton from './NavButton';
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import HomeIcon from '@material-ui/icons/Home';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RefreshIcon from '@material-ui/icons/Refresh';
@@ -28,29 +29,29 @@ interface PublicProps {
  * The static, naviation bar at top of the single page web app
  */
 const TopNavbar = (props: PublicProps) => {
+  const history = useHistory();
   const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
-  const [isViewerPage, setIsViewerPage] = useState(props.isViewerMode);
 
   const handleMenuIconClicked = () => {
     setIsMenuIconClicked(!isMenuIconClicked);
   };
 
-  const toggleNavbarType = () => {
-    setIsViewerPage(!isViewerPage);
+  const goToHome = () => {
+    history.push('');
   }
 
   return (
     <div>
-      {(!isViewerPage) 
+      {(!props.isViewerMode) 
       
       ? 
       /**
        * DURING NON-VIEWER MODE
        */
       <nav className="navbar-items">
-        <h1 className="navbar-logo">
+        <h1 className="navbar-logo" onClick={goToHome}>
           Gigaviewer
-          <FontAwesomeIcon icon={faMicroscope} />
+          <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
 
         <div className="menu-icon" onClick={handleMenuIconClicked}>
@@ -83,13 +84,21 @@ const TopNavbar = (props: PublicProps) => {
        * DURING VIEWER MODE
        */
       <nav className="navbar-items-viewer">
-        <h1 className="navbar-logo-viewer">
+        <h1 className="navbar-logo-viewer" onClick={goToHome}>
           Gigaviewer
-          <FontAwesomeIcon icon={faMicroscope} />
+          <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
-
-
         <div>
+          <Box position="absolute" top="0.5%" right="32%" zIndex="tooltip">
+            <IconButton color="inherit" aria-label="previous frame" id="previous">
+              <NavigateBeforeIcon style={{ fontSize: 40 }} />
+            </IconButton>
+          </Box>
+          <Box position="absolute" top="0.5%" right="28%" zIndex="tooltip">
+            <IconButton color="inherit" aria-label="next frame" id="next">
+              <NavigateNextIcon style={{ fontSize: 40 }} />
+            </IconButton>
+          </Box>
           <Box position="absolute" top="0.5%" right="22%" zIndex="tooltip">
             <IconButton color="inherit" aria-label="zoom in" id="zoom-in">
               <AddCircleOutlineIcon style={{ fontSize: 40 }} />

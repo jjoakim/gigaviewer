@@ -1,12 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { OpenSeaDragonViewer } from 'components/image-viewer';
 
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import HomeIcon from '@material-ui/icons/Home';
-import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import Box from '@material-ui/core/Box';
 
 // import { ImageViewer } from 'components/image-viewer';
@@ -19,23 +13,7 @@ import Box from '@material-ui/core/Box';
 interface PublicProps {
   id: string,
   frame: number, // index
-  slide: {
-    mpp: number,
-    name: string,
-    source: {
-      Image: {
-        Format: string,
-        Overlap: number,
-        Size: {
-          Height: number,
-          Width: number,
-        },
-        TileSize: number,
-        Url: string,
-        xmlns: string,
-      }
-    }
-  };
+  slide: {},
 }
 
 const Viewer = (props: PublicProps) => {
@@ -66,7 +44,7 @@ const Viewer = (props: PublicProps) => {
       }}
     >
       <div>
-      <Box position="absolute" top="15%" left="0%" zIndex="modal">
+      <Box position="absolute" top="13%" left="8%" zIndex="modal">
           <OpenSeaDragonViewer image={manifest} />
         </Box>
       </div>
