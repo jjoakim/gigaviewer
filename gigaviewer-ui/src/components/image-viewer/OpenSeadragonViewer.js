@@ -31,6 +31,7 @@ const OpenSeadragonViewer = ({ image }) => {
         fullPageButton: 'full-page',
         nextButton: 'next',
         previousButton: 'previous',
+        // toolbar: 'toolbarDiv',
       })
     );
   }
