@@ -8,12 +8,29 @@
   font-size: 1.2rem;
 }
 
+.navbar-items-viewer {
+  background: linear-gradient(90deg, #37474f 0%, #78909c 100%);
+  height: 80px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
 .navbar-logo {
   color: #eceff1;
   justify-self: start;
   margin-left: 10px;
   cursor: pointer;
   width: 40vw; /* default none */
+}
+
+.navbar-logo-viewer {
+  color: #eceff1;
+  justify-self: left;
+  margin-left: 45px;
+  cursor: pointer;
+  width: 20vw; /* default none */
 }
 
 .menu-icon {
