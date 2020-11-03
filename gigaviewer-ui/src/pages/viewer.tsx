@@ -13,7 +13,8 @@ import Box from '@material-ui/core/Box';
 interface PublicProps {
   id: string,
   frame: number, // index
-  slide: {},
+  image: {},
+  group: {}, // group.name would ideally retrive the <name> set of images
 }
 
 const Viewer = (props: PublicProps) => {
