@@ -30,6 +30,8 @@ const tileData = [
     img: monaImage,
     title: 'Mona Lisa',
     author: 'Leonardo',
+    groupId: 'MonaLisa',
+    idx: 0,
   },
   {
     img: collard1,

@@ -1,6 +1,30 @@
 {
     "groups": [
      {
+      "name": "MonaLisa",
+      "slides": [
+       {
+        "slide": {
+            "mpp": 0.499, 
+            "name": null, 
+            "source": {
+                "Image": {
+                "Format": "jpg", 
+                "Overlap": 1, 
+                "Size": {
+                    "Height": 32893, 
+                    "Width": 31000
+                }, 
+                "TileSize": 510, 
+                "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
+                "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+            }
+        }
+       }
+      ]
+     },
+     {
       "name": "Aperio", 
       "slides": [
        {

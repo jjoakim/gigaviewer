@@ -67,7 +67,6 @@ export default function TitlebarGridList() {
   }, []);
 
   function consoleGrid(data) {
-    console.log(data);
     console.log('GRID');
   }
 
@@ -94,7 +93,6 @@ export default function TitlebarGridList() {
       }} />
 
       :
-      // eslint-disable-next-line react/jsx-filename-extension
       <div className={classes.root}>
         <GridList
           cellHeight={200}
@@ -113,10 +111,8 @@ export default function TitlebarGridList() {
               <img src={tile.img} alt={tile.title} />
               <GridListTileBar
                 title={tile.title}
-                // eslint-disable-next-line react/jsx-one-expression-per-line
                 subtitle={<span> by: {tile.author}</span>}
                 actionIcon={
-                  // eslint-disable-next-line react/jsx-wrap-multilines
                   <IconButton
                     aria-label={`info about ${tile.title}`}
                     className={classes.icon}
