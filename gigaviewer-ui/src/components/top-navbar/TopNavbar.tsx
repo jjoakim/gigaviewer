@@ -88,7 +88,7 @@ const TopNavbar = (props: PublicProps) => {
           Gigaviewer
           <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
-        <div>
+        {/* <div>
           <Box position="absolute" top="0.5%" right="32%" zIndex="tooltip">
             <IconButton color="inherit" aria-label="previous frame" id="previous">
               <NavigateBeforeIcon style={{ fontSize: 40 }} />
@@ -119,7 +119,7 @@ const TopNavbar = (props: PublicProps) => {
               <FullscreenIcon style={{ fontSize: 40 }}/>
             </IconButton>
           </Box>
-        </div>
+        </div> */}
       </nav>
       }
     </div>

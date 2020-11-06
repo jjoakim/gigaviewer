@@ -1,8 +1,8 @@
 import lebronImage from './lebron.jpg';
 import carusoImage from './caruso.jpg';
 import kobeImage from './kobe.jpg';
-import monaImage from './monalisa.jpg';
-import collardImage from './Collard_Green_1.jpg';
+import monaImage from './monalisa_small.jpg';
+import collardImage from './Collard_Green_1_small.jpg';
 
 const tileData = [
   {
@@ -32,219 +32,220 @@ const tileData = [
   },
   {
     img: collardImage,
-    title: 'Collard Green',
+    title: 'Aperio - Collard Green',
     author: 'Horstmeyer Lab',
+    groupId: 'Aperio',
   },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
-  {
-    img: lebronImage,
-    title: 'Lebron James',
-    author: 'fernando',
-  },
-  {
-    img: carusoImage,
-    title: 'Alex Caruso',
-    author: 'zapata',
-  },
-  {
-    img: kobeImage,
-    title: 'Kobe Bryant',
-    author: '24',
-  },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
+  // {
+  //   img: lebronImage,
+  //   title: 'Lebron James',
+  //   author: 'fernando',
+  // },
+  // {
+  //   img: carusoImage,
+  //   title: 'Alex Caruso',
+  //   author: 'zapata',
+  // },
+  // {
+  //   img: kobeImage,
+  //   title: 'Kobe Bryant',
+  //   author: '24',
+  // },
 ];
 
 export default tileData;

@@ -8,6 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { red } from '@material-ui/core/colors';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -34,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
  * const tileData = [
  *   {
  *     img: image,
- *     title: 'Image',
+ *     title: 'foo',
  *     author: 'author',
+ *     grpId: 'fooImgs'
  *   },
  *   {
  *     [etc...]
@@ -46,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
 export default function TitlebarGridList() {
   const classes = useStyles();
   const [width, setWidth] = useState(0);
+  const [grpId, setGrpId] = useState('');
+  const [title, setTitle] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   function resizeWindow() {
     setWidth(window.innerWidth);
@@ -58,8 +65,8 @@ export default function TitlebarGridList() {
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
-  function consoleGrid(author) {
-    console.log(author);
+  function consoleGrid(data) {
+    console.log(data);
     console.log('GRID');
   }
 
@@ -68,41 +75,60 @@ export default function TitlebarGridList() {
     console.log('ICON');
   }
 
+  const toggleRedirect = (title, grpId) => {
+    setTitle(title);
+    setGrpId(grpId);
+    setRedirect(!redirect);
+  }
+
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
-    <div className={classes.root}>
-      <GridList
-        cellHeight={200}
-        className={classes.gridList}
-        cols={Math.round(width / 300)}
-        spacing={6}
-      >
-        {tileData.map((tile) => (
-          <GridListTile
-            key={tile.img}
-            onClick={() => {
-              consoleGrid(tile.idx);
-            }}
-          >
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              // eslint-disable-next-line react/jsx-one-expression-per-line
-              subtitle={<span> by: {tile.author}</span>}
-              actionIcon={
-                // eslint-disable-next-line react/jsx-wrap-multilines
-                <IconButton
-                  aria-label={`info about ${tile.title}`}
-                  className={classes.icon}
-                  onClick={consoleIcon}
-                >
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
-      </GridList>
+    <div>
+      {(redirect) 
+
+      ?
+      <Redirect to={{
+        pathname: '/viewer',
+        state: { groupId: grpId, title: title },
+      }} />
+
+      :
+      // eslint-disable-next-line react/jsx-filename-extension
+      <div className={classes.root}>
+        <GridList
+          cellHeight={200}
+          className={classes.gridList}
+          cols={Math.round(width / 300)}
+          spacing={6}
+        >
+          {tileData.map((tile) => (
+            <GridListTile
+              key={tile.img}
+              onClick={() => {
+                consoleGrid(tile.groupId);
+                toggleRedirect(tile.title, tile.groupId);
+              }}
+            >
+              <img src={tile.img} alt={tile.title} />
+              <GridListTileBar
+                title={tile.title}
+                // eslint-disable-next-line react/jsx-one-expression-per-line
+                subtitle={<span> by: {tile.author}</span>}
+                actionIcon={
+                  // eslint-disable-next-line react/jsx-wrap-multilines
+                  <IconButton
+                    aria-label={`info about ${tile.title}`}
+                    className={classes.icon}
+                    onClick={consoleIcon}
+                  >
+                    <InfoIcon />
+                  </IconButton>
+                }
+              />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
+    }
     </div>
   );
 }
