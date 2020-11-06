@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OpenSeadragonViewer = ({ image }) => {
   const [viewer, setViewer] = useState(null);
-  
+
   useEffect(() => {
     if (image && viewer) {
       viewer.open(image.source);
