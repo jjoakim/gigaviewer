@@ -54,8 +54,8 @@ const OpenSeadragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        defaultZoomLevel: 0.7,
-        minZoomLevel: 0.7,
+        defaultZoomLevel: 0.4,
+        minZoomLevel: 0.4,
         visibilityRatio: 1,
         zoomPerScroll: 2,
         zoomInButton: 'zoom-in',
@@ -79,36 +79,36 @@ const OpenSeadragonViewer = ({ image }) => {
 
   return (
     <div>
-      <Box height={height-80} width={width} id="openSeaDragon">
+      <Box height={height-104} width={width} id="openSeaDragon">
         <div className={classes.root}>
         <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous">
-              <ArrowBackIcon style={{ fontSize: 60 }} />
+              <ArrowBackIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
             <IconButton color="primary" aria-label="next" disableRipple="true" id="next">
-              <ArrowForwardIcon style={{ fontSize: 60 }} />
+              <ArrowForwardIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom in" disableRipple="true" id="zoom-in">
-              <AddCircleOutlineIcon style={{ fontSize: 60 }} />
+              <AddCircleOutlineIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom out" disableRipple="true" id="zoom-out">
-              <RemoveCircleOutlineIcon style={{ fontSize: 60 }} />
+              <RemoveCircleOutlineIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="0%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="default zoom" disableRipple="true" id="home">
-              <HomeIcon style={{ fontSize: 60 }} />
+              <HomeIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple="true" id="full-page">
-              <FullscreenIcon style={{ fontSize: 60 }} />
+              <FullscreenIcon style={{ fontSize: 40 }} />
             </IconButton>
           </Box>
         </div>
