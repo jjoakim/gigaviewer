@@ -15,31 +15,34 @@ import Box from '@material-ui/core/Box';
 
 const Viewer = (props: any) => {
   const [manifest, setManifest] = useState({});
+  const response = require('components/image-viewer/sampleTestImages.json');
+  const image = response;
 
   useEffect(() => {
     getImages();
   }, []);
 
   const getImages = async () => {
-    const response = require('components/image-viewer/sampleTestImages.json');
-    const image = response;
-
-    setManifest(findGroup(image));
+    setManifest(updateManifest(image));
   };
 
-  const findGroup = (img: any) => {
+  const updateManifest = (img: any) => {
+    const {groupId, frame} = props.location.state;
+
     for (var i = 0; i < img.groups.length; i++) 
-      if (img.groups[i].name === props.location.state.groupId)
-        return img.groups[i].slides[0].slide;
+      if (img.groups[i].name === groupId)
+        return img.groups[i].slides[frame].slide;
   }
 
-  // function findElement(arr, propName, propValue) {
-  //   for (var i=0; i < arr.length; i++)
-  //     if (arr[i][propName] == propValue)
-  //       return arr[i];
-  // const previewImage = async (slide: any) => {
-  //   setManifest(slide.slide);
-  // }
+  const previousFrame = () => {
+    const { frame } = props.location.state;
+    if (frame > 0) {
+      props.location.state.frame = props.location.state.frame - 1;
+    }
+    // updateManifest()
+  }
+
+  const nextFrame = () => {}
 
   return (
     <div

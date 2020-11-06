@@ -52,6 +52,7 @@ export default function TitlebarGridList() {
   const [width, setWidth] = useState(0);
   const [grpId, setGrpId] = useState('');
   const [title, setTitle] = useState('');
+  const [frame, setFrame] = useState(0);
   const [redirect, setRedirect] = useState(false);
 
   function resizeWindow() {
@@ -75,9 +76,10 @@ export default function TitlebarGridList() {
     console.log('ICON');
   }
 
-  const toggleRedirect = (title, grpId) => {
+  const toggleRedirect = (title, grpId, index) => {
     setTitle(title);
     setGrpId(grpId);
+    setFrame(index);
     setRedirect(!redirect);
   }
 
@@ -88,7 +90,7 @@ export default function TitlebarGridList() {
       ?
       <Redirect to={{
         pathname: '/viewer',
-        state: { groupId: grpId, title: title },
+        state: { groupId: grpId, title: title, frame: frame },
       }} />
 
       :
@@ -105,7 +107,7 @@ export default function TitlebarGridList() {
               key={tile.img}
               onClick={() => {
                 consoleGrid(tile.groupId);
-                toggleRedirect(tile.title, tile.groupId);
+                toggleRedirect(tile.title, tile.groupId, tile.idx);
               }}
             >
               <img src={tile.img} alt={tile.title} />
