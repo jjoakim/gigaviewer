@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import NavButton from './NavButton';
-
-import IconButton from '@material-ui/core/IconButton';
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import FullscreenIcon from '@material-ui/icons/Fullscreen';
-import Box from '@material-ui/core/Box';
+/**
+ * Uncomment for navbar items (About, Home, Signup, etc.)
+ */
+// import NavButton from './NavButton';
+// import IconButton from '@material-ui/core/IconButton';
+// import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+// import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+// import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+// import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+// import RefreshIcon from '@material-ui/icons/Refresh';
+// import FullscreenIcon from '@material-ui/icons/Fullscreen';
+// import Box from '@material-ui/core/Box';
 
 import {
-  faTimes,
-  faBars,
+  // faTimes,
+  // faBars,
   faMicroscope,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { MenuItems } from './utils';
+// import { MenuItems } from './utils';
 import './style.css';
 
 interface PublicProps {
@@ -32,9 +34,9 @@ const TopNavbar = (props: PublicProps) => {
   const history = useHistory();
   const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
 
-  const handleMenuIconClicked = () => {
-    setIsMenuIconClicked(!isMenuIconClicked);
-  };
+  // const handleMenuIconClicked = () => {
+  //   setIsMenuIconClicked(!isMenuIconClicked);
+  // };
 
   const goToHome = () => {
     history.push('');
@@ -54,7 +56,7 @@ const TopNavbar = (props: PublicProps) => {
           <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
 
-        <div className="menu-icon" onClick={handleMenuIconClicked}>
+        {/* <div className="menu-icon" onClick={handleMenuIconClicked}>
           {isMenuIconClicked ? (
             <FontAwesomeIcon icon={faTimes} />
           ) : (
@@ -72,11 +74,11 @@ const TopNavbar = (props: PublicProps) => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
 
-        <div className="navbar-upload">
+        {/* <div className="navbar-upload">
           <NavButton />
-        </div>
+        </div> */}
       </nav>
 
       : 
@@ -88,38 +90,6 @@ const TopNavbar = (props: PublicProps) => {
           Gigaviewer
           <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
-        {/* <div>
-          <Box position="absolute" top="0.5%" right="32%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="previous frame" id="previous">
-              <NavigateBeforeIcon style={{ fontSize: 40 }} />
-            </IconButton>
-          </Box>
-          <Box position="absolute" top="0.5%" right="28%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="next frame" id="next">
-              <NavigateNextIcon style={{ fontSize: 40 }} />
-            </IconButton>
-          </Box>
-          <Box position="absolute" top="0.5%" right="22%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="zoom in" id="zoom-in">
-              <AddCircleOutlineIcon style={{ fontSize: 40 }} />
-            </IconButton>
-          </Box>
-          <Box position="absolute" top="0.5%" right="16%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="zoom out" id="zoom-out">
-              <RemoveCircleOutlineIcon style={{ fontSize: 40 }}/>
-            </IconButton>
-          </Box>
-          <Box position="absolute" top="0.5%" right="10%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="default zoom" id="home">
-              <RefreshIcon style={{ fontSize: 40 }}/>
-            </IconButton>
-          </Box>
-          <Box position="absolute" top="0.5%" right="4%" zIndex="tooltip">
-            <IconButton color="inherit" aria-label="full screen" id="full-page">
-              <FullscreenIcon style={{ fontSize: 40 }}/>
-            </IconButton>
-          </Box>
-        </div> */}
       </nav>
       }
     </div>
