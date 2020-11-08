@@ -4,7 +4,7 @@
       "name": "MonaLisa",
       "slides": [
        {
-        "slide": {
+        "frame": {
             "mpp": 0.499, 
             "name": null, 
             "source": {
@@ -86,7 +86,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1-JP2K-33005.svs", 
         "name": "CMU-1-JP2K-33005", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-jp2k-33005/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.499, 
          "name": null, 
          "source": {
@@ -163,7 +163,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1-Small-Region.svs", 
         "name": "CMU-1-Small-Region", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.499, 
          "name": null, 
          "source": {

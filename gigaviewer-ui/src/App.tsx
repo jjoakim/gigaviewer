@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/signup" component={Signup} />
         <Route path="/upload" component={Upload} />
         <Route 
-          path="/viewer" 
+          path="/viewer/:groupId/:frame" 
           component={Viewer}
         />
       </div>

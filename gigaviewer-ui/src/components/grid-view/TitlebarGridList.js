@@ -9,7 +9,6 @@ import InfoIcon from '@material-ui/icons/Info';
 import tileData from './tileData';
 
 import { BrowserRouter as Router, Redirect } from 'react-router-dom';
-import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,11 +46,10 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 
-export default function TitlebarGridList() {
+const TitlebarGridList = () => {
   const classes = useStyles();
   const [width, setWidth] = useState(0);
   const [grpId, setGrpId] = useState('');
-  const [title, setTitle] = useState('');
   const [frame, setFrame] = useState(0);
   const [redirect, setRedirect] = useState(false);
 
@@ -66,67 +64,62 @@ export default function TitlebarGridList() {
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
-  function consoleGrid(data) {
-    console.log('GRID');
-  }
-
   function consoleIcon(e) {
     e.stopPropagation();
     console.log('ICON');
   }
 
-  const toggleRedirect = (title, grpId, index) => {
-    setTitle(title);
-    setGrpId(grpId);
+  const renderRedirect = (groupId, index) => {
+    setGrpId(groupId);
     setFrame(index);
-    setRedirect(!redirect);
+    if (groupId !== '' && index >= 0) {
+      setRedirect(!redirect);
+    } else {
+      setGrpId('');
+      setFrame(0);
+    }
   }
 
   return (
     <div>
-      {(redirect) 
-
-      ?
-      <Redirect to={{
-        pathname: '/viewer',
-        state: { groupId: grpId, title: title, frame: frame },
-      }} />
-
-      :
-      <div className={classes.root}>
-        <GridList
-          cellHeight={200}
-          className={classes.gridList}
-          cols={Math.round(width / 300)}
-          spacing={6}
-        >
-          {tileData.map((tile) => (
-            <GridListTile
-              key={tile.img}
-              onClick={() => {
-                consoleGrid(tile.groupId);
-                toggleRedirect(tile.title, tile.groupId, tile.idx);
-              }}
-            >
-              <img src={tile.img} alt={tile.title} />
-              <GridListTileBar
-                title={tile.title}
-                subtitle={<span> by: {tile.author}</span>}
-                actionIcon={
-                  <IconButton
-                    aria-label={`info about ${tile.title}`}
-                    className={classes.icon}
-                    onClick={consoleIcon}
-                  >
-                    <InfoIcon />
-                  </IconButton>
-                }
-              />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
-    }
+      {(redirect)
+        ? <Redirect to={`/viewer/${grpId}/${frame}`}/>
+        : <div className={classes.root}>
+          <GridList
+            cellHeight={200}
+            className={classes.gridList}
+            cols={Math.round(width / 300)}
+            spacing={6}
+          >
+            {tileData.map((tile) => (
+              <GridListTile
+                key={tile.groupId}
+                onClick={() => {
+                  renderRedirect(tile.groupId, tile.idx);
+                }}
+              >
+                <img src={tile.img} alt={tile.title} />
+                <GridListTileBar
+                  title={tile.title}
+                  subtitle={<span> by: {tile.author}</span>}
+                  actionIcon={
+                    <IconButton
+                      aria-label={`info about ${tile.title}`}
+                      className={classes.icon}
+                      onClick={consoleIcon}
+                    >
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
+      }
     </div>
   );
 }
+
+
+export default TitlebarGridList;
