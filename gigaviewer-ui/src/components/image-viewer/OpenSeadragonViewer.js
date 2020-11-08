@@ -19,7 +19,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OpenSeadragonViewer = ({ image }) => {
+  const classes = useStyles();
   const [viewer, setViewer] = useState(null);
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    InitOpenseadragon();
+
+    resizeWindow();
+    window.addEventListener('resize', resizeWindow);
+    console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
+
+    return () => {
+      viewer && viewer.destroy();
+      window.removeEventListener('resize', resizeWindow);
+    };
+  }, []);
 
   useEffect(() => {
     if (image && viewer) {
@@ -27,21 +43,10 @@ const OpenSeadragonViewer = ({ image }) => {
     }
   }, [image]);
 
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-
   function resizeWindow() {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
   }
-
-  useEffect(() => {
-    resizeWindow();
-    window.addEventListener('resize', resizeWindow);
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    return () => window.removeEventListener('resize', resizeWindow);
-  }, []);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
@@ -68,47 +73,38 @@ const OpenSeadragonViewer = ({ image }) => {
     );
   };
 
-  useEffect(() => {
-    InitOpenseadragon();
-    return () => {
-      viewer && viewer.destroy();
-    };
-  }, []);
-
-  const classes = useStyles();
-
   return (
     <div>
       <Box height={height-104} width={width} id="openSeaDragon">
         <div className={classes.root}>
         <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous">
-              <ArrowBackIcon style={{ fontSize: 40 }} />
+              <ArrowBackIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
             <IconButton color="primary" aria-label="next" disableRipple="true" id="next">
-              <ArrowForwardIcon style={{ fontSize: 40 }} />
+              <ArrowForwardIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom in" disableRipple="true" id="zoom-in">
-              <AddCircleOutlineIcon style={{ fontSize: 40 }} />
+              <AddCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom out" disableRipple="true" id="zoom-out">
-              <RemoveCircleOutlineIcon style={{ fontSize: 40 }} />
+              <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="0%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="default zoom" disableRipple="true" id="home">
-              <HomeIcon style={{ fontSize: 40 }} />
+              <HomeIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple="true" id="full-page">
-              <FullscreenIcon style={{ fontSize: 40 }} />
+              <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
         </div>

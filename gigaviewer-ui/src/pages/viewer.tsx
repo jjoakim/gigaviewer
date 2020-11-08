@@ -4,6 +4,8 @@ import Box from '@material-ui/core/Box';
 
 /**
  * @todo how should this json file be inputted/imported?
+ * 
+ * openseadragon term conversions slide(s) -> frame(s), name -> gid
  */
 import data from 'components/image-viewer/sampleTestImages.json'; 
 
@@ -27,8 +29,10 @@ const Viewer = (props: any) => {
     const {groupId, frame} = props.match.params; // grab groupId, frame from router arg params
 
     for (var i = 0; i < img.groups.length; i++) 
-      if (img.groups[i].name === groupId)
-        return img.groups[i].slides[frame].frame;
+      if (img.groups[i].gid === groupId)
+        return img.groups[i].frames[frame].frame;
+
+    return {};
   }
 
   const previousFrame = () => {
