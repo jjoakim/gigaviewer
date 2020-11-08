@@ -12,10 +12,13 @@ const App = () => {
       <div className="App">
         <TopNavbar isViewerMode={useLocation().pathname === '/viewer'}></TopNavbar>
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
+        {/**
+          * uncomment for more routes + uncoment TopNavbar.tsx menu items 
+        */}
+        {/* <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/upload" component={Upload} />
+        <Route path="/upload" component={Upload} /> */}
         <Route 
           path="/viewer/:groupId/:frame" 
           component={Viewer}
