@@ -1,16 +1,22 @@
-// eslint-disable-next-line no-use-before-define
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
+import { Redirect } from 'react-router-dom';
+
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+
 import tileData from './tileData';
 
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    marginLeft: '1vw',
+    marginRight: '1vw',
+  },
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -38,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
  *     img: image,
  *     title: 'foo',
  *     author: 'author',
- *     grpId: 'fooImgs'
+ *     groupId: 'fooImgs',
+ *     idx: '2'
  *   },
  *   {
  *     [etc...]
@@ -46,6 +53,9 @@ const useStyles = makeStyles((theme) => ({
  * ];
  */
 
+/**
+ * Component that renders grid of image thumbnails for a collection of images
+ */
 const TitlebarGridList = () => {
   const classes = useStyles();
   const [width, setWidth] = useState(0);
@@ -64,12 +74,12 @@ const TitlebarGridList = () => {
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
-  function consoleIcon(e) {
+  function consoleIcon(e: any) {
     e.stopPropagation();
     console.log('ICON');
   }
 
-  const renderRedirect = (groupId, index) => {
+  const renderRedirect = (groupId: string, index: number) => {
     setGrpId(groupId);
     setFrame(index);
     if (groupId !== '' && index >= 0) {
@@ -81,7 +91,8 @@ const TitlebarGridList = () => {
   }
 
   return (
-    <div>
+    <div className={classes.container}>
+      <br />
       {(redirect)
         ? <Redirect to={`/viewer/${grpId}/${frame}`}/>
         : <div className={classes.root}>
