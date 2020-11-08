@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * deprecated
+ */
 const Upload = () => {
   return (
     <div>

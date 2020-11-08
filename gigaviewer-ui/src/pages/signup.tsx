@@ -1,5 +1,8 @@
 import React from 'react';
 
+/**
+ * deprecated
+ */
 const Signup = () => {
   return (
     <div>

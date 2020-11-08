@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { About, Home, Login, Signup, Upload, Viewer } from './pages';
+import { Home, Viewer } from './pages';
 import { TopNavbar } from './components/top-navbar';
 import { Route, Switch, useLocation } from 'react-router-dom';
 
