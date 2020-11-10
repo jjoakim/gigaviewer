@@ -13,8 +13,8 @@
                 "Format": "jpg", 
                 "Overlap": 1, 
                 "Size": {
-                    "Height": 32893, 
-                    "Width": 31000
+                    "Height": 11146, 
+                    "Width": 7479
                 }, 
                 "TileSize": 510, 
                 "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
@@ -158,8 +158,8 @@
            "Format": "jpg", 
            "Overlap": 1, 
            "Size": {
-            "Height": 32893, 
-            "Width": 38000
+            "Height": 24713, 
+            "Width": 18919
            }, 
            "TileSize": 510, 
            "Url": "https://gigaviewer-files.s3.amazonaws.com/Collard_Green_1_files/", 

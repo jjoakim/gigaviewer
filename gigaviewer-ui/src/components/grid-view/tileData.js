@@ -13,6 +13,8 @@ const tileData = [
     description: 'a famous painting',
     groupId: 'MonaLisa',
     idx: 0,
+    width: 7479,
+    height: 11146,
   },
   {
     img: collard1,
@@ -20,6 +22,8 @@ const tileData = [
     author: 'Horstmeyer Lab',
     groupId: 'Aperio',
     idx: 0,
+    width: 18919,
+    height: 24713,
   },
   {
     img: collard2,
@@ -27,6 +31,8 @@ const tileData = [
     author: 'Horstmeyer Lab',
     groupId: 'Aperio',
     idx: 1,
+    width: 2152,
+    height: 1370,
   },
 ];
 
