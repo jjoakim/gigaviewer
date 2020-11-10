@@ -54,8 +54,8 @@ const OpenSeadragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        defaultZoomLevel: 0.4,
-        minZoomLevel: 0.4,
+        defaultZoomLevel: 642/((11146/7479)*1536), //(window height-80)/((image height/image width)/window width) -> 80 b/c of navbar height
+        minZoomLevel: 642/((11146/7479)*1536), //(window height-80)/((image height/image width)/window width) -> 80 b/c of navbar height
         visibilityRatio: 1,
         zoomPerScroll: 2,
         zoomInButton: 'zoom-in',
@@ -79,7 +79,7 @@ const OpenSeadragonViewer = ({ image }) => {
 
   return (
     <div>
-      <Box height={height-104} width={width} id="openSeaDragon">
+      <Box height={height-80} width={width} id="openSeaDragon">
         <div className={classes.root}>
         <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous">
