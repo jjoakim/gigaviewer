@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
 const OpenSeadragonViewer = ({ images, frame }) => {
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     InitOpenseadragon();
@@ -58,7 +58,7 @@ const OpenSeadragonViewer = ({ images, frame }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-    const zoomValue = (window.innerHeight-80)/((11146/7479)*window.innerWidth);
+    const zoomValue = (height-80)/((11146/7479)*width);
     setViewer(
       OpenSeaDragon({
         id: 'openSeaDragon',
