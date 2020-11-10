@@ -38,14 +38,12 @@ const OpenSeadragonViewer = ({ image }) => {
   useEffect(() => {
     resizeWindow();
     window.addEventListener('resize', resizeWindow);
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-
+    const zoomValue = (window.innerHeight-80)/((11146/7479)*window.innerWidth);
     setViewer(
       OpenSeaDragon({
         id: 'openSeaDragon',
@@ -54,8 +52,8 @@ const OpenSeadragonViewer = ({ image }) => {
         blendTime: 0.1,
         constrainDuringPan: true,
         maxZoomPixelRatio: 2,
-        defaultZoomLevel: 642/((11146/7479)*1536), //(window height-80)/((image height/image width)/window width) -> 80 b/c of navbar height
-        minZoomLevel: 642/((11146/7479)*1536), //(window height-80)/((image height/image width)/window width) -> 80 b/c of navbar height
+        defaultZoomLevel: zoomValue,
+        minZoomLevel: zoomValue,
         visibilityRatio: 1,
         zoomPerScroll: 2,
         zoomInButton: 'zoom-in',
