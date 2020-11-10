@@ -14,7 +14,7 @@ import data from 'components/image-viewer/sampleTestImages.json';
  * @param props contains groupId, frame of props.match.params
  */
 const Viewer = (props: any) => {
-  const [manifest, setManifest] = useState({});
+  const [manifest, setManifest] = useState([]);
   const image = data;
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Viewer = (props: any) => {
 
     for (var i = 0; i < img.groups.length; i++) 
       if (img.groups[i].gid === groupId)
-        return img.groups[i].frames[frame].frame;
+        return img.groups[i].frames;
 
     return {};
   }
@@ -55,7 +55,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer image={manifest} />
+          <OpenSeaDragonViewer images={manifest} frame={props.match.params.frame}/>
         </Box>
       </div>
     </div>

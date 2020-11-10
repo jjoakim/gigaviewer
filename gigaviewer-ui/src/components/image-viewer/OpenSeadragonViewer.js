@@ -1,4 +1,4 @@
-import OpenSeaDragon from 'openseadragon';
+import OpenSeaDragon, { World } from 'openseadragon';
 import React, { useEffect, useState } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OpenSeadragonViewer = ({ image }) => {
+const OpenSeadragonViewer = ({ images, frame }) => {
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
   const [width, setWidth] = useState(0);
@@ -37,11 +37,19 @@ const OpenSeadragonViewer = ({ image }) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (image && viewer) {
-      viewer.open(image.source);
+  const countFrames = (frames) => {
+    var sum = 0;
+    for (var i = 0; i < frames.length; + i++) {
+      sum++;
     }
-  }, [image]);
+    return sum;
+  }
+
+  useEffect(() => {
+    if (images && viewer) {
+      viewer.open(images[0].frame.source);
+    }
+  }, [images]);
 
   function resizeWindow() {
     setWidth(window.innerWidth);
@@ -61,12 +69,19 @@ const OpenSeadragonViewer = ({ image }) => {
         maxZoomPixelRatio: 2,
         defaultZoomLevel: 0.4,
         minZoomLevel: 0.4,
+        preserveViewport: true, // keeps zoom amount between frames
+        showReferenceStrip: false, // shows strip of thumbnails in group
+        // referenceStripHeight: 0.9,
+        // // referenceStripWidth: 5,
+        // referenceStripPosition: 'BOTTOM_RIGHT',
+        // referenceStripSizeRatio: 0.05,
         visibilityRatio: 1,
         zoomPerScroll: 2,
         zoomInButton: 'zoom-in',
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
         fullPageButton: 'full-page',
+        sequenceMode: 'true', // sequence of images
         nextButton: 'next',
         previousButton: 'previous',
       })
