@@ -43,7 +43,7 @@ const OpenSeadragonViewer = ({ images, frame }) => {
       sum++;
     }
     return sum;
-  }
+  };
 
   useEffect(() => {
     if (images && viewer) {
@@ -51,10 +51,10 @@ const OpenSeadragonViewer = ({ images, frame }) => {
     }
   }, [images]);
 
-  function resizeWindow() {
+  const resizeWindow = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
-  }
+  };
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
