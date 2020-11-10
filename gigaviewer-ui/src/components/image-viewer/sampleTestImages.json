@@ -1,13 +1,14 @@
 {
     "groups": [
      {
-      "name": "MonaLisa",
-      "slides": [
+      "gid": "MonaLisa",
+      "frames": [
        {
         "frame": {
             "mpp": 0.499, 
             "name": null, 
-            "source": {
+            "source": [
+                {
                 "Image": {
                 "Format": "jpg", 
                 "Overlap": 1, 
@@ -19,14 +20,77 @@
                 "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
                 }
-            }
+            },
+            {
+                "Image": {
+                 "Format": "jpeg", 
+                 "Overlap": 1, 
+                 "Size": {
+                  "Height": 2967, 
+                  "Width": 2220
+                 }, 
+                 "TileSize": 510, 
+                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+               },
+               {
+                "Image": {
+                 "Format": "jpeg", 
+                 "Overlap": 1, 
+                 "Size": {
+                  "Height": 2967, 
+                  "Width": 2220
+                 }, 
+                 "TileSize": 510, 
+                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+               },{
+                "Image": {
+                 "Format": "jpeg", 
+                 "Overlap": 1, 
+                 "Size": {
+                  "Height": 2967, 
+                  "Width": 2220
+                 }, 
+                 "TileSize": 510, 
+                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+               },{
+                "Image": {
+                 "Format": "jpeg", 
+                 "Overlap": 1, 
+                 "Size": {
+                  "Height": 2967, 
+                  "Width": 2220
+                 }, 
+                 "TileSize": 510, 
+                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+               },{
+                "Image": {
+                 "Format": "jpeg", 
+                 "Overlap": 1, 
+                 "Size": {
+                  "Height": 2967, 
+                  "Width": 2220
+                 }, 
+                 "TileSize": 510, 
+                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                }
+               }
+            ]
         }
        }
       ]
      },
      {
-      "name": "Aperio", 
-      "slides": [
+      "gid": "Aperio", 
+      "frames": [
        {
         "associated": [
          {
@@ -240,7 +304,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1.svs", 
         "name": "CMU-1", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.499, 
          "name": null, 
          "source": {
@@ -317,7 +381,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-2.svs", 
         "name": "CMU-2", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-2/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.499, 
          "name": null, 
          "source": {
@@ -394,7 +458,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-3.svs", 
         "name": "CMU-3", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-3/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.499, 
          "name": null, 
          "source": {
@@ -471,7 +535,7 @@
         "download_url": "http://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/JP2K-33003-1.svs", 
         "name": "JP2K-33003-1", 
         "properties_url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/jp2k-33003-1/properties.json?v=9ae8ddb6", 
-        "slide": {
+        "frame": {
          "mpp": 0.2498, 
          "name": null, 
          "source": {

@@ -4,6 +4,8 @@ import Box from '@material-ui/core/Box';
 
 /**
  * @todo how should this json file be inputted/imported?
+ * 
+ * openseadragon term conversions slide(s) -> frame(s), name -> gid
  */
 import data from 'components/image-viewer/sampleTestImages.json'; 
 
@@ -12,7 +14,7 @@ import data from 'components/image-viewer/sampleTestImages.json';
  * @param props contains groupId, frame of props.match.params
  */
 const Viewer = (props: any) => {
-  const [manifest, setManifest] = useState({});
+  const [manifest, setManifest] = useState([]);
   const image = data;
 
   useEffect(() => {
@@ -27,8 +29,10 @@ const Viewer = (props: any) => {
     const {groupId, frame} = props.match.params; // grab groupId, frame from router arg params
 
     for (var i = 0; i < img.groups.length; i++) 
-      if (img.groups[i].name === groupId)
-        return img.groups[i].slides[frame].frame;
+      if (img.groups[i].gid === groupId)
+        return img.groups[i].frames;
+
+    return {};
   }
 
   const previousFrame = () => {
@@ -51,7 +55,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer image={manifest} />
+          <OpenSeaDragonViewer images={manifest} frame={props.match.params.frame}/>
         </Box>
       </div>
     </div>
