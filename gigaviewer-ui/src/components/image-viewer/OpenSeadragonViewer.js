@@ -154,7 +154,7 @@ const OpenSeadragonViewer = ({ images, frame }) => {
         defaultZoomLevel: defaultZoom,
         minZoomLevel: 0.2,
         visibilityRatio: 0.5,
-        zoomPerScroll: 2,
+        zoomPerScroll: 1.1,
         zoomInButton: 'zoom-in',
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
@@ -200,7 +200,21 @@ const OpenSeadragonViewer = ({ images, frame }) => {
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box border={1} borderTop={0} bgcolor='rgba(255, 255, 255, 0.5)' width={scalebarSize} position="absolute" bottom="0%" left="44%" zIndex="tooltip" style={{borderRight: '3px solid', borderLeft: '3px solid', borderBottom:'3px solid', textAlign: 'center'}}>
+          <Box
+            border={1}
+            borderTop={0}
+            bgcolor="rgba(255, 255, 255, 0.5)"
+            width={scalebarSize}
+            position="absolute"
+            bottom="0%"
+            left="44%"
+            zIndex="tooltip"
+            style={{
+              borderRight: '3px solid',
+              borderLeft: '3px solid',
+              borderBottom: '3px solid',
+              textAlign: 'center',
+            }}>
              {scalebarText}
           </Box>
         </div>
