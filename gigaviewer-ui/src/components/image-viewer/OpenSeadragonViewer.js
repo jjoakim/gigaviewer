@@ -25,6 +25,8 @@ const OpenSeadragonViewer = ({ images, frame }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   let currentZoom = 0;
+  // const [currentZoom, setCurrentZoom] = useState(0);
+  const [defaultZoom, setDefaultZoom] = useState(0);
   const [scalebarSize, setScalebarSize] = useState(0);
   const [scalebarText, setScalebarText] = useState('');
 
@@ -62,7 +64,12 @@ const OpenSeadragonViewer = ({ images, frame }) => {
   function onImageViewChanged(event) {
     currentZoom = viewer.viewport.getZoom();
     console.log(currentZoom);
-    const scaleBarSpecs = getScalebarSizeAndTextForMetric(833.77 / ( 0.28 / currentZoom), 100); // 833.77 = window_height/real_height, 0.28 = defaultZoom
+    const scaleBarSpecs = getScalebarSizeAndTextForMetric(
+      ((height-80)/0.77) / (defaultZoom / currentZoom),
+      100
+    ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
+    console.log(scaleBarSpecs.size);
+    console.log(scaleBarSpecs.text);
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
   }
@@ -126,8 +133,6 @@ const OpenSeadragonViewer = ({ images, frame }) => {
   function getScalebarSizeAndTextForMetric(ppm, minSize) {
     const value = normalize(ppm, minSize);
     const factor = roundSignificand((value / ppm) * minSize, 3);
-    console.log(value);
-    console.log(factor);
     const size = value * minSize;
     const valueWithUnit = getWithUnit(factor, 'm');
     return {
@@ -138,7 +143,7 @@ const OpenSeadragonViewer = ({ images, frame }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-    const defaultZoom = (height - 80) / ((11146 / 7479) * width);
+    setDefaultZoom((height - 80) / ((11146 / 7479) * width));
     setViewer(
       OpenSeaDragon({
         id: 'openSeaDragon',
