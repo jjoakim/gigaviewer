@@ -9,7 +9,8 @@ import {
   Box, 
   IconButton, 
   Slider, 
-  makeStyles 
+  makeStyles,
+  withStyles 
 } from '@material-ui/core';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -28,6 +29,42 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
+
+const PrettoSlider = withStyles({
+  root: {
+    color: 'primary',
+    height: 8,
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus, &:hover, &$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    opacity: 0.6,
+  },
+  mark: {
+    backgroundColor: '#bfbfbf',
+    height: 10,
+    width: 2,
+    marginTop: -3,
+  },
+})(Slider);
 
 /**
  * This component takes in the relevant frames and initializes them to an OSD viewer
@@ -155,8 +192,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     <div>
       <Box height={height-80} width={width} id="openSeaDragon">
       <div className={classes.root}>
-          <Box position='absolute' top='2%' right='17%' width='10%' zIndex='tooltip'>
-          <Slider
+          <Box position='absolute' top='1.65%' right='17%' width='10%' zIndex='tooltip'>
+          <PrettoSlider 
             defaultValue={1}
             aria-labelledby='discrete-slider'
             valueLabelDisplay='auto'
