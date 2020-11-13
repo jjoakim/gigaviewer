@@ -22,6 +22,7 @@ import Pause from '@material-ui/icons/Pause';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: 300,
     '& > *': {
       margin: theme.spacing(1),
     },
@@ -154,6 +155,17 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     <div>
       <Box height={height-80} width={width} id="openSeaDragon">
       <div className={classes.root}>
+          <Box position='absolute' top='2%' right='17%' width='10%' zIndex='tooltip'>
+          <Slider
+            defaultValue={1}
+            aria-labelledby='discrete-slider'
+            valueLabelDisplay='auto'
+            step={1}
+            marks
+            min={1}
+            max={3}
+          />
+          </Box>
           <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>
               <ArrowBackIcon style={{ fontSize: 30 }} />
