@@ -41,7 +41,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer frames={manifest} frame={props.match.params.frame}/>
+          <OpenSeaDragonViewer frames={manifest} initialFrame={props.match.params.frame}/>
         </Box>
       </div>
     </div>

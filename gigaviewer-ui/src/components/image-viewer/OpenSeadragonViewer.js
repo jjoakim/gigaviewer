@@ -1,6 +1,11 @@
-import OpenSeaDragon, { World } from 'openseadragon';
 import React, { useEffect, useState } from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+import OpenSeaDragon from 'openseadragon';
+import '@openseadragon-imaging/openseadragon-imaginghelper';
+
+import { getScalebarSizeAndTextForMetric } from './utils';
+
+import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -9,9 +14,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import '@openseadragon-imaging/openseadragon-imaginghelper';
-
-import { getScalebarSizeAndTextForMetric } from './utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OpenSeadragonViewer = ({ frames, frame }) => {
+/**
+ * This component takes in the relevant frames and initializes them to an OSD viewer
+ * @param {*} param0 
+ */
+const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   let currentZoom = 0;
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
@@ -31,7 +37,7 @@ const OpenSeadragonViewer = ({ frames, frame }) => {
   const [defaultZoom, setDefaultZoom] = useState(0);
   const [scalebarSize, setScalebarSize] = useState(0);
   const [scalebarText, setScalebarText] = useState('');
-  const [index, setIndex] = useState(Number(frame));
+  const [index, setIndex] = useState(Number(initialFrame));
   const [totalFrames, setTotalFrames] = useState(0);
 
   useEffect(() => {
@@ -124,7 +130,7 @@ const OpenSeadragonViewer = ({ frames, frame }) => {
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
         fullPageButton: 'full-page',
-        // sequenceMode: 'true', // sequence of images
+        // sequenceMode: 'false', // prevent usage of OSD builtin next/prev
         nextButton: 'next',
         previousButton: 'previous',
       })
