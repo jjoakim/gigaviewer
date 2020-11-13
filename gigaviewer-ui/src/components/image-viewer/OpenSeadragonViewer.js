@@ -196,14 +196,17 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
         maxZoomPixelRatio: 2,
         defaultZoomLevel: defaultZoom,
         minZoomLevel: 0.2,
+        preload: true,
+        // sequenceMode: true,
+        // preserveViewport: true,
         visibilityRatio: 0.5,
         zoomPerScroll: 1.1,
         zoomInButton: 'zoom-in',
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
         fullPageButton: 'full-page',
-        nextButton: 'next',
-        previousButton: 'previous',
+        // nextButton: 'next',
+        // previousButton: 'previous',
       })
     );
   };
