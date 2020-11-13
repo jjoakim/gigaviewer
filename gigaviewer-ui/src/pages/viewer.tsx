@@ -15,36 +15,22 @@ import data from 'components/image-viewer/sampleTestImages.json';
  */
 const Viewer = (props: any) => {
   const [manifest, setManifest] = useState([]);
-  const image = data;
 
   useEffect(() => {
     getImages();
   }, []);
 
   const getImages = () => {
-    setManifest(updateManifest(image));
+    setManifest(updateManifest(data));
   };
 
-  const updateManifest = (img: any) => {
-    const {groupId, frame} = props.match.params; // grab groupId, frame from router arg params
-
-    for (var i = 0; i < img.groups.length; i++) 
-      if (img.groups[i].gid === groupId)
-        return img.groups[i].frames;
+  const updateManifest = (data: any) => {
+    for (var i = 0; i < data.groups.length; i++) 
+      if (data.groups[i].gid === props.match.params.groupId)
+        return data.groups[i].frames;
 
     return {};
   }
-
-  const previousFrame = () => {
-    const { frame } = props.match.params;
-    if (frame > 0) {
-      props.match.params.frame = props.match.params.frame - 1;
-    }
-    console.log('groupId - frame: ' + props.match.params.groupId + ' ' + frame);
-    // updateManifest()
-  }
-
-  const nextFrame = () => {}
 
   return (
     <div
@@ -55,7 +41,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer images={manifest} frame={props.match.params.frame}/>
+          <OpenSeaDragonViewer frames={manifest} frame={props.match.params.frame}/>
         </Box>
       </div>
     </div>

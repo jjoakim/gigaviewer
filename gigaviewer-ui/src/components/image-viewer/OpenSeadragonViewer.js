@@ -9,7 +9,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import OpenSeadragonImagingHelper from '@openseadragon-imaging/openseadragon-imaginghelper';
+import '@openseadragon-imaging/openseadragon-imaginghelper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,16 +19,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const OpenSeadragonViewer = ({ images, frame }) => {
+const OpenSeadragonViewer = ({ frames, frame }) => {
+  let currentZoom = 0;
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  let currentZoom = 0;
   // const [currentZoom, setCurrentZoom] = useState(0);
   const [defaultZoom, setDefaultZoom] = useState(0);
   const [scalebarSize, setScalebarSize] = useState(0);
   const [scalebarText, setScalebarText] = useState('');
+  const [index, setIndex] = useState(Number(frame));
+  const [totalFrames, setTotalFrames] = useState(0);
 
   useEffect(() => {
     InitOpenseadragon();
@@ -42,24 +44,40 @@ const OpenSeadragonViewer = ({ images, frame }) => {
     };
   }, []);
 
-  const countFrames = (frames) => {
-    var sum = 0;
-    for (var i = 0; i < frames.length; + i++) {
-      sum++;
-    }
-    return sum;
-  };
-
   useEffect(() => {
-    if (images && viewer) {
-      viewer.open(images[0].frame.source);
+    if (frames && viewer) {
+      setTotalFrames(getTotalFrames());
+      viewer.open(frames[0].frame.source[index]); // source is an array of the img data itself
     }
     if(viewer != null) {
-      const imagingHelper = viewer.activateImagingHelper({
+      viewer.activateImagingHelper({
         onImageViewChanged
       });
     }
-  }, [images]);
+  }, [frames, index]);
+
+  const getTotalFrames = () => {
+    var sum = 0;
+    for (var i = 0; i < frames[0].frame.source.length; i++)
+      sum++;
+    return sum;
+  };
+
+  const previousFrame = () => {
+    let newIndex = (index == 0) ? totalFrames-1 : index - 1;
+    setIndex(newIndex);
+  }
+
+  const nextFrame = () => {
+    let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
+    setIndex(newIndex);
+  }
+
+  // const setFrameAtIndex = (i) => {
+  //   console.log("total Frames: " + totalFrames);
+  //   setIndex(i);
+  //   viewer.open(frames[0].frame.source[i]);
+  // }
 
   function onImageViewChanged(event) {
     currentZoom = viewer.viewport.getZoom();
@@ -159,7 +177,7 @@ const OpenSeadragonViewer = ({ images, frame }) => {
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
         fullPageButton: 'full-page',
-        sequenceMode: 'true', // sequence of images
+        // sequenceMode: 'true', // sequence of images
         nextButton: 'next',
         previousButton: 'previous',
       })
@@ -171,12 +189,12 @@ const OpenSeadragonViewer = ({ images, frame }) => {
       <Box height={height-80} width={width} id="openSeaDragon">
         <div className={classes.root}>
         <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous">
+            <IconButton color="primary" aria-label="previous" disableRipple="true" id="previous" onClick={previousFrame}>
               <ArrowBackIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="next" disableRipple="true" id="next">
+            <IconButton color="primary" aria-label="next" disableRipple="true" id="next" onClick={nextFrame}>
               <ArrowForwardIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>

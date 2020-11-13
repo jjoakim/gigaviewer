@@ -9,80 +9,44 @@
             "name": null, 
             "source": [
                 {
-                "Image": {
-                "Format": "jpg", 
-                "Overlap": 1, 
-                "Size": {
-                    "Height": 11146, 
-                    "Width": 7479
-                }, 
-                "TileSize": 510, 
-                "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
-                "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                    "Image": {
+                    "Format": "jpg", 
+                    "Overlap": 1, 
+                    "Size": {
+                        "Height": 11146, 
+                        "Width": 7479
+                    }, 
+                    "TileSize": 510, 
+                    "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
+                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                    }
+                },
+                {
+                    "Image": {
+                     "Format": "jpg", 
+                     "Overlap": 1, 
+                     "Size": {
+                      "Height": 24713, 
+                      "Width": 18919
+                     }, 
+                     "TileSize": 510, 
+                     "Url": "https://gigaviewer-files.s3.amazonaws.com/Collard_Green_1_files/", 
+                     "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                    }
+                },
+                {
+                    "Image": {
+                    "Format": "jpeg", 
+                    "Overlap": 1, 
+                    "Size": {
+                    "Height": 2967, 
+                    "Width": 2220
+                    }, 
+                    "TileSize": 510, 
+                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
+                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
+                    }
                 }
-            },
-            {
-                "Image": {
-                 "Format": "jpeg", 
-                 "Overlap": 1, 
-                 "Size": {
-                  "Height": 2967, 
-                  "Width": 2220
-                 }, 
-                 "TileSize": 510, 
-                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                }
-               },
-               {
-                "Image": {
-                 "Format": "jpeg", 
-                 "Overlap": 1, 
-                 "Size": {
-                  "Height": 2967, 
-                  "Width": 2220
-                 }, 
-                 "TileSize": 510, 
-                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                }
-               },{
-                "Image": {
-                 "Format": "jpeg", 
-                 "Overlap": 1, 
-                 "Size": {
-                  "Height": 2967, 
-                  "Width": 2220
-                 }, 
-                 "TileSize": 510, 
-                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                }
-               },{
-                "Image": {
-                 "Format": "jpeg", 
-                 "Overlap": 1, 
-                 "Size": {
-                  "Height": 2967, 
-                  "Width": 2220
-                 }, 
-                 "TileSize": 510, 
-                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                }
-               },{
-                "Image": {
-                 "Format": "jpeg", 
-                 "Overlap": 1, 
-                 "Size": {
-                  "Height": 2967, 
-                  "Width": 2220
-                 }, 
-                 "TileSize": 510, 
-                 "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                 "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                }
-               }
             ]
         }
        }
