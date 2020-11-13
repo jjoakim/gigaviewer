@@ -5,9 +5,12 @@ import '@openseadragon-imaging/openseadragon-imaginghelper';
 
 import { getScalebarSizeAndTextForMetric, getTotalFrames } from './utils';
 
-import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import IconButton from '@material-ui/core/IconButton';
+import { 
+  Box, 
+  IconButton, 
+  Slider, 
+  makeStyles 
+} from '@material-ui/core';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HomeIcon from '@material-ui/icons/Home';
@@ -42,7 +45,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
-
 
   useEffect(() => {
     InitOpenseadragon();
@@ -195,7 +197,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
               <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-  
           <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple={true} id="full-page">
               <FullscreenIcon style={{ fontSize: 30 }} />
