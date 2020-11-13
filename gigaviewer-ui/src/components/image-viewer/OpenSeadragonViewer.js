@@ -114,6 +114,10 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     }
   }, [frames]);
 
+  useEffect(() => {
+    history.push(`${location.pathname.slice(0, -1)}${index}`);
+  }, [index]);
+
   const handleChange = (event, newSliderValue) => {
     console.log('word')
     setCurrSliderValue(newSliderValue);
@@ -130,8 +134,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
 
   const previousFrame = () => {
     let newIndex = (index == 0) ? totalFrames-1 : index - 1;
-    // setIndex(newIndex);
-    history.push(`${location.pathname.slice(0, -1)}${newIndex}`)
     setFrameAtIndex(newIndex);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
@@ -139,8 +141,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
 
   const nextFrame = () => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
-    // setIndex(newIndex); 
-    history.push(`${location.pathname.slice(0, -1)}${newIndex}`)
     setFrameAtIndex(newIndex);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
