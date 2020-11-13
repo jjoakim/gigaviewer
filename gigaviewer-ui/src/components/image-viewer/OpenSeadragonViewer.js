@@ -192,7 +192,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     <div>
       <Box height={height-80} width={width} id="openSeaDragon">
       <div className={classes.root}>
-          <Box position='absolute' top='1.65%' right='17%' width='10%' zIndex='tooltip'>
+          <Box position='absolute' top={10} right='17%' width='10%' zIndex='tooltip'>
           <PrettoSlider 
             defaultValue={1}
             aria-labelledby='discrete-slider'
