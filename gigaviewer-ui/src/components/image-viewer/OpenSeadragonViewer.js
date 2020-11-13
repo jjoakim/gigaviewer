@@ -114,11 +114,15 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == 0) ? totalFrames-1 : index - 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
+    setCurrSliderValue(newIndex + 1);
+    setCommitSliderValue(newIndex + 1);
   };
 
   const handleChange = (event, newSliderValue) => {
-    console.log(currSliderValue);
+    console.log('word')
     setCurrSliderValue(newSliderValue);
+    // setFrameAtIndex(newSliderValue - 1);
+    // setTimeout(() => {  console.log("World!"); }, 500);
   };
 
   const handleCommit = () => {
@@ -132,6 +136,9 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
+    setFrameAtIndex(newIndex);
+    setCurrSliderValue(newIndex + 1);
+    setCommitSliderValue(newIndex + 1);
   };
 
   const setFrameAtIndex = (i) => {
@@ -211,6 +218,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
             defaultValue={1}
             aria-labelledby='discrete-slider'
             valueLabelDisplay='auto'
+            value={currSliderValue}
             step={1}
             onChange={handleChange}
             onChangeCommitted={handleCommit}
