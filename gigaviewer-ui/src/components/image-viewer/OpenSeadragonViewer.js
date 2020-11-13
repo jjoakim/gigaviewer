@@ -83,7 +83,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
-  const [currSliderValue, setCurrSliderValue] = useState(0);
+  const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
   const [commitSliderValue, setCommitSliderValue] = useState(0);
 
   useEffect(() => {
@@ -245,7 +245,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
           </Box>
           <Box position='absolute' top="9%" right='1.2vw' width='10%' zIndex='tooltip'>
             <PrettoSlider 
-              defaultValue={1}
+              defaultValue={0}
               aria-labelledby='discrete-slider'
               valueLabelDisplay='auto'
               value={currSliderValue}
