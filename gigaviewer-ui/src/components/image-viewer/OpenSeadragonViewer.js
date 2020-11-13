@@ -83,6 +83,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
+  const [currSliderValue, setCurrSliderValue] = useState(1);
+  const [commitSliderValue, setCommitSliderValue] = useState(1);
 
   useEffect(() => {
     InitOpenseadragon();
@@ -112,28 +114,40 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == 0) ? totalFrames-1 : index - 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
-  }
+  };
+
+  const handleChange = (event, newSliderValue) => {
+    console.log(currSliderValue);
+    setCurrSliderValue(newSliderValue);
+  };
+
+  const handleCommit = () => {
+    if (currSliderValue !== commitSliderValue) {
+      setFrameAtIndex(currSliderValue - 1);
+    }
+    setCommitSliderValue(currSliderValue);
+  };
 
   const nextFrame = () => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
-  }
+  };
 
   const setFrameAtIndex = (i) => {
     setIndex(i);
     viewer.open(frames[0].frame.source[i]);
-  }
+  };
 
   const startPlayback = () => {
     setPlaybackIntervalId(setInterval(function () {
       document.getElementById("next").click();
     }, 1000));
-  }
+  };
 
   const stopPlayback = () => {
     clearInterval(playbackIntervalId);
-  }
+  };
 
   const togglePlayback = () => {
     setIsPlaybackEnabled(!isPlaybackEnabled);
@@ -142,7 +156,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     } else {
       stopPlayback();
     }
-  }
+  };
 
   const onImageViewChanged = () => {
     currentZoom = viewer.viewport.getZoom();
@@ -155,7 +169,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     console.log(scaleBarSpecs.text);
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
-  }
+  };
 
   const resizeWindow = () => {
     setWidth(window.innerWidth);
@@ -164,7 +178,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
 
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
-    
+
     setDefaultZoom((height - 80) / ((11146 / 7479) * width));
 
     setViewer(
@@ -198,6 +212,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
             aria-labelledby='discrete-slider'
             valueLabelDisplay='auto'
             step={1}
+            onChange={handleChange}
+            onChangeCommitted={handleCommit}
             marks
             min={1}
             max={3}
