@@ -43,6 +43,12 @@ const OpenSeadragonViewer = ({ frames, frame }) => {
       window.removeEventListener('resize', resizeWindow);
     };
   }, []);
+  const play = () => {
+    setInterval(function () {
+      console.log('hit');
+      document.getElementById("next").click();
+    }, 1000);
+  }
 
   useEffect(() => {
     if (frames && viewer) {
