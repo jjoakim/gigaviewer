@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './style.css';
 
 interface PublicProps {
-  isViewerMode: boolean;
+  isViewerMode?: boolean;
 }
 
 /**

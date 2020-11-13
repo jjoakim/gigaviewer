@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Switch>
       <div className="App">
-        <TopNavbar isViewerMode={useLocation().pathname === '/viewer'}></TopNavbar>
+        <TopNavbar /**isViewerMode={useLocation().pathname === '/viewer'}**/></TopNavbar>
         <Route exact path="/" component={Home} />
         {/**
           * uncomment for more routes + uncoment TopNavbar.tsx menu items 
