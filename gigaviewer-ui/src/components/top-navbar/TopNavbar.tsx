@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 /**
@@ -32,7 +32,7 @@ interface PublicProps {
  */
 const TopNavbar = (props: PublicProps) => {
   const history = useHistory();
-  const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
+  // const [isMenuIconClicked, setIsMenuIconClicked] = useState(false);
 
   // const handleMenuIconClicked = () => {
   //   setIsMenuIconClicked(!isMenuIconClicked);

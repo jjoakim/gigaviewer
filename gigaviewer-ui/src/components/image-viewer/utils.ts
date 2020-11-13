@@ -1,3 +1,21 @@
+export const getScalebarSizeAndTextForMetric = (ppm: number, minSize: number) => {
+    const value = normalize(ppm, minSize);
+    const factor = roundSignificand((value / ppm) * minSize, 3);
+    const size = value * minSize;
+    const valueWithUnit = getWithUnit(factor, 'm');
+    return {
+      size: size,
+      text: valueWithUnit,
+    };
+}
+
+export const getTotalFrames = (data: any) => {
+    var sum = 0;
+    for (var i = 0; i < data[0].frame.source.length; i++)
+      sum++;
+    return sum;
+};
+
 const calcLog10 = (x: number) => {
     return Math.log(x) / Math.log(10);
 }
@@ -48,14 +66,3 @@ const roundSignificand = (x: number, decimalPlaces: number) => {
     }
     return Math.round(significand) / Math.pow(10, power);
   }
-
-export const getScalebarSizeAndTextForMetric = (ppm: number, minSize: number) => {
-    const value = normalize(ppm, minSize);
-    const factor = roundSignificand((value / ppm) * minSize, 3);
-    const size = value * minSize;
-    const valueWithUnit = getWithUnit(factor, 'm');
-    return {
-      size: size,
-      text: valueWithUnit,
-    };
-}
