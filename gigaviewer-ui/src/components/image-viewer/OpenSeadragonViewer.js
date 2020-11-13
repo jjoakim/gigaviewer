@@ -219,7 +219,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
 
   return (
     <div>
-      <Box height={height-80} width={width} id="openSeaDragon">
+      <Box height={height-90} width={width} id="openSeaDragon">
       <div className={classes.root}>
           <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>

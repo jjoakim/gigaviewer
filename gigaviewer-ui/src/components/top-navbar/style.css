@@ -1,20 +1,20 @@
 /* GENERAL NAVBAR STYLING */
 .navbar-items {
   background: linear-gradient(90deg, #37474f 0%, #78909c 100%);
-  height: 80px;
+  height: 8vh;
   display: flex;
   justify-content: left;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .navbar-items-viewer {
   background: linear-gradient(90deg, #37474f 0%, #78909c 100%);
-  height: 80px;
+  height: 8vh;
   display: flex;
   justify-content: left;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .navbar-logo {

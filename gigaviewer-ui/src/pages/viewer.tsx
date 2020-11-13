@@ -28,7 +28,6 @@ const Viewer = (props: any) => {
     for (var i = 0; i < data.groups.length; i++) 
       if (data.groups[i].gid === props.match.params.groupId)
         return data.groups[i].frames;
-
     return {};
   }
 
