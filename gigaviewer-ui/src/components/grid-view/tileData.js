@@ -1,9 +1,5 @@
-// import lebronImage from './lebron.jpg';
-// import carusoImage from './caruso.jpg';
-// import kobeImage from './kobe.jpg';
 import monaImage from './monalisa_small.jpg';
 import collard1 from './Collard_Green_1_small.jpg';
-import collard2 from './Collard_Green_2.png';
 
 const tileData = [
   {
