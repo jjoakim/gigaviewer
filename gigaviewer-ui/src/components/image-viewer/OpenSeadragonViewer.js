@@ -83,8 +83,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   const [totalFrames, setTotalFrames] = useState(0);
   const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
-  const [currSliderValue, setCurrSliderValue] = useState(1);
-  const [commitSliderValue, setCommitSliderValue] = useState(1);
+  const [currSliderValue, setCurrSliderValue] = useState(0);
+  const [commitSliderValue, setCommitSliderValue] = useState(0);
 
   useEffect(() => {
     InitOpenseadragon();
@@ -114,8 +114,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == 0) ? totalFrames-1 : index - 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
-    setCurrSliderValue(newIndex + 1);
-    setCommitSliderValue(newIndex + 1);
+    setCurrSliderValue(newIndex);
+    setCommitSliderValue(newIndex);
   };
 
   const handleChange = (event, newSliderValue) => {
@@ -127,7 +127,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
 
   const handleCommit = () => {
     if (currSliderValue !== commitSliderValue) {
-      setFrameAtIndex(currSliderValue - 1);
+      setFrameAtIndex(currSliderValue);
     }
     setCommitSliderValue(currSliderValue);
   };
@@ -136,9 +136,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
-    setFrameAtIndex(newIndex);
-    setCurrSliderValue(newIndex + 1);
-    setCommitSliderValue(newIndex + 1);
+    setCurrSliderValue(newIndex);
+    setCommitSliderValue(newIndex);
   };
 
   const setFrameAtIndex = (i) => {
@@ -251,8 +250,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
               onChange={handleChange}
               onChangeCommitted={handleCommit}
               marks
-              min={1}
-              max={totalFrames}
+              min={0}
+              max={totalFrames-1}
             />
           </Box>
           <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
