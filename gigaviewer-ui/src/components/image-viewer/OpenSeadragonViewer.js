@@ -136,7 +136,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
     // setIndex(newIndex);
     setFrameAtIndex(newIndex);
-    setFrameAtIndex(newIndex);
     setCurrSliderValue(newIndex + 1);
     setCommitSliderValue(newIndex + 1);
   };
