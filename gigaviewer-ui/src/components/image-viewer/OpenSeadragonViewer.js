@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import OpenSeaDragon from 'openseadragon';
 import '@openseadragon-imaging/openseadragon-imaginghelper';
@@ -71,6 +72,9 @@ const PrettoSlider = withStyles({
  * @param {*} param0 
  */
 const OpenSeadragonViewer = ({ frames, initialFrame }) => {
+  const location = useLocation();
+  const history = useHistory();
+
   let currentZoom = 0;
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
@@ -110,14 +114,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     }
   }, [frames]);
 
-  const previousFrame = () => {
-    let newIndex = (index == 0) ? totalFrames-1 : index - 1;
-    // setIndex(newIndex);
-    setFrameAtIndex(newIndex);
-    setCurrSliderValue(newIndex);
-    setCommitSliderValue(newIndex);
-  };
-
   const handleChange = (event, newSliderValue) => {
     console.log('word')
     setCurrSliderValue(newSliderValue);
@@ -132,9 +128,19 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     setCommitSliderValue(currSliderValue);
   };
 
+  const previousFrame = () => {
+    let newIndex = (index == 0) ? totalFrames-1 : index - 1;
+    // setIndex(newIndex);
+    history.push(`${location.pathname.slice(0, -1)}${newIndex}`)
+    setFrameAtIndex(newIndex);
+    setCurrSliderValue(newIndex);
+    setCommitSliderValue(newIndex);
+  };
+
   const nextFrame = () => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
-    // setIndex(newIndex);
+    // setIndex(newIndex); 
+    history.push(`${location.pathname.slice(0, -1)}${newIndex}`)
     setFrameAtIndex(newIndex);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
