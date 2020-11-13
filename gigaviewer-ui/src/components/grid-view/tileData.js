@@ -25,15 +25,6 @@ const tileData = [
     width: 18919,
     height: 24713,
   },
-  {
-    img: collard2,
-    title: 'Aperio - Collard Green frame 2',
-    author: 'Horstmeyer Lab',
-    groupId: 'Aperio',
-    idx: 1,
-    width: 2152,
-    height: 1370,
-  },
 ];
 
 export default tileData;

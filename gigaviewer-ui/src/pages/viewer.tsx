@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box';
  * 
  * openseadragon term conversions slide(s) -> frame(s), name -> gid
  */
-import data from 'components/image-viewer/sampleTestImages.json'; 
+import data from 'components/image-viewer/imageMetadata.json'; 
 
 /**
  * viewer page component

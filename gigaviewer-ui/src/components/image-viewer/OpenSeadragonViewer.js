@@ -66,16 +66,23 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
         onImageViewChanged
       });
     }
-  }, [frames, index]);
+  }, [frames]);
 
   const previousFrame = () => {
     let newIndex = (index == 0) ? totalFrames-1 : index - 1;
-    setIndex(newIndex);
+    // setIndex(newIndex);
+    setFrameAtIndex(newIndex);
   }
 
   const nextFrame = () => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
-    setIndex(newIndex);
+    // setIndex(newIndex);
+    setFrameAtIndex(newIndex);
+  }
+
+  const setFrameAtIndex = (i) => {
+    setIndex(i);
+    viewer.open(frames[0].frame.source[i]);
   }
 
   const startPlayback = () => {
@@ -118,7 +125,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   const InitOpenseadragon = () => {
     viewer && viewer.destroy();
     
-    setDefaultZoom((height - 80) / ((currHeight / currWidth) * width));
+    setDefaultZoom((height - 80) / ((11146 / 7479) * width));
 
     setViewer(
       OpenSeaDragon({
