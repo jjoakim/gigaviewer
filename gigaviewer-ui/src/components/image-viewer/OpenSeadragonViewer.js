@@ -43,12 +43,6 @@ const OpenSeadragonViewer = ({ frames, frame }) => {
       window.removeEventListener('resize', resizeWindow);
     };
   }, []);
-  const play = () => {
-    setInterval(function () {
-      console.log('hit');
-      document.getElementById("next").click();
-    }, 1000);
-  }
 
   useEffect(() => {
     if (frames && viewer) {
@@ -77,6 +71,13 @@ const OpenSeadragonViewer = ({ frames, frame }) => {
   const nextFrame = () => {
     let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
     setIndex(newIndex);
+  }
+
+  const play = () => {
+    setInterval(function () {
+      console.log('hit');
+      document.getElementById("next").click();
+    }, 1000);
   }
 
   // const setFrameAtIndex = (i) => {
