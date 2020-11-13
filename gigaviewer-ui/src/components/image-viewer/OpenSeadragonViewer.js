@@ -10,7 +10,7 @@ import {
   IconButton, 
   Slider, 
   makeStyles,
-  withStyles 
+  withStyles ,
 } from '@material-ui/core';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -213,20 +213,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     <div>
       <Box height={height-80} width={width} id="openSeaDragon">
       <div className={classes.root}>
-          <Box position='absolute' top={10} right='17%' width='10%' zIndex='tooltip'>
-          <PrettoSlider 
-            defaultValue={1}
-            aria-labelledby='discrete-slider'
-            valueLabelDisplay='auto'
-            value={currSliderValue}
-            step={1}
-            onChange={handleChange}
-            onChangeCommitted={handleCommit}
-            marks
-            min={1}
-            max={3}
-          />
-          </Box>
           <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>
               <ArrowBackIcon style={{ fontSize: 30 }} />
@@ -255,22 +241,36 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
               <ArrowForwardIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
+          <Box position='absolute' top="9%" right='1.2vw' width='10%' zIndex='tooltip'>
+            <PrettoSlider 
+              defaultValue={1}
+              aria-labelledby='discrete-slider'
+              valueLabelDisplay='auto'
+              value={currSliderValue}
+              step={1}
+              onChange={handleChange}
+              onChangeCommitted={handleCommit}
+              marks
+              min={1}
+              max={totalFrames}
+            />
+          </Box>
+          <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="default zoom" disableRipple={true} id="home">
               <HomeIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom in" disableRipple={true} id="zoom-in">
               <AddCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom out" disableRipple={true} id="zoom-out">
               <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="40%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple={true} id="full-page">
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
