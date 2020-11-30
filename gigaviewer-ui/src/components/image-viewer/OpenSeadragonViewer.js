@@ -119,7 +119,6 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
   }, [index]);
 
   const handleChange = (event, newSliderValue) => {
-    console.log('word')
     setCurrSliderValue(newSliderValue);
     // setFrameAtIndex(newSliderValue - 1);
     // setTimeout(() => {  console.log("World!"); }, 500);
@@ -211,6 +210,9 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
         fullPageButton: 'full-page',
+        // showNavigator: true,
+        // navigatorPosition: "TOP_LEFT",
+        preserveViewport: true,
         // nextButton: 'next',
         // previousButton: 'previous',
       })
