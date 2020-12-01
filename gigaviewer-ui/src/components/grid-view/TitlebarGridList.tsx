@@ -7,6 +7,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 import tileData from './tileData';
+import data from 'components/image-viewer/imageMetadata.json';
 
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -32,26 +33,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(255, 255, 255, 0.54)',
   },
 }));
-
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'foo',
- *     author: 'author',
- *     groupId: 'fooImgs',
- *     idx: '2'
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
 
 /**
  * Component that renders grid of image thumbnails for a collection of images
@@ -95,6 +76,7 @@ const TitlebarGridList = () => {
       <br />
       {(redirect)
         ? <Redirect to={`/viewer/${grpId}/${frame}`}/>
+        
         : <div className={classes.root}>
           <GridList
             cellHeight={200}
@@ -102,14 +84,14 @@ const TitlebarGridList = () => {
             cols={Math.round(width / 300)}
             spacing={6}
           >
-            {tileData.map((tile) => (
+            {data.groups.map((tile) => (
               <GridListTile
-                key={tile.groupId}
+                key={tile.gid}
                 onClick={() => {
-                  renderRedirect(tile.groupId, tile.idx);
+                  renderRedirect(tile.gid, tile.idx);
                 }}
               >
-                <img src={tile.img} alt={tile.title} />
+                <img src={tile.thumbnailImg} alt={tile.title} />
                 <GridListTileBar
                   title={tile.title}
                   subtitle={<span> by: {tile.author}</span>}

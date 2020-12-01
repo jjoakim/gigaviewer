@@ -3,6 +3,10 @@
         {
             "gid": "MonaLisa",
             "title": "Mona Lisa",
+            "thumbnailImg": "",
+            "author": "da Vinci",
+            "description": "test images",
+            "idx": 0,
             "frames": [
                 {
                     "frame": {
@@ -56,6 +60,10 @@
         {
             "gid": "Aperio",
             "title": "Aperio",
+            "thumbnailImg": "",
+            "author": "Hortsmeyer Lab",
+            "description": "test images 2",
+            "idx": 0,
             "frames": [
                 {
                     "frame": {
