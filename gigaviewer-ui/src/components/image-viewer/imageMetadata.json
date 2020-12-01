@@ -3,7 +3,7 @@
         {
             "gid": "MonaLisa",
             "title": "Mona Lisa",
-            "thumbnailImg": "",
+            "thumbnailImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
             "author": "da Vinci",
             "description": "test images",
             "idx": 0,
@@ -60,7 +60,7 @@
         {
             "gid": "Aperio",
             "title": "Aperio",
-            "thumbnailImg": "",
+            "thumbnailImg": "https://miro.medium.com/max/1804/1*1_H5BXrXq1bzrAV1F9YjKw.png",
             "author": "Hortsmeyer Lab",
             "description": "test images 2",
             "idx": 0,
