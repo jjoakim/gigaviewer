@@ -2,6 +2,7 @@
     "groups": [
         {
             "gid": "MonaLisa",
+            "title": "Mona Lisa",
             "frames": [
                 {
                     "frame": {
@@ -54,6 +55,7 @@
         },
         {
             "gid": "Aperio",
+            "title": "Aperio",
             "frames": [
                 {
                     "frame": {

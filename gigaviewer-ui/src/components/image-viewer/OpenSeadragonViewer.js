@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import HomeIcon from '@material-ui/icons/Home';
+import Replay from '@material-ui/icons/Replay';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -71,7 +71,7 @@ const PrettoSlider = withStyles({
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0 
  */
-const OpenSeadragonViewer = ({ frames, initialFrame }) => {
+const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
   const location = useLocation();
   const history = useHistory();
 
@@ -221,35 +221,38 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
     <div>
       <Box height={height-90} width={width} id="openSeaDragon">
       <div className={classes.root}>
-          <Box position="absolute" top="0%" right="10%" zIndex="tooltip">
+          <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
+            <h1>{collectionTitle}</h1>
+          </Box>
+          <Box position="absolute" top="8%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>
               <ArrowBackIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           {(isPlaybackEnabled)
-          ? (totalFrames > 0) 
-            ? <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
-              <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
-                <PlayArrow style={{ fontSize: 30 }} />
-              </IconButton>
-            </Box>
-            : <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
-                <IconButton disabled={true} color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
+            ? (totalFrames > 0) 
+              ? <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+                <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
                   <PlayArrow style={{ fontSize: 30 }} />
                 </IconButton>
               </Box>
-          : <Box position="absolute" top="0%" right="5%" zIndex="tooltip">
-              <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
-                <Pause style={{ fontSize: 30 }} />
-              </IconButton>
-            </Box>
+              : <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+                  <IconButton disabled={true} color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
+                    <PlayArrow style={{ fontSize: 30 }} />
+                  </IconButton>
+                </Box>
+            : <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+                <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
+                  <Pause style={{ fontSize: 30 }} />
+                </IconButton>
+              </Box>
           }
-          <Box position="absolute" top="0%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="next" disableRipple={true} id="next" onClick={nextFrame}>
               <ArrowForwardIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position='absolute' top="9%" right='1.2vw' width='10%' zIndex='tooltip'>
+          <Box position='absolute' top="17%" right='1.2vw' width='10%' zIndex='tooltip'>
             <PrettoSlider 
               defaultValue={0}
               aria-labelledby='discrete-slider'
@@ -263,22 +266,22 @@ const OpenSeadragonViewer = ({ frames, initialFrame }) => {
               max={totalFrames-1}
             />
           </Box>
-          <Box position="absolute" top="16%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="default zoom" disableRipple={true} id="home">
-              <HomeIcon style={{ fontSize: 30 }} />
+              <Replay style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom in" disableRipple={true} id="zoom-in">
               <AddCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="40%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="zoom out" disableRipple={true} id="zoom-out">
               <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="40%" right="0%" zIndex="tooltip">
+          <Box position="absolute" top="48%" right="0%" zIndex="tooltip">
             <IconButton color="primary" aria-label="full screen" disableRipple={true} id="full-page">
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>

@@ -14,21 +14,40 @@ import data from 'components/image-viewer/imageMetadata.json';
  * @param props contains groupId, frame of props.match.params
  */
 const Viewer = (props: any) => {
+  const [currIndex, setCurrIndex] = useState(0);
   const [manifest, setManifest] = useState([]);
+  const [title, setTitle] = useState('');
 
   useEffect(() => {
-    getImages();
+    initIndex();
   }, []);
 
-  const getImages = () => {
+  useEffect(() => {
     setManifest(updateManifest(data));
+    setTitle(updateTitle(data));
+  }, [currIndex]);
+
+  const initIndex = () => {
+    setCurrIndex(getIndex(data));
   };
 
-  const updateManifest = (data: any) => {
+  const getIndex = (data: any) => {
     for (var i = 0; i < data.groups.length; i++) 
-      if (data.groups[i].gid === props.match.params.groupId)
-        return data.groups[i].frames;
-    return {};
+      if (data.groups[i].gid === props.match.params.groupId) 
+        return i;
+    return -1;
+  }
+
+  const updateTitle = (data: any) => {
+    return (currIndex >= 0) 
+      ? data.groups[currIndex].title
+      : '';
+  }
+
+  const updateManifest = (data: any) => {
+    return (currIndex >= 0) 
+      ? data.groups[currIndex].frames
+      : {};
   }
 
   return (
@@ -40,7 +59,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer frames={manifest} initialFrame={props.match.params.frame}/>
+          <OpenSeaDragonViewer frames={manifest} collectionTitle={title} initialFrame={props.match.params.frame}/>
         </Box>
       </div>
     </div>
