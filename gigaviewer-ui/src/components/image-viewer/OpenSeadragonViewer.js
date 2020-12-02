@@ -74,6 +74,7 @@ const PrettoSlider = withStyles({
 const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
   const location = useLocation();
   const history = useHistory();
+  const currPage = location.href;
 
   let currentZoom = 0;
   const classes = useStyles();
@@ -89,6 +90,7 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
   const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
   const [commitSliderValue, setCommitSliderValue] = useState(0);
+  // const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
     InitOpenseadragon();
