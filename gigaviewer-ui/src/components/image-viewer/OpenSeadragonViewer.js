@@ -153,13 +153,17 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
   };
 
   const startPlayback = () => {
-    setPlaybackIntervalId(setInterval(function () {
-      document.getElementById("next").click();
+    setPlaybackIntervalId(setTimeout(function clicker () {
+      const next_button =  document.getElementById('next')
+      if (next_button){
+        next_button.click();
+        setPlaybackIntervalId(setTimeout(clicker, 1000));
+      }
     }, 1000));
   };
 
   const stopPlayback = () => {
-    clearInterval(playbackIntervalId);
+    clearTimeout(playbackIntervalId);
   };
 
   const togglePlayback = () => {
