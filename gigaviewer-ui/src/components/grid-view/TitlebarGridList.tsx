@@ -6,7 +6,6 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-import tileData from './tileData';
 import data from 'components/image-viewer/imageMetadata.json';
 
 import { makeStyles } from '@material-ui/core/styles';
