@@ -15,7 +15,7 @@ import data from 'components/image-viewer/imageMetadata.json';
  */
 const Viewer = (props: any) => {
   const [currIndex, setCurrIndex] = useState(0);
-  const [manifest, setManifest] = useState([]);
+  const [imageSources, setImageSources] = useState([]);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Viewer = (props: any) => {
   }, []);
 
   useEffect(() => {
-    setManifest(updateManifest(data));
+    setImageSources(updateImageSources(data));
     setTitle(updateTitle(data));
   }, [currIndex]);
 
@@ -44,10 +44,10 @@ const Viewer = (props: any) => {
       : '';
   }
 
-  const updateManifest = (data: any) => {
-    return (currIndex >= 0) 
-      ? data.groups[currIndex].frames
-      : {};
+  const updateImageSources = (data: any) => {
+    return (currIndex >= 0)
+        ? data.groups[currIndex].sources
+        : {};
   }
 
   return (
@@ -59,7 +59,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer frames={manifest} collectionTitle={title} initialFrame={props.match.params.frame}/>
+          <OpenSeaDragonViewer sources={imageSources} collectionTitle={title} initialFrame={props.match.params.frame}/>
         </Box>
       </div>
     </div>

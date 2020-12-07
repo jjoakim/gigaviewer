@@ -1,142 +1,19 @@
 {
     "groups": [
         {
-            "gid": "MonaLisa",
-            "title": "Mona Lisa",
-            "thumbnailImg": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
-            "author": "da Vinci",
-            "description": "test images",
+            "gid": "Tortilla",
+            "title": "Tortilla",
+            "thumbnailImg": "http://localhost:8000/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
+            "author": "Gigapixel Image Contest",
+            "description": "Tortilla",
             "idx": 0,
-            "frames": [
+            "sources": [
                 {
-                    "frame": {
-                        "mpp": 0.499,
-                        "name": null,
-                        "source": [
-                            {
-                                "Image": {
-                                    "Format": "jpg",
-                                    
-                                    "Size": {
-                                        "Height": 11146, 
-                                        "Width": 7479
-                                    },
-                                    "TileSize": 510, 
-                                    "Url": "https://gigaviewer-files.s3.amazonaws.com/monalisa/monalisa_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 24713, 
-                                        "Width": 18919
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://gigaviewer-files.s3.amazonaws.com/Collard_Green_1_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpeg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 2967, 
-                                        "Width": 2220
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            }
-                        ]
-                    }
-                }
-            ]
-        },
-        {
-            "gid": "Aperio",
-            "title": "Aperio",
-            "thumbnailImg": "https://gigaviewer-files.s3.amazonaws.com/Collard_Green_1_files/Collard_Green_1_small.jpg",
-            "author": "Hortsmeyer Lab",
-            "description": "test images 2",
-            "idx": 0,
-            "frames": [
-                {
-                    "frame": {
-                        "mpp": 0.499,
-                        "name": null,
-                        "source": [
-                            {
-                                "Image": {
-                                    "Format": "jpg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 24713, 
-                                        "Width": 18919
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://gigaviewer-files.s3.amazonaws.com/Collard_Green_1_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpeg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 2967, 
-                                        "Width": 2220
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1-small-region/slide_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpeg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 32914, 
-                                        "Width": 46000
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-1/slide_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpeg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 30462, 
-                                        "Width": 78000
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/cmu-2/slide_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            },
-                            {
-                                "Image": {
-                                    "Format": "jpeg", 
-                                    "Overlap": 1, 
-                                    "Size": {
-                                        "Height": 17497, 
-                                        "Width": 15374
-                                    }, 
-                                    "TileSize": 510, 
-                                    "Url": "https://openslide-demo.s3.dualstack.us-east-1.amazonaws.com/aperio/jp2k-33003-1/slide_files/", 
-                                    "xmlns": "http://schemas.microsoft.com/deepzoom/2008"
-                                }
-                            }
-                        ]
-                    }
+                    "type": "Visible",
+                    "tileSources": [
+                        "http://localhost:8000/tortilla/Tortilla_ref_try1.dzi",
+                        "http://localhost:8000/tortilla/Tortilla_trans_try1.dzi"
+                    ]
                 }
             ]
         }

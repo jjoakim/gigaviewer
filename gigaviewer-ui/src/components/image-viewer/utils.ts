@@ -9,12 +9,13 @@ export const getScalebarSizeAndTextForMetric = (ppm: number, minSize: number) =>
     };
 }
 
-export const getTotalFrames = (data: any) => {
-    var sum = 0;
-    for (var i = 0; i < data[0].frame.source.length; i++)
-      sum++;
-    return sum;
-};
+// export const getTotalFrames = (data: any) => {
+//     return data[0].sources[0].length;
+//     // var sum = 0;
+//     // for (var i = 0; i < data[0].frame.source.length; i++)
+//     //   sum++;
+//     // return sum;
+// };
 
 const calcLog10 = (x: number) => {
     return Math.log(x) / Math.log(10);

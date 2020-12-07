@@ -6,7 +6,6 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 
-import tileData from './tileData';
 import data from 'components/image-viewer/imageMetadata.json';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -51,13 +50,11 @@ const TitlebarGridList = () => {
   useEffect(() => {
     resizeWindow();
     window.addEventListener('resize', resizeWindow);
-    console.log(window.innerWidth);
     return () => window.removeEventListener('resize', resizeWindow);
   }, []);
 
   function consoleIcon(e: any) {
     e.stopPropagation();
-    console.log('ICON');
   }
 
   const renderRedirect = (groupId: string, index: number) => {
@@ -81,12 +78,14 @@ const TitlebarGridList = () => {
           <GridList
             cellHeight={200}
             className={classes.gridList}
-            cols={Math.round(width / 300)}
-            spacing={6}
+            cols={4}
+            // spacing={6}
+
           >
             {data.groups.map((tile) => (
               <GridListTile
                 key={tile.gid}
+                style={{height:300, width: 300}}
                 onClick={() => {
                   renderRedirect(tile.gid, tile.idx);
                 }}

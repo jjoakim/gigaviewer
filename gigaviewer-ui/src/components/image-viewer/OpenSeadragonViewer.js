@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useHistory, useLocation} from 'react-router-dom';
 
 import OpenSeaDragon from 'openseadragon';
 import '@openseadragon-imaging/openseadragon-imaginghelper';
 
-import { getScalebarSizeAndTextForMetric, getTotalFrames } from './utils';
+import {getScalebarSizeAndTextForMetric} from './utils';
 
-import { 
-  Box, 
-  IconButton, 
-  Slider, 
-  makeStyles,
-  withStyles ,
-} from '@material-ui/core';
+import {Box, IconButton, makeStyles, Slider, withStyles,} from '@material-ui/core';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Replay from '@material-ui/icons/Replay';
@@ -71,7 +65,7 @@ const PrettoSlider = withStyles({
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0 
  */
-const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
+const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle }) => {
   const location = useLocation();
   const history = useHistory();
   const currPage = location.href;
@@ -93,28 +87,42 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
   // const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
-    InitOpenseadragon();
-    resizeWindow();
-    window.addEventListener('resize', resizeWindow);
-    console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
 
-    return () => {
-      viewer && viewer.destroy();
-      window.removeEventListener('resize', resizeWindow);
-    };
-  }, []);
+    if (sources) {
+      if (sources.length > 0){
+        InitOpenseadragon(sources[0].tileSources)
+        setTotalFrames(sources[0].tileSources.length);
+        setFrameAtIndex(0, 0, sources[0].tileSources.length)
+      }
+      resizeWindow();
+      window.addEventListener('resize', resizeWindow);
+      // console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
 
-  useEffect(() => {
-    if (frames && viewer) {
-      setTotalFrames(getTotalFrames(frames));
-      viewer.open(frames[0].frame.source[index]); // source is an array of the img data itself
+      return () => {
+        viewer && viewer.destroy();
+        window.removeEventListener('resize', resizeWindow);
+      };
     }
-    if(viewer != null) {
-      viewer.activateImagingHelper({
-        onImageViewChanged
-      });
-    }
-  }, [frames]);
+    // InitOpenseadragon();
+    // resizeWindow();
+    // window.addEventListener('resize', resizeWindow);
+    // // console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
+    //
+    // return () => {
+    //   viewer && viewer.destroy();
+    //   window.removeEventListener('resize', resizeWindow);
+    // };
+  }, [sources]);
+
+  // useEffect(() => {
+  //   if (viewer && sources) {
+  //   }
+  //   if(viewer != null) {
+  //     viewer.activateImagingHelper({
+  //       onImageViewChanged
+  //     });
+  //   }
+  // }, [sources, viewer]);
 
   useEffect(() => {
     history.push(`${location.pathname.slice(0, -1)}${index}`);
@@ -128,28 +136,34 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
 
   const handleCommit = () => {
     if (currSliderValue !== commitSliderValue) {
-      setFrameAtIndex(currSliderValue);
+      setFrameAtIndex(commitSliderValue, currSliderValue, totalFrames);
     }
     setCommitSliderValue(currSliderValue);
   };
 
   const previousFrame = () => {
-    let newIndex = (index == 0) ? totalFrames-1 : index - 1;
-    setFrameAtIndex(newIndex);
+    let newIndex = (index === 0) ? totalFrames-1 : index - 1;
+    setFrameAtIndex(index, newIndex, totalFrames);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
   };
 
   const nextFrame = () => {
-    let newIndex = (index == totalFrames - 1) ? 0 : index + 1;
-    setFrameAtIndex(newIndex);
+    let oldIndex = index;
+    let newIndex =  (index + 1) % totalFrames;
+    setFrameAtIndex(oldIndex, newIndex, totalFrames);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
   };
 
-  const setFrameAtIndex = (i) => {
-    setIndex(i);
-    viewer.open(frames[0].frame.source[i]);
+  const setFrameAtIndex = (oldIndex, newIndex, totalFrames) => {
+    setIndex(newIndex);
+    let nextIndex = (newIndex + 1) % totalFrames;
+    if (oldIndex !== newIndex){
+      viewer.world.getItemAt(oldIndex).setOpacity(0);
+      viewer.world.getItemAt(newIndex).setOpacity(1);
+      viewer.world.getItemAt(nextIndex).setPreload(true);
+    }
   };
 
   const startPlayback = () => {
@@ -177,13 +191,13 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
 
   const onImageViewChanged = () => {
     currentZoom = viewer.viewport.getZoom();
-    console.log(currentZoom);
+    // console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       ((height-80)/0.77) / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
-    console.log(scaleBarSpecs.size);
-    console.log(scaleBarSpecs.text);
+    // console.log(scaleBarSpecs.size);
+    // console.log(scaleBarSpecs.text);
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
   };
@@ -193,25 +207,38 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
     setHeight(window.innerHeight);
   };
 
-  const InitOpenseadragon = () => {
+  const InitOpenseadragon = (tileSources) => {
     viewer && viewer.destroy();
 
-    setDefaultZoom((height - 80) / ((11146 / 7479) * width));
+    tileSources = tileSources.map(function(tileSource, i) {
+      return {
+        tileSource: tileSource,
+        opacity: i === 0 ? 1 : 0,
+        preload: i === 1
+      };
+    });
 
+    setDefaultZoom((height - 80) / ((11146 / 7479) * width));
     setViewer(
       OpenSeaDragon({
+        tileSources: tileSources,
         id: 'openSeaDragon',
-        prefixUrl: 'openseadragon-images/',
-        animationTime: 0.5,
-        blendTime: 0.1,
-        maxZoomPixelRatio: 2,
-        defaultZoomLevel: defaultZoom,
-        minZoomLevel: 0.2,
+        prefixUrl: 'http://cdn.jsdelivr.net/npm/openseadragon@2.3/build/openseadragon/images/',
+        maxZoomPixelRatio: 128,
+        showNavigator: true,
+        maxImageCacheCount: 4096,
+        navigatorPosition: 'TOP_LEFT',
+        // animationTime: 0.5,
+        // blendTime: 0.1,
+        // maxZoomPixelRatio: 2,
+        // defaultZoomLevel: defaultZoom,
+        // minZoomLevel: 0.2,
         preload: true,
         // sequenceMode: true,
+        showSequenceControl: false,
         // preserveViewport: true,
-        visibilityRatio: 0.5,
-        zoomPerScroll: 1.1,
+        // visibilityRatio: 0.5,
+        // zoomPerScroll: 1.1,
         zoomInButton: 'zoom-in',
         zoomOutButton: 'zoom-out',
         homeButton: 'home',
@@ -229,8 +256,8 @@ const OpenSeadragonViewer = ({ frames, initialFrame, collectionTitle }) => {
     <div>
       <Box height={height-90} width={width} id="openSeaDragon">
       <div className={classes.root}>
-          <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
-            <h1>{collectionTitle}</h1>
+          <Box position="absolute" top="0%" right="1%" zIndex="tooltip" >
+            <h1 style={{backgroundColor: "white"}}>{collectionTitle}</h1>
           </Box>
           <Box position="absolute" top="8%" right="10%" zIndex="tooltip">
             <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>
