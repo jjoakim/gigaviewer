@@ -14,7 +14,7 @@ import data from 'components/image-viewer/imageMetadata.json';
  * @param props contains groupId, frame of props.match.params
  */
 const Viewer = (props: any) => {
-  const [currIndex, setCurrIndex] = useState(0);
+  const [currIndex, setCurrIndex] = useState(-1);
   const [imageSources, setImageSources] = useState([]);
   const [title, setTitle] = useState('');
 
@@ -23,8 +23,10 @@ const Viewer = (props: any) => {
   }, []);
 
   useEffect(() => {
-    setImageSources(updateImageSources(data));
-    setTitle(updateTitle(data));
+    if (currIndex >= 0){
+      setImageSources(updateImageSources(data));
+      setTitle(updateTitle(data));
+    }
   }, [currIndex]);
 
   const initIndex = () => {

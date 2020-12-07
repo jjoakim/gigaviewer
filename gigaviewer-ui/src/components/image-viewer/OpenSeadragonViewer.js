@@ -65,10 +65,10 @@ const PrettoSlider = withStyles({
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0 
  */
-const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle }) => {
+const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const location = useLocation();
   const history = useHistory();
-  const currPage = location.href;
+  // const currPage = location.href;
 
   let currentZoom = 0;
   const classes = useStyles();
@@ -90,9 +90,15 @@ const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle })
 
     if (sources) {
       if (sources.length > 0){
-        InitOpenseadragon(sources[0].tileSources)
         setTotalFrames(sources[0].tileSources.length);
-        setFrameAtIndex(0, 0, sources[0].tileSources.length)
+        InitOpenseadragon(sources[0].tileSources);
+        setFrameAtIndex(0, 0, sources[0].tileSources.length);
+      }
+
+      if(viewer != null) {
+        viewer.activateImagingHelper({
+          onImageViewChanged
+        });
       }
       resizeWindow();
       window.addEventListener('resize', resizeWindow);
@@ -103,26 +109,8 @@ const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle })
         window.removeEventListener('resize', resizeWindow);
       };
     }
-    // InitOpenseadragon();
-    // resizeWindow();
-    // window.addEventListener('resize', resizeWindow);
-    // // console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
-    //
-    // return () => {
-    //   viewer && viewer.destroy();
-    //   window.removeEventListener('resize', resizeWindow);
-    // };
   }, [sources]);
 
-  // useEffect(() => {
-  //   if (viewer && sources) {
-  //   }
-  //   if(viewer != null) {
-  //     viewer.activateImagingHelper({
-  //       onImageViewChanged
-  //     });
-  //   }
-  // }, [sources, viewer]);
 
   useEffect(() => {
     history.push(`${location.pathname.slice(0, -1)}${index}`);
@@ -130,8 +118,6 @@ const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle })
 
   const handleChange = (event, newSliderValue) => {
     setCurrSliderValue(newSliderValue);
-    // setFrameAtIndex(newSliderValue - 1);
-    // setTimeout(() => {  console.log("World!"); }, 500);
   };
 
   const handleCommit = () => {
@@ -191,13 +177,10 @@ const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle })
 
   const onImageViewChanged = () => {
     currentZoom = viewer.viewport.getZoom();
-    // console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       ((height-80)/0.77) / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
-    // console.log(scaleBarSpecs.size);
-    // console.log(scaleBarSpecs.text);
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
   };
@@ -265,7 +248,7 @@ const OpenSeadragonViewer = ({ sources, frames, initialFrame, collectionTitle })
             </IconButton>
           </Box>
           {(isPlaybackEnabled)
-            ? (totalFrames > 0) 
+            ? (totalFrames > 0)
               ? <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
                 <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
                   <PlayArrow style={{ fontSize: 30 }} />
