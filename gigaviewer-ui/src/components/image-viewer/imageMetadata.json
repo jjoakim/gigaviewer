@@ -1,21 +1,99 @@
 {
-    "groups": [
+  "groups": [
+    {
+      "gid": "Tortilla",
+      "title": "Tortilla",
+      "thumbnailImg": "http://localhost:8000/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
+      "author": "Gigapixel Image Contest",
+      "description": "Tortilla",
+      "idx": 0,
+      "sources": [
         {
-            "gid": "Tortilla",
-            "title": "Tortilla",
-            "thumbnailImg": "http://localhost:8000/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
-            "author": "Gigapixel Image Contest",
-            "description": "Tortilla",
-            "idx": 0,
-            "sources": [
-                {
-                    "type": "Visible",
-                    "tileSources": [
-                        "http://localhost:8000/tortilla/Tortilla_ref_try1.dzi",
-                        "http://localhost:8000/tortilla/Tortilla_trans_try1.dzi"
-                    ]
-                }
-            ]
+          "type": "Visible",
+          "tileSources": [
+            "http://localhost:8000/tortilla/Tortilla_ref_try1.dzi",
+            "http://localhost:8000/tortilla/Tortilla_trans_try1.dzi"
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "gid": "Tortilla2",
+      "title": "Tortilla2",
+      "thumbnailImg": "http://localhost:8000/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
+      "author": "Gigapixel Image Contest",
+      "description": "Tortilla2",
+      "idx": 0,
+      "sources": [
+        {
+          "type": "Visible",
+          "tileSources": [
+            "http://localhost:8000/tortilla/Tortilla_ref_try1.dzi",
+            "http://localhost:8000/tortilla/Tortilla_trans_try1.dzi"
+          ]
+        }
+      ]
+    },
+    {
+      "gid": "1_31_giga",
+      "title": "1_31_giga",
+      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0000_files/9/0_0.jpg",
+      "description": "1_31_giga",
+      "idx": 0,
+      "sources": [
+        {
+          "type": "Visible",
+          "tileSources": [
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0000.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0001.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0002.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0003.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0004.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0005.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0006.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0007.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0008.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0009.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0010.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0011.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0012.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0013.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0014.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0015.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0016.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0017.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0018.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0019.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0020.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0021.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0022.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0023.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0024.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0025.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0026.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0027.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0028.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0029.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0030.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0031.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0032.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0033.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0034.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0035.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0036.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0037.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0038.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0039.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0040.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0041.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0042.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0043.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0044.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0045.dzi",
+            "https://gigazoom.rc.duke.edu/auto/1_31_giga/movie1_stitched_0046.dzi"
+          ]
+        }
+      ]
+    }
+  ]
 }
