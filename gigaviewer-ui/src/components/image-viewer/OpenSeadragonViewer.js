@@ -211,6 +211,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         showNavigator: true,
         maxImageCacheCount: 4096,
         navigatorPosition: 'TOP_LEFT',
+        loadTilesWithAjax: true,
         // animationTime: 0.5,
         // blendTime: 0.1,
         // maxZoomPixelRatio: 2,
