@@ -1,12 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import OpenSeaDragon from 'openseadragon';
 import '@openseadragon-imaging/openseadragon-imaginghelper';
 
-import {getScalebarSizeAndTextForMetric} from './utils';
+import { getScalebarSizeAndTextForMetric } from './utils';
 
-import {Box, IconButton, makeStyles, Slider, withStyles,} from '@material-ui/core';
+import {
+  Box,
+  IconButton,
+  makeStyles,
+  Slider,
+  withStyles,
+} from '@material-ui/core';
+
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Replay from '@material-ui/icons/Replay';
@@ -53,17 +60,11 @@ const PrettoSlider = withStyles({
     height: 8,
     opacity: 0.6,
   },
-  mark: {
-    backgroundColor: '#bfbfbf',
-    height: 10,
-    width: 2,
-    marginTop: -3,
-  },
 })(Slider);
 
 /**
  * This component takes in the relevant frames and initializes them to an OSD viewer
- * @param {*} param0 
+ * @param {*} param0
  */
 const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const location = useLocation();
@@ -71,11 +72,14 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   // const currPage = location.href;
 
   let currentZoom = 0;
+  let defaultZoom = 0;
+  let changedFrame = true;
+
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
-  const [defaultZoom, setDefaultZoom] = useState(0);
+  // const [defaultZoom, setDefaultZoom] = useState(0);
   const [scalebarSize, setScalebarSize] = useState(0);
   const [scalebarText, setScalebarText] = useState('');
   const [index, setIndex] = useState(Number(initialFrame));
@@ -87,18 +91,11 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   // const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
-
     if (sources) {
-      if (sources.length > 0){
+      if (sources.length > 0) {
         setTotalFrames(sources[0].tileSources.length);
         InitOpenseadragon(sources[0].tileSources);
         setFrameAtIndex(0, 0, sources[0].tileSources.length);
-      }
-
-      if(viewer != null) {
-        viewer.activateImagingHelper({
-          onImageViewChanged
-        });
       }
       resizeWindow();
       window.addEventListener('resize', resizeWindow);
@@ -111,10 +108,17 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     }
   }, [sources]);
 
-
   useEffect(() => {
     history.push(`${location.pathname.slice(0, -1)}${index}`);
   }, [index]);
+
+  useEffect(() => {
+    if (viewer != null) {
+      viewer.activateImagingHelper({
+        onImageViewChanged,
+      });
+    }
+  });
 
   const handleChange = (event, newSliderValue) => {
     setCurrSliderValue(newSliderValue);
@@ -128,7 +132,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const previousFrame = () => {
-    let newIndex = (index === 0) ? totalFrames-1 : index - 1;
+    let newIndex = index === 0 ? totalFrames - 1 : index - 1;
     setFrameAtIndex(index, newIndex, totalFrames);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
@@ -136,16 +140,20 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
   const nextFrame = () => {
     let oldIndex = index;
-    let newIndex =  (index + 1) % totalFrames;
+    let newIndex = (index + 1) % totalFrames;
     setFrameAtIndex(oldIndex, newIndex, totalFrames);
     setCurrSliderValue(newIndex);
     setCommitSliderValue(newIndex);
   };
 
   const setFrameAtIndex = (oldIndex, newIndex, totalFrames) => {
+    console.log(viewer);
     setIndex(newIndex);
+    // setChangedFrame(true);
+    changedFrame = true;
+    console.log(changedFrame);
     let nextIndex = (newIndex + 1) % totalFrames;
-    if (oldIndex !== newIndex){
+    if (oldIndex !== newIndex) {
       viewer.world.getItemAt(oldIndex).setOpacity(0);
       viewer.world.getItemAt(newIndex).setOpacity(1);
       viewer.world.getItemAt(nextIndex).setPreload(true);
@@ -153,13 +161,15 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const startPlayback = () => {
-    setPlaybackIntervalId(setTimeout(function clicker () {
-      const next_button =  document.getElementById('next')
-      if (next_button){
-        next_button.click();
-        setPlaybackIntervalId(setTimeout(clicker, 1000));
-      }
-    }, 1000));
+    setPlaybackIntervalId(
+      setTimeout(function clicker() {
+        const next_button = document.getElementById('next');
+        if (next_button) {
+          next_button.click();
+          setPlaybackIntervalId(setTimeout(clicker, 1000));
+        }
+      }, 1000)
+    );
   };
 
   const stopPlayback = () => {
@@ -176,9 +186,17 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const onImageViewChanged = () => {
+    if (changedFrame) {
+      // setDefaultZoom(viewer.viewport.getZoom());
+      defaultZoom = viewer.viewport.getZoom();
+      changedFrame = false;
+    }
     currentZoom = viewer.viewport.getZoom();
+    console.log(height);
+    console.log(defaultZoom);
+    console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
-      ((height-80)/0.77) / (defaultZoom / currentZoom),
+      (height - 90) / 0.77 / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);
@@ -193,20 +211,21 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const InitOpenseadragon = (tileSources) => {
     viewer && viewer.destroy();
 
-    tileSources = tileSources.map(function(tileSource, i) {
+    tileSources = tileSources.map(function (tileSource, i) {
       return {
         tileSource: tileSource,
         opacity: i === 0 ? 1 : 0,
-        preload: i === 1
+        preload: i === 1,
       };
     });
 
-    setDefaultZoom((height - 80) / ((11146 / 7479) * width));
+    // setDefaultZoom((height - 80) / ((11146 / 7479) * width));
     setViewer(
       OpenSeaDragon({
         tileSources: tileSources,
         id: 'openSeaDragon',
-        prefixUrl: 'http://cdn.jsdelivr.net/npm/openseadragon@2.3/build/openseadragon/images/',
+        prefixUrl:
+          'http://cdn.jsdelivr.net/npm/openseadragon@2.3/build/openseadragon/images/',
         maxZoomPixelRatio: 128,
         showNavigator: true,
         maxImageCacheCount: 4096,
@@ -238,90 +257,152 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
   return (
     <div>
-      <Box height={height-90} width={width} id="openSeaDragon">
-      <div className={classes.root}>
-          <Box position="absolute" top="0%" right="1%" zIndex="tooltip" >
-            <h1 style={{backgroundColor: "white"}}>{collectionTitle}</h1>
+      <Box height={height - 90} width={width} id="openSeaDragon">
+        <div className={classes.root}>
+          <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
+            <h1 style={{ backgroundColor: 'white' }}>{collectionTitle}</h1>
           </Box>
           <Box position="absolute" top="8%" right="10%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="previous" disableRipple={true} id="previous" onClick={previousFrame}>
+            <IconButton
+              color="primary"
+              aria-label="previous"
+              disableRipple={true}
+              id="previous"
+              onClick={previousFrame}
+            >
               <ArrowBackIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          {(isPlaybackEnabled)
-            ? (totalFrames > 0)
-              ? <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
-                <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
+          {isPlaybackEnabled ? (
+            totalFrames > 0 ? (
+              <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+                <IconButton
+                  color="primary"
+                  aria-label="previous"
+                  disableRipple={true}
+                  id="play"
+                  onClick={togglePlayback}
+                >
                   <PlayArrow style={{ fontSize: 30 }} />
                 </IconButton>
               </Box>
-              : <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
-                  <IconButton disabled={true} color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
-                    <PlayArrow style={{ fontSize: 30 }} />
-                  </IconButton>
-                </Box>
-            : <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
-                <IconButton color="primary" aria-label="previous" disableRipple={true} id="play" onClick={togglePlayback}>
-                  <Pause style={{ fontSize: 30 }} />
+            ) : (
+              <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+                <IconButton
+                  disabled={true}
+                  color="primary"
+                  aria-label="previous"
+                  disableRipple={true}
+                  id="play"
+                  onClick={togglePlayback}
+                >
+                  <PlayArrow style={{ fontSize: 30 }} />
                 </IconButton>
               </Box>
-          }
+            )
+          ) : (
+            <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+              <IconButton
+                color="primary"
+                aria-label="previous"
+                disableRipple={true}
+                id="play"
+                onClick={togglePlayback}
+              >
+                <Pause style={{ fontSize: 30 }} />
+              </IconButton>
+            </Box>
+          )}
           <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="next" disableRipple={true} id="next" onClick={nextFrame}>
+            <IconButton
+              color="primary"
+              aria-label="next"
+              disableRipple={true}
+              id="next"
+              onClick={nextFrame}
+            >
               <ArrowForwardIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position='absolute' top="17%" right='1.2vw' width='10%' zIndex='tooltip'>
-            <PrettoSlider 
+          <Box
+            position="absolute"
+            top="17%"
+            right="1.2vw"
+            width="10%"
+            zIndex="tooltip"
+          >
+            <PrettoSlider
               defaultValue={0}
-              aria-labelledby='discrete-slider'
-              valueLabelDisplay='auto'
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
               value={currSliderValue}
               step={1}
               onChange={handleChange}
               onChangeCommitted={handleCommit}
-              marks
               min={0}
-              max={totalFrames-1}
+              max={totalFrames - 1}
             />
           </Box>
           <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="default zoom" disableRipple={true} id="home">
+            <IconButton
+              color="primary"
+              aria-label="default zoom"
+              disableRipple={true}
+              id="home"
+            >
               <Replay style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="zoom in" disableRipple={true} id="zoom-in">
+            <IconButton
+              color="primary"
+              aria-label="zoom in"
+              disableRipple={true}
+              id="zoom-in"
+            >
               <AddCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="40%" right="0%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="zoom out" disableRipple={true} id="zoom-out">
+            <IconButton
+              color="primary"
+              aria-label="zoom out"
+              disableRipple={true}
+              id="zoom-out"
+            >
               <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
           <Box position="absolute" top="48%" right="0%" zIndex="tooltip">
-            <IconButton color="primary" aria-label="full screen" disableRipple={true} id="full-page">
+            <IconButton
+              color="primary"
+              aria-label="full screen"
+              disableRipple={true}
+              id="full-page"
+            >
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box
-            border={1}
-            borderTop={0}
-            bgcolor="rgba(255, 255, 255, 0.5)"
-            width={scalebarSize}
-            position="absolute"
-            bottom="0%"
-            left="44%"
-            zIndex="tooltip"
-            style={{
-              borderRight: '3px solid',
-              borderLeft: '3px solid',
-              borderBottom: '3px solid',
-              textAlign: 'center',
-            }}>
-             {scalebarText}
-          </Box>
+          {scalebarSize === 0 ? null : (
+            <Box
+              border={1}
+              borderTop={0}
+              bgcolor="rgba(255, 255, 255, 0.5)"
+              width={scalebarSize}
+              position="absolute"
+              bottom="0%"
+              left="44%"
+              zIndex="tooltip"
+              style={{
+                borderRight: '3px solid',
+                borderLeft: '3px solid',
+                borderBottom: '3px solid',
+                textAlign: 'center',
+              }}
+            >
+              {scalebarText}
+            </Box>
+          )}
         </div>
       </Box>
     </div>
