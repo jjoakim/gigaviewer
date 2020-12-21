@@ -5,6 +5,7 @@ import OpenSeaDragon from 'openseadragon';
 import '@openseadragon-imaging/openseadragon-imaginghelper';
 
 import { getScalebarSizeAndTextForMetric } from './utils';
+import Draggable from 'react-draggable';
 
 import {
   Box,
@@ -22,6 +23,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
+import CodeIcon from '@material-ui/icons/Code';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,6 +64,37 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
+const ImageSlider = withStyles({
+  root: {
+    color: 'primary',
+    height: 8,
+  },
+  thumb: {
+    height: 40,
+    width: 40,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    marginTop: -16,
+    marginLeft: -20,
+    '&:focus, &:hover, &$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+    opacity: 0,
+  },
+  rail: {
+    height: 8,
+    opacity: 0,
+  },
+})(Slider);
+
 /**
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0
@@ -74,6 +107,10 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   let currentZoom = 0;
   let defaultZoom = 0;
   let changedFrame = true;
+  let rightRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
+  let rightImage = null;
+  let leftRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
+  let leftImage = null;
 
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
@@ -89,6 +126,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
   const [commitSliderValue, setCommitSliderValue] = useState(0);
   // const [isRedirecting, setIsRedirecting] = useState(false);
+  const [deltaX, setDeltaX] = useState(0);
+  const [activeDrags, setActiveDrags] = useState(0);
 
   useEffect(() => {
     if (sources) {
@@ -113,7 +152,24 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   }, [index]);
 
   useEffect(() => {
-    if (viewer != null) {
+    if (viewer != null && activeDrags == 0) {
+      // console.log('mati');
+      leftRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
+      viewer.addTiledImage({
+        tileSource:
+          'https://gigazoom.rc.duke.edu/auto/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020.dzi',
+        x: 0,
+        y: 0,
+        width: 1,
+        clip: leftRect,
+        success: function (event) {
+          leftImage = event.item;
+          // imagesLoaded();
+        },
+      });
+      // console.log(leftRect.getSize());
+      // console.log(leftRect);
+      // console.log(leftImage);
       viewer.activateImagingHelper({
         onImageViewChanged,
       });
@@ -196,7 +252,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     console.log(defaultZoom);
     console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
-      (height - 90) / 0.77 / (defaultZoom / currentZoom),
+      (height - 90) / 0.3 / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);
@@ -206,6 +262,21 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const resizeWindow = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+  };
+
+  const handleDrag = (e, ui) => {
+    const x = deltaX;
+    setDeltaX(x + ui.deltaX);
+    // console.log('meesees');
+    console.log(x);
+  };
+
+  const onStart = () => {
+    setActiveDrags(1);
+  };
+
+  const onStop = () => {
+    setActiveDrags(0);
   };
 
   const InitOpenseadragon = (tileSources) => {
@@ -258,6 +329,65 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   return (
     <div>
       <Box height={height - 90} width={width} id="openSeaDragon">
+        <Draggable
+          onDrag={handleDrag}
+          onStart={onStart}
+          onStop={onStop}
+          axis="x"
+        >
+          <Box
+            position="absolute"
+            top="50%"
+            left="50%"
+            display="flex"
+            paddingRight="10%"
+            paddingBottom="10%"
+            // flexDirection="center"
+            alignItems="center"
+            justifyContent="center"
+            // m="auto"
+            width="10%"
+            // height="50%"
+            zIndex="tooltip"
+            // paddingTop="20%"
+            // borderRadius="50%"
+            // border={1}
+            // bgcolor="white"
+          >
+            {/* <ImageSlider
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              // value={currSliderValue}
+              // onChange={handleChange}
+              // onChangeCommitted={handleCommit}
+              ThumbComponent={CodeIcon}
+              min={0}
+              max={1000}
+              defaultValue={500}
+            /> */}
+            <IconButton
+              color="primary"
+              variant="outlined"
+              // border={1}
+              style={{
+                backgroundColor: 'white',
+                border: '3px solid',
+                borderColor: '#3f50b5',
+                // border: '1',
+                // borderWidth: '5px',
+                // borderColor: 'blue',
+              }}
+              // aria-label="previous"
+              disableRipple={true}
+              // id="play"
+              // onClick={togglePlayback}
+            >
+              {/* <div>x: {deltaX.toFixed(0)}</div> */}
+              <CodeIcon style={{ fontSize: 25 }} />
+            </IconButton>
+            {/* <div>facts</div> */}
+          </Box>
+        </Draggable>
         <div className={classes.root}>
           <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
             <h1 style={{ backgroundColor: 'white' }}>{collectionTitle}</h1>
