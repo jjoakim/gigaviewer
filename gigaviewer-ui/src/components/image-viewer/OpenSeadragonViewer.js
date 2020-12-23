@@ -153,7 +153,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
   useEffect(() => {
     if (viewer != null && activeDrags == 0) {
-      // console.log('mati');
       leftRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
       viewer.addTiledImage({
         tileSource:
@@ -167,9 +166,9 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           // imagesLoaded();
         },
       });
-      // console.log(leftRect.getSize());
-      // console.log(leftRect);
-      // console.log(leftImage);
+      console.log(leftRect.getSize());
+      console.log(leftRect);
+      console.log(leftImage);
       viewer.activateImagingHelper({
         onImageViewChanged,
       });
@@ -267,7 +266,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const handleDrag = (e, ui) => {
     const x = deltaX;
     setDeltaX(x + ui.deltaX);
-    // console.log('meesees');
     console.log(x);
   };
 
