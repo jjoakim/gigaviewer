@@ -110,7 +110,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   let rightRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
   let rightImage = null;
   let leftRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
-  let leftImage = null;
+  // let leftImage = null;
+  let newRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
 
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
@@ -128,6 +129,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   // const [isRedirecting, setIsRedirecting] = useState(false);
   const [deltaX, setDeltaX] = useState(0);
   const [activeDrags, setActiveDrags] = useState(0);
+  const [leftImage, setLeftImage] = useState(null);
+  // const middle = new OpenSeaDragon.Point(width / 2, height / 2);
 
   useEffect(() => {
     if (sources) {
@@ -162,7 +165,9 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         width: 1,
         clip: leftRect,
         success: function (event) {
-          leftImage = event.item;
+          // leftImage = event.item;
+          setLeftImage(event.item);
+          console.log(leftImage);
           // imagesLoaded();
         },
       });
@@ -173,7 +178,14 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         onImageViewChanged,
       });
     }
-  });
+    // if (leftImage != null && activeDrags == 1) {
+    // const newWidth = 6500 + deltaX;
+    // newRect = new OpenSeaDragon.Rect(6500, 0, newWidth, 16000);
+    // leftImage.setClip(newRect);
+    //   console.log(leftImage);
+    //   console.log('mati');
+    // }
+  }, [viewer]);
 
   const handleChange = (event, newSliderValue) => {
     setCurrSliderValue(newSliderValue);
@@ -266,7 +278,18 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const handleDrag = (e, ui) => {
     const x = deltaX;
     setDeltaX(x + ui.deltaX);
-    console.log(x);
+    console.log(deltaX);
+    // const newWidth = 6500 + (16000 / 460) * deltaX;
+    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+    console.log(width);
+    const lox = leftImage.viewerElementToImageCoordinates(middle).x;
+    console.log(lox);
+    console.log(leftImage.getContentSize().x + lox);
+    console.log(leftImage);
+    const imageWidth = leftImage.getContentSize().x;
+    const newWidth = lox < 0 ? imageWidth - lox : imageWidth;
+    newRect = new OpenSeaDragon.Rect(lox, 0, newWidth, 16000);
+    leftImage.setClip(newRect);
   };
 
   const onStart = () => {
