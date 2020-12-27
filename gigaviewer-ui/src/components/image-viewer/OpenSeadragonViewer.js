@@ -244,11 +244,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
       setIsNewDrag(false);
     }
 
-    if (ui != null) {
-      deltaX = ui.x;
-    } else {
-      deltaX = deltaX;
-    }
+    deltaX = ui != null ? ui.x : deltaX;
 
     console.log(deltaX);
     // const newWidth = 6500 + (16000 / 460) * deltaX;
