@@ -24,7 +24,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import CodeIcon from '@material-ui/icons/Code';
-import { stat } from 'fs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -228,7 +227,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       (height - 90) / 0.3 / (defaultZoom / currentZoom),
       100
-    );
+    ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
   };
