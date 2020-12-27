@@ -24,6 +24,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import CodeIcon from '@material-ui/icons/Code';
+import { stat } from 'fs';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,37 +65,6 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
-const ImageSlider = withStyles({
-  root: {
-    color: 'primary',
-    height: 8,
-  },
-  thumb: {
-    height: 40,
-    width: 40,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    marginTop: -16,
-    marginLeft: -20,
-    '&:focus, &:hover, &$active': {
-      boxShadow: 'inherit',
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 4px)',
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-    opacity: 0,
-  },
-  rail: {
-    height: 8,
-    opacity: 0,
-  },
-})(Slider);
-
 /**
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0
@@ -103,15 +73,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const location = useLocation();
   const history = useHistory();
   // const currPage = location.href;
-
-  let currentZoom = 0;
-  let defaultZoom = 0;
-  let changedFrame = true;
-  let rightRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
-  let rightImage = null;
-  let leftRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
-  // let leftImage = null;
-  let newRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
 
   const classes = useStyles();
   const [viewer, setViewer] = useState(null);
@@ -127,10 +88,21 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
   const [commitSliderValue, setCommitSliderValue] = useState(0);
   // const [isRedirecting, setIsRedirecting] = useState(false);
-  const [deltaX, setDeltaX] = useState(0);
   const [activeDrags, setActiveDrags] = useState(0);
   const [leftImage, setLeftImage] = useState(null);
-  // const middle = new OpenSeaDragon.Point(width / 2, height / 2);
+  const [staticDeltaX, setStaticDeltaX] = useState(0);
+  const [isNewDrag, setIsNewDrag] = useState(false);
+
+  let currentZoom = 0;
+  let defaultZoom = 0;
+  let changedFrame = true;
+  let rightRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
+  let rightImage = null;
+  let leftRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
+  // let leftImage = null;
+  let newRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
+  let oldSpringX = 0.5;
+  let deltaX = staticDeltaX;
 
   useEffect(() => {
     if (sources) {
@@ -165,10 +137,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         width: 1,
         clip: leftRect,
         success: function (event) {
-          // leftImage = event.item;
           setLeftImage(event.item);
-          console.log(leftImage);
-          // imagesLoaded();
         },
       });
       console.log(leftRect.getSize());
@@ -178,14 +147,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         onImageViewChanged,
       });
     }
-    // if (leftImage != null && activeDrags == 1) {
-    // const newWidth = 6500 + deltaX;
-    // newRect = new OpenSeaDragon.Rect(6500, 0, newWidth, 16000);
-    // leftImage.setClip(newRect);
-    //   console.log(leftImage);
-    //   console.log('mati');
-    // }
   }, [viewer]);
+  useEffect(() => {
+    if (viewer != null) {
+      handleDrag();
+    }
+  }, [leftImage]);
 
   const handleChange = (event, newSliderValue) => {
     setCurrSliderValue(newSliderValue);
@@ -216,7 +183,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const setFrameAtIndex = (oldIndex, newIndex, totalFrames) => {
     console.log(viewer);
     setIndex(newIndex);
-    // setChangedFrame(true);
     changedFrame = true;
     console.log(changedFrame);
     let nextIndex = (newIndex + 1) % totalFrames;
@@ -254,7 +220,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
   const onImageViewChanged = () => {
     if (changedFrame) {
-      // setDefaultZoom(viewer.viewport.getZoom());
       defaultZoom = viewer.viewport.getZoom();
       changedFrame = false;
     }
@@ -265,7 +230,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       (height - 90) / 0.3 / (defaultZoom / currentZoom),
       100
-    ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
+    );
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
   };
@@ -276,28 +241,71 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const handleDrag = (e, ui) => {
-    const x = deltaX;
-    setDeltaX(x + ui.deltaX);
+    if (isNewDrag) {
+      deltaX = staticDeltaX;
+      setIsNewDrag(false);
+    }
+
+    if (ui != null) {
+      deltaX = ui.x;
+    } else {
+      deltaX = deltaX;
+    }
+
     console.log(deltaX);
     // const newWidth = 6500 + (16000 / 460) * deltaX;
     const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
     console.log(width);
-    const lox = leftImage.viewerElementToImageCoordinates(middle).x;
-    console.log(lox);
-    console.log(leftImage.getContentSize().x + lox);
-    console.log(leftImage);
+    if (leftImage != null) {
+      const lox = leftImage.viewerElementToImageCoordinates(middle).x;
+      console.log(lox);
+      console.log(leftImage.getContentSize().x + lox);
+      const imageWidth = leftImage.getContentSize().x;
+      const newWidth = lox < 0 ? imageWidth - lox : imageWidth;
+      newRect = new OpenSeaDragon.Rect(lox, 0, newWidth, 16000);
+      leftImage.setClip(newRect);
+    }
+    viewer.addHandler('animation', imagesClipAggressive);
+    viewer.addHandler('animation-start', imagesClip);
+  };
+
+  const imagesClip = () => {
+    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+    const rox = leftImage.viewportToImageCoordinates(middle).x;
     const imageWidth = leftImage.getContentSize().x;
-    const newWidth = lox < 0 ? imageWidth - lox : imageWidth;
-    newRect = new OpenSeaDragon.Rect(lox, 0, newWidth, 16000);
+    const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
+    newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
+    leftImage.setClip(newRect);
+  };
+
+  const imagesClipAggressive = () => {
+    const newSpringX = viewer.viewport.centerSpringX.current.value;
+    const deltaSpringX = newSpringX - oldSpringX;
+    oldSpringX = newSpringX;
+
+    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+    const fixedMiddle = viewer.viewport.viewerElementToViewportCoordinates(
+      middle
+    );
+    fixedMiddle.x += deltaSpringX;
+    const imageWidth = leftImage.getContentSize().x;
+    const rox = leftImage.viewportToImageCoordinates(fixedMiddle).x;
+
+    const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
+    newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
     leftImage.setClip(newRect);
   };
 
   const onStart = () => {
+    deltaX = staticDeltaX;
     setActiveDrags(1);
+    setIsNewDrag(true);
   };
 
   const onStop = () => {
     setActiveDrags(0);
+    setStaticDeltaX(deltaX);
+    setIsNewDrag(true);
   };
 
   const InitOpenseadragon = (tileSources) => {
@@ -355,6 +363,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           onStart={onStart}
           onStop={onStop}
           axis="x"
+          // bounds={{ left: -192, right: 192 }}
         >
           <Box
             position="absolute"
@@ -375,21 +384,11 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
             // border={1}
             // bgcolor="white"
           >
-            {/* <ImageSlider
-              aria-labelledby="discrete-slider"
-              valueLabelDisplay="auto"
-              // value={currSliderValue}
-              // onChange={handleChange}
-              // onChangeCommitted={handleCommit}
-              ThumbComponent={CodeIcon}
-              min={0}
-              max={1000}
-              defaultValue={500}
-            /> */}
             <IconButton
               color="primary"
               variant="outlined"
               // border={1}
+              size="small"
               style={{
                 backgroundColor: 'white',
                 border: '3px solid',
@@ -403,10 +402,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               // id="play"
               // onClick={togglePlayback}
             >
-              {/* <div>x: {deltaX.toFixed(0)}</div> */}
-              <CodeIcon style={{ fontSize: 25 }} />
+              <CodeIcon style={{ fontSize: 40 }} />
             </IconButton>
-            {/* <div>facts</div> */}
           </Box>
         </Draggable>
         <div className={classes.root}>
