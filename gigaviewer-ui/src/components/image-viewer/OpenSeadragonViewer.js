@@ -140,14 +140,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           setLeftImage(event.item);
         },
       });
-      console.log(leftRect.getSize());
-      console.log(leftRect);
-      console.log(leftImage);
       viewer.activateImagingHelper({
         onImageViewChanged,
       });
     }
   }, [viewer]);
+
   useEffect(() => {
     if (viewer != null) {
       handleDrag();
