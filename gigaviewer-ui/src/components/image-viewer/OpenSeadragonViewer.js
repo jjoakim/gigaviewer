@@ -91,6 +91,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [leftImage, setLeftImage] = useState(null);
   const [staticDeltaX, setStaticDeltaX] = useState(0);
   const [isNewDrag, setIsNewDrag] = useState(false);
+  const [leftBoundPx, setLeftBoundPx] = useState(0);
+  const [rightBoundPx, setRightBoundPx] = useState(0);
 
   let currentZoom = 0;
   let defaultZoom = 0;
@@ -102,6 +104,9 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   let newRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
   let oldSpringX = 0.5;
   let deltaX = staticDeltaX;
+  const middle = new OpenSeaDragon.Point(width / 2, height / 2);
+  const leftBound = new OpenSeaDragon.Point(0, 0);
+  const rightBound = new OpenSeaDragon.Point(13000, 0);
 
   useEffect(() => {
     if (sources) {
@@ -126,6 +131,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   }, [index]);
 
   useEffect(() => {
+    console.log('luc');
     if (viewer != null && activeDrags == 0) {
       leftRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
       viewer.addTiledImage({
@@ -136,18 +142,26 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         width: 1,
         clip: leftRect,
         success: function (event) {
-          setLeftImage(event.item);
+          if (leftImage == null) {
+            setLeftImage(event.item);
+            // setBounds();
+          }
         },
       });
-      viewer.activateImagingHelper({
-        onImageViewChanged,
-      });
+      // viewer.activateImagingHelper({
+      //   onImageViewChanged,
+      // });
     }
   }, [viewer]);
 
   useEffect(() => {
     if (viewer != null) {
+      setBounds();
       handleDrag();
+      onImageViewChanged();
+      viewer.activateImagingHelper({
+        onImageViewChanged,
+      });
     }
   }, [leftImage]);
 
@@ -221,15 +235,23 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
       changedFrame = false;
     }
     currentZoom = viewer.viewport.getZoom();
-    console.log(height);
-    console.log(defaultZoom);
-    console.log(currentZoom);
+    // console.log(height);
+    // console.log(defaultZoom);
+    // console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       (height - 90) / 0.3 / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
+    setBounds();
+  };
+
+  const setBounds = () => {
+    setLeftBoundPx(leftImage.imageToWindowCoordinates(leftBound).x - middle.x);
+    setRightBoundPx(
+      leftImage.imageToWindowCoordinates(rightBound).x - middle.x
+    );
   };
 
   const resizeWindow = () => {
@@ -247,12 +269,10 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
     console.log(deltaX);
     // const newWidth = 6500 + (16000 / 460) * deltaX;
-    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
-    console.log(width);
+    const newMiddle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+
     if (leftImage != null) {
-      const lox = leftImage.viewerElementToImageCoordinates(middle).x;
-      console.log(lox);
-      console.log(leftImage.getContentSize().x + lox);
+      const lox = leftImage.viewerElementToImageCoordinates(newMiddle).x;
       const imageWidth = leftImage.getContentSize().x;
       const newWidth = lox < 0 ? imageWidth - lox : imageWidth;
       newRect = new OpenSeaDragon.Rect(lox, 0, newWidth, 16000);
@@ -263,12 +283,13 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const imagesClip = () => {
-    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
-    const rox = leftImage.viewportToImageCoordinates(middle).x;
+    const newMiddle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+    const rox = leftImage.viewportToImageCoordinates(newMiddle).x;
     const imageWidth = leftImage.getContentSize().x;
     const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
     newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
     leftImage.setClip(newRect);
+    // setBounds();
   };
 
   const imagesClipAggressive = () => {
@@ -276,9 +297,9 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const deltaSpringX = newSpringX - oldSpringX;
     oldSpringX = newSpringX;
 
-    const middle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
+    const newMiddle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
     const fixedMiddle = viewer.viewport.viewerElementToViewportCoordinates(
-      middle
+      newMiddle
     );
     fixedMiddle.x += deltaSpringX;
     const imageWidth = leftImage.getContentSize().x;
@@ -287,6 +308,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
     newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
     leftImage.setClip(newRect);
+    // setBounds();
   };
 
   const onStart = () => {
@@ -356,7 +378,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           onStart={onStart}
           onStop={onStop}
           axis="x"
-          // bounds={{ left: -192, right: 192 }}
+          bounds={{ left: leftBoundPx, right: rightBoundPx }}
         >
           <Box
             position="absolute"
