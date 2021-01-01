@@ -107,6 +107,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const middle = new OpenSeaDragon.Point(width / 2, height / 2);
   const leftBound = new OpenSeaDragon.Point(0, 0);
   const rightBound = new OpenSeaDragon.Point(13000, 0);
+  // let leftBoundPx = 0;
+  // let rightBoundPx = 0;
 
   useEffect(() => {
     if (sources) {
@@ -131,7 +133,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   }, [index]);
 
   useEffect(() => {
-    console.log('luc');
     if (viewer != null && activeDrags == 0) {
       leftRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
       viewer.addTiledImage({
@@ -252,6 +253,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     setRightBoundPx(
       leftImage.imageToWindowCoordinates(rightBound).x - middle.x
     );
+    // leftBoundPx = leftImage.imageToWindowCoordinates(leftBound).x - middle.x;
+    // rightBoundPx = leftImage.imageToWindowCoordinates(rightBound).x - middle.x;
   };
 
   const resizeWindow = () => {
@@ -572,4 +575,4 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   );
 };
 
-export default OpenSeadragonViewer;
+export default React.memo(OpenSeadragonViewer);
