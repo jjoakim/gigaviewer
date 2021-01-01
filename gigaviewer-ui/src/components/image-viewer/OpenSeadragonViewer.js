@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import OpenSeaDragon from 'openseadragon';
@@ -91,8 +91,10 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [leftImage, setLeftImage] = useState(null);
   const [staticDeltaX, setStaticDeltaX] = useState(0);
   const [isNewDrag, setIsNewDrag] = useState(false);
-  const [leftBoundPx, setLeftBoundPx] = useState(0);
-  const [rightBoundPx, setRightBoundPx] = useState(0);
+  // const [leftBoundPx, setLeftBoundPx] = useState(0);
+  // const [rightBoundPx, setRightBoundPx] = useState(0);
+  const leftBoundPx = useRef(0);
+  const rightBoundPx = useRef(0);
 
   let currentZoom = 0;
   let defaultZoom = 0;
@@ -249,12 +251,16 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const setBounds = () => {
-    setLeftBoundPx(leftImage.imageToWindowCoordinates(leftBound).x - middle.x);
-    setRightBoundPx(
-      leftImage.imageToWindowCoordinates(rightBound).x - middle.x
-    );
+    // setLeftBoundPx(leftImage.imageToWindowCoordinates(leftBound).x - middle.x);
+    // setRightBoundPx(
+    //   leftImage.imageToWindowCoordinates(rightBound).x - middle.x
+    // );
     // leftBoundPx = leftImage.imageToWindowCoordinates(leftBound).x - middle.x;
     // rightBoundPx = leftImage.imageToWindowCoordinates(rightBound).x - middle.x;
+    leftBoundPx.current =
+      leftImage.imageToWindowCoordinates(leftBound).x - middle.x;
+    rightBoundPx.current =
+      leftImage.imageToWindowCoordinates(rightBound).x - middle.x;
   };
 
   const resizeWindow = () => {
@@ -381,7 +387,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           onStart={onStart}
           onStop={onStop}
           axis="x"
-          bounds={{ left: leftBoundPx, right: rightBoundPx }}
+          bounds={{ left: leftBoundPx.current, right: rightBoundPx.current }}
         >
           <Box
             position="absolute"
