@@ -91,8 +91,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [leftImage, setLeftImage] = useState(null);
   const [staticDeltaX, setStaticDeltaX] = useState(0);
   const [isNewDrag, setIsNewDrag] = useState(false);
-  // const [leftBoundPx, setLeftBoundPx] = useState(0);
-  // const [rightBoundPx, setRightBoundPx] = useState(0);
   const leftBoundPx = useRef(0);
   const rightBoundPx = useRef(0);
 
@@ -109,8 +107,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const middle = new OpenSeaDragon.Point(width / 2, height / 2);
   const leftBound = new OpenSeaDragon.Point(0, 0);
   const rightBound = new OpenSeaDragon.Point(13000, 0);
-  // let leftBoundPx = 0;
-  // let rightBoundPx = 0;
 
   useEffect(() => {
     if (sources) {
@@ -251,12 +247,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const setBounds = () => {
-    // setLeftBoundPx(leftImage.imageToWindowCoordinates(leftBound).x - middle.x);
-    // setRightBoundPx(
-    //   leftImage.imageToWindowCoordinates(rightBound).x - middle.x
-    // );
-    // leftBoundPx = leftImage.imageToWindowCoordinates(leftBound).x - middle.x;
-    // rightBoundPx = leftImage.imageToWindowCoordinates(rightBound).x - middle.x;
     leftBoundPx.current =
       leftImage.imageToWindowCoordinates(leftBound).x - middle.x;
     rightBoundPx.current =
@@ -298,7 +288,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
     newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
     leftImage.setClip(newRect);
-    // setBounds();
   };
 
   const imagesClipAggressive = () => {
@@ -317,7 +306,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     const newWidth = rox < 0 ? imageWidth - rox : imageWidth;
     newRect = new OpenSeaDragon.Rect(rox, 0, newWidth, 16000);
     leftImage.setClip(newRect);
-    // setBounds();
   };
 
   const onStart = () => {
