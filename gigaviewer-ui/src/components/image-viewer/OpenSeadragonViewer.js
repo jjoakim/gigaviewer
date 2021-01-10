@@ -13,6 +13,7 @@ import {
   makeStyles,
   Slider,
   withStyles,
+  Button,
 } from '@material-ui/core';
 
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -83,6 +84,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [index, setIndex] = useState(Number(initialFrame));
   const [totalFrames, setTotalFrames] = useState(0);
   const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
+  const [isSliderEnabled, setIsSliderEnabled] = useState(false);
   const [playbackIntervalId, setPlaybackIntervalId] = useState();
   const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
   const [commitSliderValue, setCommitSliderValue] = useState(0);
@@ -140,6 +142,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         y: 0,
         width: 1,
         clip: rightRect,
+        opacity: 0,
         success: function (event) {
           if (rightImage == null) {
             setRightImage(event.item);
@@ -225,6 +228,14 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
       startPlayback();
     } else {
       stopPlayback();
+    }
+  };
+  const toggleSlider = () => {
+    setIsSliderEnabled(!isSliderEnabled);
+    if (isSliderEnabled) {
+      rightImage.setOpacity(0);
+    } else {
+      rightImage.setOpacity(1);
     }
   };
 
@@ -370,54 +381,56 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   return (
     <div>
       <Box height={height - 90} width={width} id="openSeaDragon">
-        <Draggable
-          onDrag={handleDrag}
-          onStart={onStart}
-          onStop={onStop}
-          axis="x"
-          bounds={{ left: leftBoundPx.current, right: rightBoundPx.current }}
-        >
-          <Box
-            position="absolute"
-            top="50%"
-            left="50%"
-            display="flex"
-            paddingRight="10%"
-            paddingBottom="10%"
-            // flexDirection="center"
-            alignItems="center"
-            justifyContent="center"
-            // m="auto"
-            width="1%"
-            height="1%"
-            zIndex="tooltip"
-            // paddingTop="20%"
-            // borderRadius="50%"
-            // border={1}
-            // bgcolor="white"
+        {isSliderEnabled ? (
+          <Draggable
+            onDrag={handleDrag}
+            onStart={onStart}
+            onStop={onStop}
+            axis="x"
+            bounds={{ left: leftBoundPx.current, right: rightBoundPx.current }}
           >
-            <IconButton
-              color="primary"
-              variant="outlined"
+            <Box
+              position="absolute"
+              top="50%"
+              left="50%"
+              display="flex"
+              paddingRight="10%"
+              paddingBottom="10%"
+              // flexDirection="center"
+              alignItems="center"
+              justifyContent="center"
+              // m="auto"
+              width="1%"
+              height="1%"
+              zIndex="tooltip"
+              // paddingTop="20%"
+              // borderRadius="50%"
               // border={1}
-              size="small"
-              style={{
-                backgroundColor: 'white',
-                border: '3px solid',
-                borderColor: '#3f50b5',
-                // border: '1',
-                // borderWidth: '5px',
-                // borderColor: 'blue',
-              }}
-              // aria-label="previous"
-              disableRipple={true}
-              // id="play"
-              // onClick={togglePlayback}
+              // bgcolor="white"
             >
-              <CodeIcon style={{ fontSize: 40 }} />
-            </IconButton>
-          </Box>
-        </Draggable>
+              <IconButton
+                color="primary"
+                variant="outlined"
+                // border={1}
+                size="small"
+                style={{
+                  backgroundColor: 'white',
+                  border: '3px solid',
+                  borderColor: '#3f50b5',
+                  // border: '1',
+                  // borderWidth: '5px',
+                  // borderColor: 'blue',
+                }}
+                // aria-label="previous"
+                disableRipple={true}
+                // id="play"
+                // onClick={togglePlayback}
+              >
+                <CodeIcon style={{ fontSize: 40 }} />
+              </IconButton>
+            </Box>
+          </Draggable>
+        ) : null}
         <div className={classes.root}>
           <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
             <h1 style={{ backgroundColor: 'white' }}>{collectionTitle}</h1>
@@ -542,6 +555,18 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
             >
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
+          </Box>
+          <Box position="absolute" top="58%" right="0%" zIndex="tooltip">
+            <Button
+              color="primary"
+              aria-label="toggle slider"
+              disableRipple={true}
+              id="toggle-slider"
+              variant="contained"
+              onClick={toggleSlider}
+            >
+              Toggle Slider
+            </Button>
           </Box>
           {scalebarSize === 0 ? null : (
             <Box
