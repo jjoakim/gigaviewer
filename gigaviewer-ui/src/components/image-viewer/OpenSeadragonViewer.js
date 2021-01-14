@@ -454,7 +454,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
             <h1 style={{ backgroundColor: 'white' }}>{collectionTitle}</h1>
           </Box>
-          <Box position="absolute" top="8%" right="10%" zIndex="tooltip">
+          <Box
+            position="absolute"
+            top="8%"
+            right={width > 600 ? '10%' : '20%'}
+            zIndex="tooltip"
+          >
             <IconButton
               color="primary"
               aria-label="previous"
@@ -467,7 +472,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           </Box>
           {isPlaybackEnabled ? (
             totalFrames > 0 ? (
-              <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
+              <Box
+                position="absolute"
+                top="8%"
+                right={width > 600 ? '5%' : '10%'}
+                zIndex="tooltip"
+              >
                 <IconButton
                   color="primary"
                   aria-label="previous"
@@ -519,8 +529,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           <Box
             position="absolute"
             top="17%"
-            right="1.2vw"
-            width="10%"
+            right={width > 600 ? '1.2vw' : '5%'}
+            width={width > 600 ? '10%' : '20%'}
             zIndex="tooltip"
           >
             <PrettoSlider
