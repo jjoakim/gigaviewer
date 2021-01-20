@@ -132,41 +132,20 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     history.push(`${location.pathname.slice(0, -1)}${index}`);
   }, [index]);
 
-  // useEffect(() => {
-  //   if (viewer != null && activeDrags == 0) {
-  //     rightRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
-  //     viewer.addTiledImage({
-  //       tileSource:
-  //         'https://gigazoom.rc.duke.edu/auto/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020.dzi',
-  //       x: 0,
-  //       y: 0,
-  //       width: 1,
-  //       clip: rightRect,
-  //       opacity: 0,
-  //       success: function (event) {
-  //         if (rightImage == null) {
-  //           setRightImage(event.item);
-  //           // setBounds();
-  //         }
-  //       },
-  //     });
-  //     // viewer.activateImagingHelper({
-  //     //   onImageViewChanged,
-  //     // });
-  //   }
-  // }, [viewer]);
+  useEffect(() => {
+    if (viewer != null && activeDrags == 0) {
+      viewer.activateImagingHelper({
+        onImageViewChanged,
+      });
+    }
+  }, [viewer]);
 
   useEffect(() => {
     if (viewer != null && rightImage != null) {
-      console.log('goone');
       console.log(rightImage);
       console.log(leftBoundPx.current);
       setBounds();
       handleDrag();
-      onImageViewChanged();
-      viewer.activateImagingHelper({
-        onImageViewChanged,
-      });
     }
   }, [rightImage]);
 
@@ -273,7 +252,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);
     setScalebarText(scaleBarSpecs.text);
-    setBounds();
+    if (rightImage != null) setBounds();
   };
 
   const setBounds = () => {
@@ -471,7 +450,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
             </IconButton>
           </Box>
           {isPlaybackEnabled ? (
-            totalFrames > 0 ? (
+            totalFrames > 1 ? (
               <Box
                 position="absolute"
                 top="8%"
