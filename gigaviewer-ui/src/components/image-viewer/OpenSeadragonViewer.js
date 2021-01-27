@@ -433,22 +433,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
           <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
             <h1 style={{ backgroundColor: 'white' }}>{collectionTitle}</h1>
           </Box>
-          <Box
-            position="absolute"
-            top="8%"
-            right={width > 600 ? '10%' : '20%'}
-            zIndex="tooltip"
-          >
-            <IconButton
-              color="primary"
-              aria-label="previous"
-              disableRipple={true}
-              id="previous"
-              onClick={previousFrame}
-            >
-              <ArrowBackIcon style={{ fontSize: 30 }} />
-            </IconButton>
-          </Box>
           {isPlaybackEnabled ? (
             totalFrames > 1 ? (
               <Box
@@ -467,20 +451,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
                   <PlayArrow style={{ fontSize: 30 }} />
                 </IconButton>
               </Box>
-            ) : (
-              <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
-                <IconButton
-                  disabled={true}
-                  color="primary"
-                  aria-label="previous"
-                  disableRipple={true}
-                  id="play"
-                  onClick={togglePlayback}
-                >
-                  <PlayArrow style={{ fontSize: 30 }} />
-                </IconButton>
-              </Box>
-            )
+            ) : null
           ) : (
             <Box position="absolute" top="8%" right="5%" zIndex="tooltip">
               <IconButton
@@ -494,37 +465,62 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               </IconButton>
             </Box>
           )}
-          <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
-            <IconButton
-              color="primary"
-              aria-label="next"
-              disableRipple={true}
-              id="next"
-              onClick={nextFrame}
-            >
-              <ArrowForwardIcon style={{ fontSize: 30 }} />
-            </IconButton>
-          </Box>
+          {totalFrames > 1 ? (
+            <>
+              <Box
+                position="absolute"
+                top="8%"
+                right={width > 600 ? '10%' : '20%'}
+                zIndex="tooltip"
+              >
+                <IconButton
+                  color="primary"
+                  aria-label="previous"
+                  disableRipple={true}
+                  id="previous"
+                  onClick={previousFrame}
+                >
+                  <ArrowBackIcon style={{ fontSize: 30 }} />
+                </IconButton>
+              </Box>
+              <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
+                <IconButton
+                  color="primary"
+                  aria-label="next"
+                  disableRipple={true}
+                  id="next"
+                  onClick={nextFrame}
+                >
+                  <ArrowForwardIcon style={{ fontSize: 30 }} />
+                </IconButton>
+              </Box>
+              <Box
+                position="absolute"
+                top="17%"
+                right={width > 600 ? '1.2vw' : '5%'}
+                width={width > 600 ? '10%' : '20%'}
+                zIndex="tooltip"
+              >
+                <PrettoSlider
+                  defaultValue={0}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  value={currSliderValue}
+                  step={1}
+                  onChange={handleChange}
+                  onChangeCommitted={handleCommit}
+                  min={0}
+                  max={totalFrames - 1}
+                />
+              </Box>
+            </>
+          ) : null}
           <Box
             position="absolute"
-            top="17%"
-            right={width > 600 ? '1.2vw' : '5%'}
-            width={width > 600 ? '10%' : '20%'}
+            top={totalFrames > 1 ? '24%' : '8%'}
+            right="0%"
             zIndex="tooltip"
           >
-            <PrettoSlider
-              defaultValue={0}
-              aria-labelledby="discrete-slider"
-              valueLabelDisplay="auto"
-              value={currSliderValue}
-              step={1}
-              onChange={handleChange}
-              onChangeCommitted={handleCommit}
-              min={0}
-              max={totalFrames - 1}
-            />
-          </Box>
-          <Box position="absolute" top="24%" right="0%" zIndex="tooltip">
             <IconButton
               color="primary"
               aria-label="default zoom"
@@ -534,7 +530,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               <Replay style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="32%" right="0%" zIndex="tooltip">
+          <Box
+            position="absolute"
+            top={totalFrames > 1 ? '32%' : '16%'}
+            right="0%"
+            zIndex="tooltip"
+          >
             <IconButton
               color="primary"
               aria-label="zoom in"
@@ -544,7 +545,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               <AddCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="40%" right="0%" zIndex="tooltip">
+          <Box
+            position="absolute"
+            top={totalFrames > 1 ? '40%' : '24%'}
+            right="0%"
+            zIndex="tooltip"
+          >
             <IconButton
               color="primary"
               aria-label="zoom out"
@@ -554,7 +560,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               <RemoveCircleOutlineIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="48%" right="0%" zIndex="tooltip">
+          <Box
+            position="absolute"
+            top={totalFrames > 1 ? '48%' : '32%'}
+            right="0%"
+            zIndex="tooltip"
+          >
             <IconButton
               color="primary"
               aria-label="full screen"
@@ -564,7 +575,12 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box position="absolute" top="58%" right="0%" zIndex="tooltip">
+          <Box
+            position="absolute"
+            top={totalFrames > 1 ? '58%' : '42%'}
+            right="0%"
+            zIndex="tooltip"
+          >
             <Button
               color="primary"
               aria-label="toggle slider"
