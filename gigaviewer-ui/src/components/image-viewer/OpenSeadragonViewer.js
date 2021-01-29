@@ -65,6 +65,34 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
+const useKeyPress = (targetKey) => {
+  const [keyPressed, setKeyPressed] = useState(false);
+
+  const downHandler = (key) => {
+    if (key.code === targetKey) {
+      setKeyPressed(true);
+    }
+  };
+
+  const upHandler = (key) => {
+    if (key.code === targetKey) {
+      setKeyPressed(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('keydown', downHandler);
+    window.addEventListener('keyup', upHandler);
+
+    return () => {
+      window.removeEventListener('keydown', downHandler);
+      window.removeEventListener('keyup', upHandler);
+    };
+  });
+
+  return keyPressed;
+};
+
 /**
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0
@@ -93,16 +121,17 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   const [rightImage, setRightImage] = useState(null);
   const [staticDeltaX, setStaticDeltaX] = useState(0);
   const [isNewDrag, setIsNewDrag] = useState(false);
+
   const leftBoundPx = useRef(0);
   const rightBoundPx = useRef(0);
+
+  const leftPress = useKeyPress('ArrowLeft');
+  const rightPress = useKeyPress('ArrowRight');
 
   let currentZoom = 0;
   let defaultZoom = 0;
   let changedFrame = true;
   let rightRect = new OpenSeaDragon.Rect(6500, 0, 6500, 16000);
-  // let rightImage = null;
-  // let leftRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
-  // let leftImage = null;
   let newRect = new OpenSeaDragon.Rect(0, 0, 0, 0);
   let oldSpringX = 0.5;
   let deltaX = staticDeltaX;
@@ -149,6 +178,18 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     }
   }, [rightImage]);
 
+  useEffect(() => {
+    if (leftPress) {
+      previousFrame();
+    }
+  }, [leftPress]);
+
+  useEffect(() => {
+    if (rightPress) {
+      nextFrame();
+    }
+  }, [rightPress]);
+
   const handleChange = (event, newSliderValue) => {
     setCurrSliderValue(newSliderValue);
   };
@@ -176,10 +217,8 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   };
 
   const setFrameAtIndex = (oldIndex, newIndex, totalFrames) => {
-    console.log(viewer);
     setIndex(newIndex);
     changedFrame = true;
-    console.log(changedFrame);
     let nextIndex = (newIndex + 1) % totalFrames;
     if (oldIndex !== newIndex) {
       viewer.world.getItemAt(oldIndex).setOpacity(0);
