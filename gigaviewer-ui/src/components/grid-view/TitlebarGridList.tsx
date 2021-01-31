@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 
 import { Redirect } from 'react-router-dom';
 
@@ -40,20 +40,9 @@ const useStyles = makeStyles((theme) => ({
  */
 const TitlebarGridList = () => {
   const classes = useStyles();
-  const [width, setWidth] = useState(0);
   const [grpId, setGrpId] = useState('');
   const [frame, setFrame] = useState(0);
   const [redirect, setRedirect] = useState(false);
-
-  function resizeWindow() {
-    setWidth(window.innerWidth);
-  }
-
-  useEffect(() => {
-    resizeWindow();
-    window.addEventListener('resize', resizeWindow);
-    return () => window.removeEventListener('resize', resizeWindow);
-  }, []);
 
   function consoleIcon(e: any) {
     e.stopPropagation();

@@ -13,7 +13,7 @@ import {
   makeStyles,
   Slider,
   withStyles,
-  Button,
+  // Button,
 } from '@material-ui/core';
 
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
@@ -97,7 +97,7 @@ const useKeyPress = (targetKey) => {
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0
  */
-const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
+const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle}) => {
   const location = useLocation();
   const history = useHistory();
   // const currPage = location.href;
@@ -148,8 +148,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
       }
       resizeWindow();
       window.addEventListener('resize', resizeWindow);
-      // console.log('width: ' + window.innerWidth + ' height: ' + window.innerHeight);
-
       return () => {
         viewer && viewer.destroy();
         window.removeEventListener('resize', resizeWindow);
@@ -158,7 +156,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
   }, [sources]);
 
   useEffect(() => {
-    history.push(`${location.pathname.slice(0, -1)}${index}`);
+    history.push(`${location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1)}${index}`);
   }, [index]);
 
   useEffect(() => {
@@ -171,12 +169,19 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
 
   useEffect(() => {
     if (viewer != null && rightImage != null) {
-      console.log(rightImage);
-      console.log(leftBoundPx.current);
       setBounds();
       handleDrag();
     }
   }, [rightImage]);
+
+  useEffect(() => {
+    if (viewer != null) {
+      // remove the inner keydown handler from OSD
+      viewer.innerTracker.keyDownHandler = null;
+      viewer.innerTracker.keyPressHandler = null;
+      console.log("removing inner tracker");
+    }
+  }, [viewer])
 
   useEffect(() => {
     if (leftPress) {
@@ -221,8 +226,13 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     changedFrame = true;
     let nextIndex = (newIndex + 1) % totalFrames;
     if (oldIndex !== newIndex) {
+      // Make the prev image go away
       viewer.world.getItemAt(oldIndex).setOpacity(0);
+      // Stop pre-loading it
+      viewer.world.getItemAt(oldIndex).setPreload(false);
+      // Reveal the new image
       viewer.world.getItemAt(newIndex).setOpacity(1);
+      // Preload the next image
       viewer.world.getItemAt(nextIndex).setPreload(true);
     }
   };
@@ -252,28 +262,29 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     }
   };
   const toggleSlider = () => {
-    setIsSliderEnabled(!isSliderEnabled);
-    if (isSliderEnabled) {
-      // rightImage.setOpacity(0);
-      viewer.world.removeItem(rightImage);
-      setRightImage(null);
-    } else {
-      // rightImage.setOpacity(1);
-      viewer.addTiledImage({
-        tileSource:
-          'https://gigazoom.rc.duke.edu/auto/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020.dzi',
-        x: 0,
-        y: 0,
-        width: 1,
-        clip: rightRect,
-        opacity: 1,
-        success: function (event) {
-          if (rightImage == null) {
-            setRightImage(event.item);
-          }
-        },
-      });
-    }
+    return;
+    // setIsSliderEnabled(!isSliderEnabled);
+    // if (isSliderEnabled) {
+    //   // rightImage.setOpacity(0);
+    //   viewer.world.removeItem(rightImage);
+    //   setRightImage(null);
+    // } else {
+    //   // rightImage.setOpacity(1);
+    //   viewer.addTiledImage({
+    //     tileSource:
+    //       'https://gigazoom.rc.duke.edu/auto/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020.dzi',
+    //     x: 0,
+    //     y: 0,
+    //     width: 1,
+    //     clip: rightRect,
+    //     opacity: 1,
+    //     success: function (event) {
+    //       if (rightImage == null) {
+    //         setRightImage(event.item);
+    //       }
+    //     },
+    //   });
+    // }
   };
 
   const onImageViewChanged = () => {
@@ -282,9 +293,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
       changedFrame = false;
     }
     currentZoom = viewer.viewport.getZoom();
-    // console.log(height);
-    // console.log(defaultZoom);
-    // console.log(currentZoom);
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
       (height - 90) / 0.3 / (defaultZoom / currentZoom),
       100
@@ -313,9 +321,6 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
     }
 
     deltaX = ui != null ? ui.x : deltaX;
-
-    console.log(deltaX);
-    // const newWidth = 6500 + (16000 / 460) * deltaX;
     const newMiddle = new OpenSeaDragon.Point(width / 2 + deltaX, height / 2);
 
     if (rightImage != null) {
@@ -413,6 +418,7 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
         // previousButton: 'previous',
       })
     );
+
   };
 
   return (
@@ -614,23 +620,23 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle }) => {
               <FullscreenIcon style={{ fontSize: 30 }} />
             </IconButton>
           </Box>
-          <Box
-            position="absolute"
-            top={totalFrames > 1 ? '58%' : '42%'}
-            right="0%"
-            zIndex="tooltip"
-          >
-            <Button
-              color="primary"
-              aria-label="toggle slider"
-              disableRipple={true}
-              id="toggle-slider"
-              variant="contained"
-              onClick={toggleSlider}
-            >
-              Toggle Slider
-            </Button>
-          </Box>
+          {/*<Box*/}
+          {/*  position="absolute"*/}
+          {/*  top={totalFrames > 1 ? '58%' : '42%'}*/}
+          {/*  right="0%"*/}
+          {/*  zIndex="tooltip"*/}
+          {/*>*/}
+          {/*  /!*<Button*!/*/}
+          {/*  /!*  color="primary"*!/*/}
+          {/*  /!*  aria-label="toggle slider"*!/*/}
+          {/*  /!*  disableRipple={true}*!/*/}
+          {/*  /!*  id="toggle-slider"*!/*/}
+          {/*  /!*  variant="contained"*!/*/}
+          {/*  /!*  onClick={toggleSlider}*!/*/}
+          {/*  /!*>*!/*/}
+          {/*  /!*  Toggle Slider*!/*/}
+          {/*  /!*</Button>*!/*/}
+          {/*</Box>*/}
           {scalebarSize === 0 ? null : (
             <Box
               border={1}

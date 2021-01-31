@@ -12,7 +12,7 @@ const ImageViewer = (props: PublicProps) => {
     if (viewer && props.image) {
       viewer.open(props.image.source);
     }
-  }, [props.image]);
+  }, [props.image, viewer]);
 
 
   const InitOpenseadragon = () => {
@@ -44,7 +44,7 @@ const ImageViewer = (props: PublicProps) => {
     return () => {
       viewer && viewer.destroy();
     };
-  }, []);
+  });
 
   return (
     <div

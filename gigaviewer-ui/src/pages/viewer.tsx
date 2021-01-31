@@ -15,17 +15,18 @@ import data from 'components/image-viewer/imageMetadata.json';
  */
 const Viewer = (props: any) => {
   const [currIndex, setCurrIndex] = useState(-1);
-  const [imageSources, setImageSources] = useState([]);
+  const [imageSources, setImageSources] = useState<any>([]);
   const [title, setTitle] = useState('');
 
   useEffect(() => {
     initIndex();
-  }, []);
+  });
+
 
   useEffect(() => {
     if (currIndex >= 0){
-      setImageSources(updateImageSources(data));
-      setTitle(updateTitle(data));
+      setImageSources(data.groups[currIndex].sources);
+      setTitle(data.groups[currIndex].title);
     }
   }, [currIndex]);
 
@@ -40,17 +41,6 @@ const Viewer = (props: any) => {
     return -1;
   }
 
-  const updateTitle = (data: any) => {
-    return (currIndex >= 0) 
-      ? data.groups[currIndex].title
-      : '';
-  }
-
-  const updateImageSources = (data: any) => {
-    return (currIndex >= 0)
-        ? data.groups[currIndex].sources
-        : {};
-  }
 
   return (
     <div
