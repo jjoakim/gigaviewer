@@ -1,20 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import React, {useEffect, useRef, useState} from 'react';
+import {useHistory, useLocation} from 'react-router-dom';
 
 import OpenSeaDragon from 'openseadragon';
 import '@openseadragon-imaging/openseadragon-imaginghelper';
 
-import { getScalebarSizeAndTextForMetric } from './utils';
+import {getScalebarSizeAndTextForMetric} from './utils';
 import Draggable from 'react-draggable';
 
-import {
-  Box,
-  IconButton,
-  makeStyles,
-  Slider,
-  withStyles,
-  // Button,
-} from '@material-ui/core';
+import {Box, IconButton, makeStyles, Slider, withStyles,} from '@material-ui/core';
 
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -97,9 +90,10 @@ const useKeyPress = (targetKey) => {
  * This component takes in the relevant frames and initializes them to an OSD viewer
  * @param {*} param0
  */
-const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle}) => {
+const OpenSeadragonViewer = ({ sources, realImageHeight, initialFrame, collectionTitle}) => {
   const location = useLocation();
   const history = useHistory();
+  const imageHeight = realImageHeight;
   // const currPage = location.href;
 
   const classes = useStyles();
@@ -293,8 +287,9 @@ const OpenSeadragonViewer = ({ sources, initialFrame, collectionTitle}) => {
       changedFrame = false;
     }
     currentZoom = viewer.viewport.getZoom();
+    const canvasHeight = viewer.canvas.clientHeight;
     const scaleBarSpecs = getScalebarSizeAndTextForMetric(
-      (height - 90) / 0.3 / (defaultZoom / currentZoom),
+      (canvasHeight) / imageHeight / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
     setScalebarSize(scaleBarSpecs.size);

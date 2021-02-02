@@ -17,6 +17,7 @@ const Viewer = (props: any) => {
   const [currIndex, setCurrIndex] = useState(-1);
   const [imageSources, setImageSources] = useState<any>([]);
   const [title, setTitle] = useState('');
+  const [realHeight, setRealHeight] = useState<any>(1.0);
 
   useEffect(() => {
     initIndex();
@@ -27,6 +28,7 @@ const Viewer = (props: any) => {
     if (currIndex >= 0){
       setImageSources(data.groups[currIndex].sources);
       setTitle(data.groups[currIndex].title);
+      setRealHeight(data.groups[currIndex].height)
     }
   }, [currIndex]);
 
@@ -51,7 +53,7 @@ const Viewer = (props: any) => {
     >
       <div>
         <Box position="absolute" top="80px" left="0%" zIndex="modal">
-          <OpenSeaDragonViewer sources={imageSources} collectionTitle={title} initialFrame={props.match.params.frame}/>
+          <OpenSeaDragonViewer sources={imageSources} realImageHeight={realHeight} collectionTitle={title} initialFrame={props.match.params.frame}/>
         </Box>
       </div>
     </div>
