@@ -292,8 +292,8 @@ const OpenSeadragonViewer = ({ sources, realImageHeight, initialFrame, collectio
       (canvasHeight) / imageHeight / (defaultZoom / currentZoom),
       100
     ); // (height-80)/0.77 = window_height/real_height, 100 = min width of scalebar
-    setScalebarSize(scaleBarSpecs.size);
-    setScalebarText(scaleBarSpecs.text);
+    // setScalebarSize(scaleBarSpecs.size);
+    // setScalebarText(scaleBarSpecs.text);
     if (rightImage != null) setBounds();
   };
 

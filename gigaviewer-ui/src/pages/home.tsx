@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { TitlebarGridList as Grid } from 'components/grid-view';
+import data from 'components/image-viewer/imageMetadata.json';
+import { ImageGrid as Grid } from 'components/grid-view';
 
-const Home = () => {
+const Home = (props: any) => {
   return (
     <div>
-      <div></div>
-      <Grid />
+      <Grid gridData={data}/>
     </div>
   );
 };

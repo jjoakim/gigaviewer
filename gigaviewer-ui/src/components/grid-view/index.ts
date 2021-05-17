@@ -1,3 +1,3 @@
-import TitlebarGridList from './TitlebarGridList';
+import ImageGrid from './ImageGrid';
 
-export { TitlebarGridList };
+export { ImageGrid };
