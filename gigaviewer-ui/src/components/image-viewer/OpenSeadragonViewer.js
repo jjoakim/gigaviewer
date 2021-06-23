@@ -460,73 +460,49 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 </div>}
 
                 <div className={classes.root}>
-                    <Box position="absolute" top="0%" right="1%" zIndex="tooltip">
+                    <Box flexDirection="column" position="absolute" top="0%" right="1%" zIndex="tooltip"
+                         justifyContent="center">
                         <h1 style={{backgroundColor: 'white'}}>{collectionTitle}</h1>
-                    </Box>
-                    {totalFrames > 1 &&
-                    <div>
-                        <Box position="absolute"
-                             top="8%"
-                             right={width > 600 ? '5%' : '10%'}
-                             zIndex="tooltip">
-                            <IconButton color="primary"
-                                        aria-label="previous"
-                                        disableRipple={true}
-                                        id="play"
-                                        onClick={precacheData}
-                            >
-                            <SystemUpdateAltIcon style={{fontSize: 30}}/>
+                        {totalFrames > 1 &&
+                        <div>
+                            <Box display="flex" flexDirection="row" justifyContent="center">
+                                <IconButton
+                                    color="primary"
+                                    aria-label="previous"
+                                    disableRipple={true}
+                                    id="previous"
+                                    onClick={previousFrame}
+                                >
+                                    <ArrowBackIcon style={{fontSize: 30}}/>
+                                </IconButton>
 
-                            </IconButton>
-                        </Box>
-                        <Box position="absolute"
-                             top="8%"
-                             right={width > 600 ? '5%' : '10%'}
-                             zIndex="tooltip">
-                            <IconButton color="primary"
-                                        aria-label="previous"
-                                        disableRipple={true}
-                                        id="play"
-                                        onClick={togglePlayback}
-                            >
-                                {isPlaybackEnabled ? <PlayArrow style={{fontSize: 30}}/> :
-                                    <Pause style={{fontSize: 30}}/>}
-                            </IconButton>
-                        </Box>
-                        <Box
-                            position="absolute"
-                            top="8%"
-                            right={width > 600 ? '10%' : '20%'}
-                            zIndex="tooltip"
-                        >
-                            <IconButton
-                                color="primary"
-                                aria-label="previous"
-                                disableRipple={true}
-                                id="previous"
-                                onClick={previousFrame}
-                            >
-                                <ArrowBackIcon style={{fontSize: 30}}/>
-                            </IconButton>
-                        </Box>
-                        <Box position="absolute" top="8%" right="0%" zIndex="tooltip">
-                            <IconButton
-                                color="primary"
-                                aria-label="next"
-                                disableRipple={true}
-                                id="next"
-                                onClick={nextFrame}
-                            >
-                                <ArrowForwardIcon style={{fontSize: 30}}/>
-                            </IconButton>
-                        </Box>
-                        <Box
-                            position="absolute"
-                            top="17%"
-                            right={width > 600 ? '1.2vw' : '5%'}
-                            width={width > 600 ? '10%' : '20%'}
-                            zIndex="tooltip"
-                        >
+                                <IconButton color="primary"
+                                            aria-label="previous"
+                                            disableRipple={true}
+                                            id="play"
+                                            onClick={precacheData}
+                                >
+                                    <SystemUpdateAltIcon style={{fontSize: 30}}/>
+                                </IconButton>
+                                <IconButton color="primary"
+                                            aria-label="previous"
+                                            disableRipple={true}
+                                            id="play"
+                                            onClick={togglePlayback}
+                                >
+                                    {isPlaybackEnabled ? <PlayArrow style={{fontSize: 30}}/> :
+                                        <Pause style={{fontSize: 30}}/>}
+                                </IconButton>
+                                <IconButton
+                                    color="primary"
+                                    aria-label="next"
+                                    disableRipple={true}
+                                    id="next"
+                                    onClick={nextFrame}
+                                >
+                                    <ArrowForwardIcon style={{fontSize: 30}}/>
+                                </IconButton>
+                            </Box>
                             <PrettoSlider
                                 defaultValue={0}
                                 aria-labelledby="discrete-slider"
@@ -538,69 +514,43 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                                 min={0}
                                 max={totalFrames - 1}
                             />
+                        </div>}
+                        <Box display="flex" style={{float: "right"}} flexDirection="column" alignContent="flex-end" justifyContent="left" width="10%">
+                            <IconButton
+                                color="primary"
+                                aria-label="default zoom"
+                                disableRipple={true}
+                                id="home"
+                            >
+                                <ZoomOutMapIcon style={{fontSize: 30}}/>
+                            </IconButton>
+                            <IconButton
+                                color="primary"
+                                aria-label="zoom in"
+                                disableRipple={true}
+                                id="zoom-in"
+                            >
+                                <AddCircleOutlineIcon style={{fontSize: 30}}/>
+                            </IconButton>
+                            <IconButton
+                                color="primary"
+                                aria-label="zoom out"
+                                disableRipple={true}
+                                id="zoom-out"
+                            >
+                                <RemoveCircleOutlineIcon style={{fontSize: 30}}/>
+                            </IconButton>
+                            <IconButton
+                                color="primary"
+                                aria-label="full screen"
+                                disableRipple={true}
+                                id="full-page"
+                            >
+                                <FullscreenIcon style={{fontSize: 30}}/>
+                            </IconButton>
                         </Box>
-                    </div>
-                    }
-                    <Box
-                        position="absolute"
-                        top={totalFrames > 1 ? '24%' : '8%'}
-                        right="0%"
-                        zIndex="tooltip"
-                    >
-                        <IconButton
-                            color="primary"
-                            aria-label="default zoom"
-                            disableRipple={true}
-                            id="home"
-                        >
-                            <ZoomOutMapIcon style={{fontSize: 30}}/>
-                        </IconButton>
                     </Box>
-                    <Box
-                        position="absolute"
-                        top={totalFrames > 1 ? '32%' : '16%'}
-                        right="0%"
-                        zIndex="tooltip"
-                    >
-                        <IconButton
-                            color="primary"
-                            aria-label="zoom in"
-                            disableRipple={true}
-                            id="zoom-in"
-                        >
-                            <AddCircleOutlineIcon style={{fontSize: 30}}/>
-                        </IconButton>
-                    </Box>
-                    <Box
-                        position="absolute"
-                        top={totalFrames > 1 ? '40%' : '24%'}
-                        right="0%"
-                        zIndex="tooltip"
-                    >
-                        <IconButton
-                            color="primary"
-                            aria-label="zoom out"
-                            disableRipple={true}
-                            id="zoom-out"
-                        >
-                            <RemoveCircleOutlineIcon style={{fontSize: 30}}/>
-                        </IconButton>
-                    </Box>
-                    <Box
-                        position="absolute"
-                        top={totalFrames > 1 ? '48%' : '32%'}
-                        right="0%"
-                        zIndex="tooltip"
-                    >
-                        <IconButton
-                            color="primary"
-                            aria-label="full screen"
-                            disableRipple={true}
-                            id="full-page"
-                        >
-                            <FullscreenIcon style={{fontSize: 30}}/>
-                        </IconButton>
-                    </Box>
+
                     {scalebarSize === 0 ? null : (
                         <Box
                             border={1}
