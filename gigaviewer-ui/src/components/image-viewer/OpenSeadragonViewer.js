@@ -7,7 +7,17 @@ import '@openseadragon-imaging/openseadragon-imaginghelper';
 import {getScalebarSizeAndTextForMetric} from './utils';
 import Draggable from 'react-draggable';
 
-import {Box, IconButton, makeStyles, Slider, withStyles,} from '@material-ui/core';
+import {
+    Box,
+    Button,
+    CircularProgress,
+    IconButton, LinearProgress,
+    makeStyles,
+    Modal,
+    Slider,
+    Typography,
+    withStyles,
+} from '@material-ui/core';
 
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -19,12 +29,40 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import CodeIcon from '@material-ui/icons/Code';
+import { green } from '@material-ui/core/colors';
+import clsx from 'clsx';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: 300,
         '& > *': {
             margin: theme.spacing(1),
+        },
+    },
+    paper: {
+        position: 'absolute',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    }, wrapper: {
+        margin: theme.spacing(1),
+        position: 'relative',
+        boxSizing: 'border-box'
+    },buttonProgress: {
+        color: green[500],
+        position: 'absolute',
+        top: '25%',
+        left: '25%',
+        marginTop: 0,
+        marginLeft: 0,
+    },buttonSuccess: {
+        width: '100%',
+        backgroundColor: green[500],
+        '&:hover': {
+            backgroundColor: green[700],
         },
     },
 }));
@@ -58,6 +96,8 @@ const PrettoSlider = withStyles({
         opacity: 0.6,
     },
 })(Slider);
+
+
 
 const useKeyPress = (targetKey) => {
     const [keyPressed, setKeyPressed] = useState(false);
@@ -111,6 +151,10 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     const [playbackIntervalId, setPlaybackIntervalId] = useState();
     const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
     const [commitSliderValue, setCommitSliderValue] = useState(0);
+    const [modalStyle] = useState(getModalStyle);
+    const [open, setOpen] = useState(false);
+    const [cacheSliderValue, setCacheSliderValue] = useState(10)
+    const [isCaching, setIsCaching] = useState(false);
     // const [isRedirecting, setIsRedirecting] = useState(false);
     const [activeDrags, setActiveDrags] = useState(0);
     const [rightImage, setRightImage] = useState(null);
@@ -137,7 +181,9 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     useEffect(() => {
         if (sources) {
             if (sources.length > 0) {
-                setTotalFrames(sources[0].tileSources.length);
+                const tempTotal =sources[0].tileSources.length;
+                setTotalFrames(tempTotal);
+                setCacheSliderValue(10 > tempTotal ? tempTotal : 10);
                 InitOpenseadragon(sources[0].tileSources);
                 setFrameAtIndex(0, 0, sources[0].tileSources.length);
             }
@@ -153,6 +199,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     useEffect(() => {
         history.push(`${location.pathname.slice(0, location.pathname.lastIndexOf('/') + 1)}${index}`);
     }, [index]);
+
 
     useEffect(() => {
         if (viewer != null && activeDrags == 0) {
@@ -248,9 +295,58 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
         clearTimeout(playbackIntervalId);
     };
 
-    const precacheData = () => {
+    const modelOpen = () => {
+        setOpen(true);
+    };
 
+    const handlePrecacheSliderChange = (event, newValue) => {
+        setCacheSliderValue(newValue);
+    };
+
+    const modalClose = () => {
+        setOpen(false);
+    };
+
+    const startPrecache = () => {
+        setIsCaching(true);
     }
+
+    useEffect(() => {
+        if (isCaching){
+            precacheData(cacheSliderValue);
+        } else {
+            modalClose();
+        }
+    },[isCaching])
+    const buttonClassname = clsx({
+        [classes.buttonSuccess]: isCaching,
+    });
+    const precacheData = (cacheAmnt) => {
+        let cacheIndex = currSliderValue;
+        console.log("pre cache...");
+        console.log(cacheSliderValue);
+        let item = null;
+        let lastItem = null;
+        for (let i = 0; i < cacheAmnt; i++) {
+            cacheIndex = (cacheIndex + 1) % totalFrames
+            item = viewer.world.getItemAt(cacheIndex)
+            if (!item._fullyLoaded) {
+                item.setPreload(true);
+                lastItem = item;
+                item.addOnceHandler("fully-loaded-change", (event) => {
+                    event.eventSource.setPreload(false);
+                })
+            }
+        }
+        if (lastItem === null){
+            setIsCaching(false);
+        }else{
+            lastItem.addOnceHandler("fully-loaded-change", () => {
+                setIsCaching(false);
+            })
+        }
+        console.log("done")
+    };
 
     const togglePlayback = () => {
         setIsPlaybackEnabled(!isPlaybackEnabled);
@@ -418,6 +514,17 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
 
     };
 
+    function getModalStyle() {
+        const top = 50;
+        const left = 50;
+
+        return {
+            top: `${top}%`,
+            left: `${left}%`,
+            transform: `translate(-${top}%, -${left}%)`,
+        };
+    }
+
     return (
         <div>
             <Box height={height - 90} width={width} id="openSeaDragon">
@@ -480,7 +587,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                                             aria-label="previous"
                                             disableRipple={true}
                                             id="play"
-                                            onClick={precacheData}
+                                            onClick={modelOpen}
                                 >
                                     <SystemUpdateAltIcon style={{fontSize: 30}}/>
                                 </IconButton>
@@ -515,7 +622,8 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                                 max={totalFrames - 1}
                             />
                         </div>}
-                        <Box display="flex" style={{float: "right"}} flexDirection="column" alignContent="flex-end" justifyContent="left" width="10%">
+                        <Box display="flex" style={{float: "right"}} flexDirection="column" alignContent="flex-end"
+                             justifyContent="left" width="10%">
                             <IconButton
                                 color="primary"
                                 aria-label="default zoom"
@@ -573,6 +681,42 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                     )}
                 </div>
             </Box>
+            <Modal
+                open={open}
+                onClose={modalClose}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
+                <div style={modalStyle} className={classes.paper}>
+                    <h2 id="simple-modal-title">Preload area?</h2>
+                    <Typography id="range-slider" gutterBottom>
+                        Cache Amount
+                    </Typography>
+                    <PrettoSlider
+                        aria-labelledby="discrete-slider"
+                        valueLabelDisplay="auto"
+                        value={cacheSliderValue}
+                        step={1}
+                        onChange={handlePrecacheSliderChange}
+                        min={1}
+                        max={totalFrames}
+                    />
+                    <div className={classes.wrapper}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            width="100%"
+                            className={buttonClassname}
+                            disabled={isCaching}
+                            onClick={startPrecache}
+                        >
+                            Start Precaching
+                        </Button>
+                        {isCaching && <CircularProgress size={24} className={classes.buttonProgress} />}
+                    </div>
+
+                </div>
+            </Modal>
         </div>
     );
 };
