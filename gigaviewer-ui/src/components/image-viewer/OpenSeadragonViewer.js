@@ -285,9 +285,9 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 const next_button = document.getElementById('next');
                 if (next_button) {
                     next_button.click();
-                    setPlaybackIntervalId(setTimeout(clicker, 1000));
+                    setPlaybackIntervalId(setTimeout(clicker, 333));
                 }
-            }, 1000)
+            }, 333)
         );
     };
 
