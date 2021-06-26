@@ -11,7 +11,7 @@ import {
     Box,
     Button,
     CircularProgress,
-    IconButton, LinearProgress,
+    IconButton, Input, LinearProgress,
     makeStyles,
     Modal,
     Slider,
@@ -29,7 +29,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import CodeIcon from '@material-ui/icons/Code';
-import { green } from '@material-ui/core/colors';
+import {green} from '@material-ui/core/colors';
 import clsx from 'clsx';
 
 
@@ -51,14 +51,14 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         position: 'relative',
         boxSizing: 'border-box'
-    },buttonProgress: {
+    }, buttonProgress: {
         color: green[500],
         position: 'absolute',
         top: '25%',
         left: '25%',
         marginTop: 0,
         marginLeft: 0,
-    },buttonSuccess: {
+    }, buttonSuccess: {
         width: '100%',
         backgroundColor: green[500],
         '&:hover': {
@@ -96,7 +96,6 @@ const PrettoSlider = withStyles({
         opacity: 0.6,
     },
 })(Slider);
-
 
 
 const useKeyPress = (targetKey) => {
@@ -155,6 +154,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     const [open, setOpen] = useState(false);
     const [cacheSliderValue, setCacheSliderValue] = useState(10)
     const [isCaching, setIsCaching] = useState(false);
+    const [playbackSpeed, setPlaybackSpeed] = useState(3);
     // const [isRedirecting, setIsRedirecting] = useState(false);
     const [activeDrags, setActiveDrags] = useState(0);
     const [rightImage, setRightImage] = useState(null);
@@ -181,7 +181,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     useEffect(() => {
         if (sources) {
             if (sources.length > 0) {
-                const tempTotal =sources[0].tileSources.length;
+                const tempTotal = sources[0].tileSources.length;
                 setTotalFrames(tempTotal);
                 setCacheSliderValue(10 > tempTotal ? tempTotal : 10);
                 InitOpenseadragon(sources[0].tileSources);
@@ -280,14 +280,16 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     };
 
     const startPlayback = () => {
+        const delay = 1000 / playbackSpeed;
+
         setPlaybackIntervalId(
             setTimeout(function clicker() {
                 const next_button = document.getElementById('next');
                 if (next_button) {
                     next_button.click();
-                    setPlaybackIntervalId(setTimeout(clicker, 333));
+                    setPlaybackIntervalId(setTimeout(clicker, delay));
                 }
-            }, 333)
+            }, delay)
         );
     };
 
@@ -312,12 +314,12 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     }
 
     useEffect(() => {
-        if (isCaching){
+        if (isCaching) {
             precacheData(cacheSliderValue);
         } else {
             modalClose();
         }
-    },[isCaching])
+    }, [isCaching])
     const buttonClassname = clsx({
         [classes.buttonSuccess]: isCaching,
     });
@@ -338,9 +340,9 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 })
             }
         }
-        if (lastItem === null){
+        if (lastItem === null) {
             setIsCaching(false);
-        }else{
+        } else {
             lastItem.addOnceHandler("fully-loaded-change", () => {
                 setIsCaching(false);
             })
@@ -600,6 +602,29 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                                     {isPlaybackEnabled ? <PlayArrow style={{fontSize: 30}}/> :
                                         <Pause style={{fontSize: 30}}/>}
                                 </IconButton>
+                                <Input
+                                    // className={classes.input}
+                                    value={playbackSpeed}
+                                    margin="dense"
+                                    onChange={(event) => {
+                                        let value = 1;
+                                        if(event.target.value !== ''){
+                                            value = event.target.value;
+                                        }
+                                        if (value > 30){
+                                            value = 30;
+                                        }
+                                        setPlaybackSpeed(value);
+                                    }}
+                                    // onBlur={handleBlur}
+                                    inputProps={{
+                                        step: 1,
+                                        min: 1,
+                                        max: 30,
+                                        type: 'number',
+                                        style: {width: 35}
+                                    }}
+                                />
                                 <IconButton
                                     color="primary"
                                     aria-label="next"
@@ -712,7 +737,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                         >
                             Start Precaching
                         </Button>
-                        {isCaching && <CircularProgress size={24} className={classes.buttonProgress} />}
+                        {isCaching && <CircularProgress size={24} className={classes.buttonProgress}/>}
                     </div>
 
                 </div>
