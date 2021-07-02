@@ -29,6 +29,7 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import PlayArrow from '@material-ui/icons/PlayArrow';
 import Pause from '@material-ui/icons/Pause';
 import CodeIcon from '@material-ui/icons/Code';
+import DetailsIcon from '@material-ui/icons/Details';
 import {green} from '@material-ui/core/colors';
 import clsx from 'clsx';
 
@@ -148,6 +149,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     const [isPlaybackEnabled, setIsPlaybackEnabled] = useState(true);
     const [isSliderEnabled, setIsSliderEnabled] = useState(false);
     const [playbackIntervalId, setPlaybackIntervalId] = useState();
+    const [zoomLevel, setZoomLevel] = useState();
     const [currSliderValue, setCurrSliderValue] = useState(Number(initialFrame));
     const [commitSliderValue, setCommitSliderValue] = useState(0);
     const [modalStyle] = useState(getModalStyle);
@@ -227,6 +229,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
 
     useEffect(() => {
         if (leftPress) {
+
             previousFrame();
         }
     }, [leftPress]);
@@ -278,6 +281,20 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
             viewer.world.getItemAt(nextIndex).setPreload(true);
         }
     };
+
+    const startSlowZoom = () => {
+        const viewport = viewer.viewport;
+        const oldTime = viewport.zoomSpring.animationTime;
+        const oldSpring = viewport.zoomSpring.springStiffness;
+        viewport.zoomSpring.animationTime = 10;
+        viewport.zoomSpring.springStiffness = 1;
+        viewport.zoomTo(viewport.getMaxZoom());
+        const delay = 10000;
+        setTimeout( () => {
+            viewport.zoomSpring.animationTime = oldTime;
+            viewport.zoomSpring.springStiffness = oldSpring;
+        }, delay)
+    }
 
     const startPlayback = () => {
         const delay = 1000 / playbackSpeed;
@@ -486,17 +503,17 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 id: 'openSeaDragon',
                 prefixUrl:
                     'http://cdn.jsdelivr.net/npm/openseadragon@2.3/build/openseadragon/images/',
-                maxZoomPixelRatio: 128,
+                maxZoomPixelRatio: 8,
                 showNavigator: true,
                 maxImageCacheCount: 4096,
                 navigatorPosition: 'TOP_LEFT',
                 loadTilesWithAjax: true,
-                // animationTime: 0.5,
                 // blendTime: 0.1,
                 // maxZoomPixelRatio: 2,
                 // defaultZoomLevel: defaultZoom,
                 // minZoomLevel: 0.2,
                 preload: true,
+                // animation
                 // sequenceMode: true,
                 showSequenceControl: false,
                 // preserveViewport: true,
@@ -651,11 +668,11 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                              justifyContent="left" width="10%">
                             <IconButton
                                 color="primary"
-                                aria-label="default zoom"
+                                aria-label="full screen"
                                 disableRipple={true}
-                                id="home"
+                                id="full-page"
                             >
-                                <ZoomOutMapIcon style={{fontSize: 30}}/>
+                                <FullscreenIcon style={{fontSize: 30}}/>
                             </IconButton>
                             <IconButton
                                 color="primary"
@@ -673,13 +690,22 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                             >
                                 <RemoveCircleOutlineIcon style={{fontSize: 30}}/>
                             </IconButton>
+
                             <IconButton
                                 color="primary"
-                                aria-label="full screen"
+                                aria-label="default zoom"
                                 disableRipple={true}
-                                id="full-page"
+                                id="home"
                             >
-                                <FullscreenIcon style={{fontSize: 30}}/>
+                                <ZoomOutMapIcon style={{fontSize: 30}}/>
+                            </IconButton>
+                            <IconButton
+                                color="primary"
+                                disableRipple={true}
+                                id="max-zoom-in"
+                                onClick={startSlowZoom}
+                            >
+                                <DetailsIcon style={{fontSize: 30}}/>
                             </IconButton>
                         </Box>
                     </Box>
