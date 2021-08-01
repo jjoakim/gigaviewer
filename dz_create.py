@@ -8,8 +8,6 @@ import json
 
 SEARCH_DIR = '/media/Friday/Data_backup/GigaZoom'
 LOG_FILE = '/home/rapiduser/datalog.json'
-INDEX_PATH = '/home/rapiduser/index.html'
-BASE_PATH = '/home/rapiduser/base.js'
 
 def line_prepender(filename, line):
   with open(filename, 'r') as f:
@@ -22,14 +20,13 @@ def create_deepzoom_structure(target_folder):
   with open(os.path.join(target_folder, 'data.json')) as fp:
     metadata = json.load(fp)
   base_folder = metadata['base_folder']
-  if 'group' in metadata:
-    group = metadata['group']
-  else:
-    group = "None"
+  team = metadata['team']
+  project = metadata['project']
+  capture = metadata['capture']
+
   image_paths = [os.path.join(base_folder, f) for f in metadata['files']]
-  data_folder = os.path.join('/home/rapiduser/auto', group, metadata['name'])
-  # assert not os.path.exists(data_folder)
-  os.makedirs(data_folder, exist_ok=True)
+  data_folder = os.path.join('/home/rapiduser/auto', team, project, capture)
+  os.makedirs(data_folder, exist_ok=False)
   tile_size = 256
   output_folders = []
   for image in tqdm.tqdm(image_paths):
@@ -41,14 +38,14 @@ def create_deepzoom_structure(target_folder):
     image_path = image.replace(" ", "\\ ")
     out_path = output_folder.replace(" ", "\\ ")
     command = f'vips dzsave {image_path} {out_path} --suffix .jpg[Q=80]'
-    print(command)
     os.system(command)
-  # shutil.copy2(BASE_PATH, os.path.join(data_folder, 'movie.js'))
-  # shutil.copy2(INDEX_PATH, os.path.join(data_folder, 'index.html'))
-  # tileSources = [os.path.basename(of) + ".dzi" for of in output_folders]
-  # line = "tileSources = " + str(tileSources) + ";"
-  # line_prepender(os.path.join(data_folder, 'movie.js'), line)
-  
+  # make order.json
+  order_path = os.path.join(data_folder, 'order.json')
+  order_data = {
+    'order': [os.path.splitext(os.path.basename(image_path))[0] + '.dzi' for image_path in image_paths]
+  }
+  with open(order_path, 'w') as fp:
+    json.dump(order_data, fp)
 
 if __name__ == "__main__":
   with open(LOG_FILE) as fp:

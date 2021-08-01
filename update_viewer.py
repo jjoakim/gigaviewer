@@ -36,8 +36,10 @@ def make_composite(image_paths):
         composite[150:, 150:] = cv.resize(images[3], (150, 150))
     return composite
 
-def generate_group(base_dir, author='Horstmeyer Lab'):
-    dzi_files = natsorted(glob.glob(os.path.join(base_dir, '*.dzi')))
+def generate_group(base_dir):
+    with open(os.path.join(base_dir, 'order.json')) as fp:
+        order_data = json.load(fp)['order']
+    dzi_files = [os.path.join(base_dir, of) for of in order_data]
     meta_path = os.path.join(base_dir, 'metadata.json')
     if os.path.exists(meta_path):
         with open(meta_path) as fp:
@@ -48,10 +50,6 @@ def generate_group(base_dir, author='Horstmeyer Lab'):
         height = meta['height']
     else:
         height = 0.07424
-    if 'folder' in meta:
-        folder = meta['folder']
-    else:
-        folder = None
     gid = os.path.basename(base_dir)
     if gid == '':
         gid = os.path.basename(os.path.dirname(base_dir))
@@ -59,8 +57,6 @@ def generate_group(base_dir, author='Horstmeyer Lab'):
     title = gid
     source_type = 'Visible'
     idx = 0
-    description = title
-    # thumbnail is the first decent sized image of the first dzi
     thumbnail_folder = os.path.splitext(dzi_files[0])[0] + "_files"
     pyramid_folders = natsorted(glob.glob(os.path.join(thumbnail_folder, '*/')))[::-1]
     # now iterate backwards until there is only a single file in the folder
@@ -73,11 +69,9 @@ def generate_group(base_dir, author='Horstmeyer Lab'):
     group_data = {
         'gid': gid,
         'title': title,
-        'author': author,
         'thumbnailImg': make_url(thumbnail_image),
-        'description': description,
         'idx': idx,
-        'folder': False,
+        'kind': 'capture',
         'height': height,
         'sources': [
             {
@@ -90,39 +84,42 @@ def generate_group(base_dir, author='Horstmeyer Lab'):
     return group_data
 
 if __name__ == "__main__":
-    # get the valid folders
-    valid_folders = [f for f in glob.glob(os.path.join('auto', '*/')) if not any(['dzi' in ff for ff in os.listdir(f)])]
-    print(valid_folders)
-    all_group_data = {}
-    for valid_folder in valid_folders:
-        targets = glob.glob(os.path.join(valid_folder, '*/'))
-        target_name = os.path.basename(valid_folder[:-1])
-        
-        print(target_name)
-        group_list = [generate_group(target) for target in targets]
-        groups = {group['gid'] : group for group in group_list}
-        if target_name == 'None':
-            all_group_data.update(groups)
-        else:
-            folder_data = {'folder': True}
-            folder_data['author'] = 'Horstmeyer Lab'
-            folder_data['description'] = target_name
-            folder_data['title'] = target_name
-            # Making the composite
+    manifest_data = {}
+    # first get the team folders
+    teams = glob.glob(os.path.join('auto', '*/')
+    print("teams: ", teams)
+    manifest_data = {"groups": {}}
+    for team in teams:
+        team_data = {'groups': {}, 'kind': 'team'}
+        team_data['title'] = os.path.basename(team[:-1])
+        # then get the projects
+        projects = glob.glob(os.path.join(team, '*/')
+        print("projects: ", projects)
+        for project in projects:
+            project_data = {'groups': {}}
+            project_name = os.path.basename(project[:-1])
+            project_data['title'] = project_name
+            captures = glob.glob(os.path.join(project, '*/')
+            print("captures: ", captures)
+            for capture in captures:
+                capture_data = generate_group(capture)
+                capture_name = capture_data['title']
+                project_data['groups'][capture_name] = capture_data
+            groups = project_data['groups']
+            # make the composite image for the project
             target_image_paths = [get_path_from_url(group['thumbnailImg']) for group in groups.values()]
             composite_image = make_composite(target_image_paths)
-            thumb_img_path = os.path.join('auto', f'{target_name}-thumbnail.jpg').replace(' ', '-')
+            thumb_img_path = os.path.join(project, f'{project_name}-thumbnail.jpg').replace(' ', '-')
             cv.imwrite(thumb_img_path, composite_image)
-            folder_data['thumbnailImg'] = make_url(thumb_img_path)
-            folder_data['groups'] = groups
-            all_group_data[target_name] = folder_data
+            project_data['thumbnailImg'] = make_url(thumb_img_path)
+            team_data['groups'][project_name] = project_data
+        # lazily grabbing the last thumbnail image
+        team_data['thumbnailImg'] = thumb_img_path
+        manifest_data['groups'][team_data['title']] = team_data
 
-    json_data = {
-        "groups": all_group_data
-    }
     with open('image_manifest.json', 'w') as fp:
-        json.dump(json_data, fp)
-        
+        json.dump(manifest_data, fp)
+
     shutil.copy2('image_manifest.json', '/home/rapiduser/gigaviewer/gigaviewer-ui/src/components/image-viewer/imageMetadata.json')
     os.system('yarn --cwd /home/rapiduser/gigaviewer/gigaviewer-ui/ build')
     copy_tree('/home/rapiduser/gigaviewer/gigaviewer-ui/build/', '/var/www/html/')

@@ -1,15 +1,11 @@
 {
   "groups": {
     "MCAM Technical": {
-      "author": "Horstmeyer Lab",
-      "description": "MCAM",
       "title": "MCAM",
       "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/thumbnail.jpg",
       "kind": "team",
       "groups": {
         "MCAM": {
-          "author": "Horstmeyer Lab",
-          "description": "MCAM",
           "title": "MCAM",
           "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/thumbnail.jpg",
           "kind": "project",
@@ -17,9 +13,7 @@
             "tortilla": {
               "gid": "tortilla",
               "title": "tortilla",
-              "author": "Horstmeyer Lab",
               "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
-              "description": "tortilla",
               "idx": 0,
               "kind": "capture",
               "height": 0.07424,

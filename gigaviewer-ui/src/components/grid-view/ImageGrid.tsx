@@ -125,16 +125,7 @@ const ImageGrid = (props: any) => {
                                     <img src={gridData.groups[item].thumbnailImg} alt={gridData.groups[item].title}/>
                                     <GridListTileBar
                                         title={gridData.groups[item].title}
-                                        subtitle={<span> by: {gridData.groups[item].author}</span>}
-                                        actionIcon={
-                                            <IconButton
-                                                aria-label={`info about ${gridData.groups[item].title}`}
-                                                className={classes.icon}
-                                                onClick={consoleIcon}
-                                            >
-                                                <InfoIcon/>
-                                            </IconButton>
-                                        }
+
                                     />
                                 </GridListTile>
                             ))}
