@@ -19,6 +19,7 @@ import {
     withStyles,
 } from '@material-ui/core';
 
+import RotateRightIcon from '@material-ui/icons/RotateRight';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
@@ -290,7 +291,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
         viewport.zoomSpring.springStiffness = 1;
         viewport.zoomTo(viewport.getMaxZoom());
         const delay = 10000;
-        setTimeout( () => {
+        setTimeout(() => {
             viewport.zoomSpring.animationTime = oldTime;
             viewport.zoomSpring.springStiffness = oldSpring;
         }, delay)
@@ -508,26 +509,15 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 maxImageCacheCount: 4096,
                 navigatorPosition: 'TOP_LEFT',
                 loadTilesWithAjax: true,
-                // blendTime: 0.1,
-                // maxZoomPixelRatio: 2,
-                // defaultZoomLevel: defaultZoom,
-                // minZoomLevel: 0.2,
                 preload: true,
-                // animation
-                // sequenceMode: true,
                 showSequenceControl: false,
-                // preserveViewport: true,
-                // visibilityRatio: 0.5,
-                // zoomPerScroll: 1.1,
+                showRotationControl: true,
+                rotateRightButton: 'rotate-right',
                 zoomInButton: 'zoom-in',
                 zoomOutButton: 'zoom-out',
                 homeButton: 'home',
                 fullPageButton: 'full-page',
-                // showNavigator: true,
-                // navigatorPosition: "TOP_LEFT",
                 preserveViewport: true,
-                // nextButton: 'next',
-                // previousButton: 'previous',
             })
         );
 
@@ -625,10 +615,10 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                                     margin="dense"
                                     onChange={(event) => {
                                         let value = 1;
-                                        if(event.target.value !== ''){
+                                        if (event.target.value !== '') {
                                             value = event.target.value;
                                         }
-                                        if (value > 30){
+                                        if (value > 30) {
                                             value = 30;
                                         }
                                         setPlaybackSpeed(value);
@@ -666,6 +656,14 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                         </div>}
                         <Box display="flex" style={{float: "right"}} flexDirection="column" alignContent="flex-end"
                              justifyContent="left" width="10%">
+                            <IconButton
+                                color="primary"
+                                aria-label="rotate right"
+                                disableRipple={true}
+                                id="rotate-right"
+                            >
+                                <RotateRightIcon style={{fontSize: 30}}/>
+                            </IconButton>
                             <IconButton
                                 color="primary"
                                 aria-label="full screen"

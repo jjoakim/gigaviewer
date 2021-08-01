@@ -1,774 +1,603 @@
 {
   "groups": {
-    "MCAM": {
-      "folder": true,
+    "MCAM Technical": {
       "author": "Horstmeyer Lab",
       "description": "MCAM",
       "title": "MCAM",
       "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/thumbnail.jpg",
+      "kind": "team",
       "groups": {
-        "collard_green": {
-          "gid": "collard_green",
-          "title": "collard_green",
+        "MCAM": {
           "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/collard_green/Collard_Green_1_files/9/0_0.jpg",
-          "description": "collard_green",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/collard_green/Collard_Green_1.dzi"
+          "description": "MCAM",
+          "title": "MCAM",
+          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/thumbnail.jpg",
+          "kind": "project",
+          "groups": {
+            "tortilla": {
+              "gid": "tortilla",
+              "title": "tortilla",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
+              "description": "tortilla",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_ref_try1.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_trans_try1.dzi"
+                  ]
+                }
+              ]
+            },
+            "swiss_cheese": {
+              "gid": "swiss_cheese",
+              "title": "swiss_cheese",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/swiss_cheese/SwissCheese_ref_try1_files/9/0_0.jpg",
+              "description": "swiss_cheese",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/swiss_cheese/SwissCheese_ref_try1.dzi"
+                  ]
+                }
+              ]
+            },
+            "H_and_E_stained_ham": {
+              "gid": "H_and_E_stained_ham",
+              "title": "H_and_E_stained_ham",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/H_and_E_stained_ham/H&E_Stained_Ham_files/9/0_0.jpg",
+              "description": "H_and_E_stained_ham",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/H_and_E_stained_ham/H&E_Stained_Ham.dzi"
+                  ]
+                }
+              ]
+            },
+            "record": {
+              "gid": "record",
+              "title": "record",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/record/Record_ref_try1_files/9/0_0.jpg",
+              "description": "record",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/record/Record_ref_try1.dzi"
+                  ]
+                }
+              ]
+            },
+            "steak_ham": {
+              "gid": "steak_ham",
+              "title": "steak_ham",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/steak_ham/Steak_Ham_ref_try1_files/9/0_0.jpg",
+              "description": "steak_ham",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/steak_ham/Steak_Ham_ref_try1.dzi"
+                  ]
+                }
+              ]
+            },
+
+            "mustard_green": {
+              "gid": "mustard_green",
+              "title": "mustard_green",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/mustard_green/Mustard_Green_ref_files/9/0_0.jpg",
+              "description": "mustard_green",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/mustard_green/Mustard_Green_ref.dzi"
+                  ]
+                }
+              ]
+            },
+            "painted_leaf": {
+              "gid": "painted_leaf",
+              "title": "painted_leaf",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/painted_leaf/Painted_Leaf_ref_try2_files/9/0_0.jpg",
+              "description": "painted_leaf",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/painted_leaf/Painted_Leaf_ref_try2.dzi"
+                  ]
+                }
+              ]
+            },
+            "chopping_board": {
+              "gid": "chopping_board",
+              "title": "chopping_board",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/chopping_board/ChoppingBoard_ref_try1_files/9/0_0.jpg",
+              "description": "chopping_board",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/chopping_board/ChoppingBoard_ref_try1.dzi"
+                  ]
+                }
+              ]
+            },
+            "leaves_and_lillies": {
+              "gid": "leaves_and_lillies",
+              "title": "leaves_and_lillies",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Back_files/9/0_0.jpg",
+              "description": "leaves_and_lillies",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Back.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Front.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Red_lilies.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Red_lilly_1.dzi"
+                  ]
+                }
               ]
             }
-          ]
+          }
         },
-        "tortilla": {
-          "gid": "tortilla",
-          "title": "tortilla",
+        "MCAM-3D": {
           "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_ref_try1_files/9/0_0.jpg",
-          "description": "tortilla",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_ref_try1.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM/tortilla/Tortilla_trans_try1.dzi"
+          "description": "MCAM-3D",
+          "title": "MCAM-3D",
+          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/thumbnail.jpg",
+          "kind": "project",
+          "groups": {
+            "butterfly_3d": {
+              "gid": "butterfly_3d",
+              "title": "butterfly_3d",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/height_map_060120_files/9/0_0.jpg",
+              "description": "butterfly_3d",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/height_map_060120.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/stitched_with_height_060120.dzi"
+                  ]
+                }
+              ]
+            },
+            "leaf_3d": {
+              "gid": "leaf_3d",
+              "title": "leaf_3d",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/height_map_060620_files/9/0_0.jpg",
+              "description": "leaf_3d",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/height_map_060620.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/stitched_with_height_060620.dzi"
+                  ]
+                }
+              ]
+            },
+            "painting_3d_v2": {
+              "gid": "painting_3d_v2",
+              "title": "painting_3d_v2",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/height_map_060320_files/9/0_0.jpg",
+              "description": "painting_3d_v2",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/height_map_060320.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/stitched_with_height_060320.dzi"
+                  ]
+                }
               ]
             }
-          ]
-        },
-        "swiss_cheese": {
-          "gid": "swiss_cheese",
-          "title": "swiss_cheese",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/swiss_cheese/SwissCheese_ref_try1_files/9/0_0.jpg",
-          "description": "swiss_cheese",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/swiss_cheese/SwissCheese_ref_try1.dzi"
-              ]
-            }
-          ]
-        },
-        "H_and_E_stained_ham": {
-          "gid": "H_and_E_stained_ham",
-          "title": "H_and_E_stained_ham",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/H_and_E_stained_ham/H&E_Stained_Ham_files/9/0_0.jpg",
-          "description": "H_and_E_stained_ham",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/H_and_E_stained_ham/H&E_Stained_Ham.dzi"
-              ]
-            }
-          ]
-        },
-        "record": {
-          "gid": "record",
-          "title": "record",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/record/Record_ref_try1_files/9/0_0.jpg",
-          "description": "record",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/record/Record_ref_try1.dzi"
-              ]
-            }
-          ]
-        },
-        "steak_ham": {
-          "gid": "steak_ham",
-          "title": "steak_ham",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/steak_ham/Steak_Ham_ref_try1_files/9/0_0.jpg",
-          "description": "steak_ham",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/steak_ham/Steak_Ham_ref_try1.dzi"
-              ]
-            }
-          ]
-        },
-        "large_leaf": {
-          "gid": "large_leaf",
-          "title": "large_leaf",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/large_leaf/LargeLeaf_ref_try1_files/9/0_0.jpg",
-          "description": "large_leaf",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/large_leaf/LargeLeaf_ref_try1.dzi"
-              ]
-            }
-          ]
-        },
-        "mustard_green": {
-          "gid": "mustard_green",
-          "title": "mustard_green",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/mustard_green/Mustard_Green_ref_files/9/0_0.jpg",
-          "description": "mustard_green",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/mustard_green/Mustard_Green_ref.dzi"
-              ]
-            }
-          ]
-        },
-        "painted_leaf": {
-          "gid": "painted_leaf",
-          "title": "painted_leaf",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/painted_leaf/Painted_Leaf_ref_try2_files/9/0_0.jpg",
-          "description": "painted_leaf",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/painted_leaf/Painted_Leaf_ref_try2.dzi"
-              ]
-            }
-          ]
-        },
-        "chopping_board": {
-          "gid": "chopping_board",
-          "title": "chopping_board",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/chopping_board/ChoppingBoard_ref_try1_files/9/0_0.jpg",
-          "description": "chopping_board",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/chopping_board/ChoppingBoard_ref_try1.dzi"
-              ]
-            }
-          ]
-        },
-        "leaves_and_lillies": {
-          "gid": "leaves_and_lillies",
-          "title": "leaves_and_lillies",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Back_files/9/0_0.jpg",
-          "description": "leaves_and_lillies",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Back.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Leaf_Front.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Red_lilies.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM/leaves_and_lillies/Red_lilly_1.dzi"
-              ]
-            }
-          ]
-        },
-        "large_led_board": {
-          "gid": "large_led_board",
-          "title": "large_led_board",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM/large_led_board/large_ledboard_ref_try1_files/9/0_0.jpg",
-          "description": "large_led_board",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM/large_led_board/large_ledboard_ref_try1.dzi"
-              ]
-            }
-          ]
+          }
         }
       }
     },
-    "MCAM-3D": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "MCAM-3D",
-      "title": "MCAM-3D",
-      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/thumbnail.jpg",
-      "groups": {
-        "butterfly_3d": {
-          "gid": "butterfly_3d",
-          "title": "butterfly_3d",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/height_map_060120_files/9/0_0.jpg",
-          "description": "butterfly_3d",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/height_map_060120.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/butterfly_3d/stitched_with_height_060120.dzi"
-              ]
-            }
-          ]
-        },
-        "leaf_3d": {
-          "gid": "leaf_3d",
-          "title": "leaf_3d",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/height_map_060620_files/9/0_0.jpg",
-          "description": "leaf_3d",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/height_map_060620.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/leaf_3d/stitched_with_height_060620.dzi"
-              ]
-            }
-          ]
-        },
-        "painting_3d_v2": {
-          "gid": "painting_3d_v2",
-          "title": "painting_3d_v2",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/height_map_060320_files/9/0_0.jpg",
-          "description": "painting_3d_v2",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/height_map_060320.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-3D/painting_3d_v2/stitched_with_height_060320.dzi"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "Falcon": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "Falcon",
-      "title": "Falcon",
-      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Falcon/thumbnail.jpg",
-      "groups": {
-        "Falcon-Target": {
-          "gid": "Falcon-Target",
-          "title": "Falcon-Target",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Falcon/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020_files/9/0_0.jpg",
-          "description": "Falcon-Target",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Falcon/Falcon-Target/usaf_target_100ms_20201120_163634_914_stitched_12012020.dzi"
-              ]
-            }
-          ]
-        },
-        "wellplate": {
-          "gid": "wellplate",
-          "title": "wellplate",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Falcon/wellplate/zf_wellplate_stitched_files/9/0_0.jpg",
-          "description": "wellplate",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Falcon/wellplate/zf_wellplate_stitched.dzi"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "Eagle": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "Eagle",
-      "title": "Eagle",
-      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Eagle/thumbnail.jpg",
-      "groups": {
-        "eagle_blood": {
-          "gid": "eagle_blood",
-          "title": "eagle_blood",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Eagle/eagle_blood/out_files/8/0_0.jpeg",
-          "description": "eagle_blood",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Eagle/eagle_blood/out.dzi"
-              ]
-            }
-          ]
-        },
-        "Eagle Macaque 26Db-M20-02": {
-          "gid": "Eagle Macaque 26Db-M20-02",
-          "title": "Eagle Macaque 26Db-M20-02",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Eagle/Eagle Macaque 26Db-M20-02/26Db-M20-02_final_tiled_files/8/0_0.jpg",
-          "description": "Eagle Macaque 26Db-M20-02",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Eagle/Eagle Macaque 26Db-M20-02/26Db-M20-02_final_tiled.dzi"
-              ]
-            }
-          ]
-        },
-        "Eagle Pathology Slide": {
-          "gid": "Eagle Pathology Slide",
-          "title": "Eagle Pathology Slide",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Eagle/Eagle Pathology Slide/patslides_final_tiled_files/8/0_0.jpeg",
-          "description": "Eagle Pathology Slide",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Eagle/Eagle Pathology Slide/patslides_final_tiled.dzi"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "MCAM-Bio": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "MCAM-Bio",
-      "title": "MCAM-Bio",
+    "MCAM Neuro": {
+      "author": "collaboration!",
+      "description": "neuroscience",
+      "title": "MCAM Neuro",
       "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/thumbnail.jpg",
+      "kind": "team",
       "groups": {
-        "1_31_giga": {
-          "gid": "1_31_giga",
-          "title": "1_31_giga",
+        "MCAM-Bio": {
           "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0000_files/9/0_0.jpg",
-          "description": "1_31_giga",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0000.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0001.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0002.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0003.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0004.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0005.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0006.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0007.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0008.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0009.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0010.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0011.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0012.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0013.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0014.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0015.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0016.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0017.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0018.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0019.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0020.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0021.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0022.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0023.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0024.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0025.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0026.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0027.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0028.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0029.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0030.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0031.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0032.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0033.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0034.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0035.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0036.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0037.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0038.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0039.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0040.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0041.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0042.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0043.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0044.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0045.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0046.dzi"
+          "description": "MCAM-Bio",
+          "title": "MCAM-Bio",
+          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/thumbnail.jpg",
+          "kind": "project",
+          "groups": {
+            "1_31_giga": {
+              "gid": "1_31_giga",
+              "title": "1_31_giga",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0000_files/9/0_0.jpg",
+              "description": "1_31_giga",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0000.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0001.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0002.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0003.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0004.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0005.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0006.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0007.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0008.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0009.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0010.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0011.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0012.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0013.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0014.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0015.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0016.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0017.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0018.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0019.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0020.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0021.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0022.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0023.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0024.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0025.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0026.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0027.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0028.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0029.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0030.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0031.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0032.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0033.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0034.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0035.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0036.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0037.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0038.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0039.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0040.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0041.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0042.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0043.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0044.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0045.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/1_31_giga/movie1_stitched_0046.dzi"
+                  ]
+                }
+              ]
+            },
+            "6_28_giga": {
+              "gid": "6_28_giga",
+              "title": "6_28_giga",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0000_files/9/0_0.jpg",
+              "description": "6_28_giga",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0000.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0001.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0002.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0003.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0004.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0005.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0006.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0007.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0008.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0009.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0010.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0011.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0012.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0013.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0014.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0015.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0016.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0017.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0018.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0019.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0020.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0021.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0022.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0023.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0024.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0025.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0026.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0027.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0028.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0029.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0030.dzi"
+                  ]
+                }
+              ]
+            },
+            "c_elegans": {
+              "gid": "c_elegans",
+              "title": "c_elegans",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0000_files/9/0_0.jpg",
+              "description": "c_elegans",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0000.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0001.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0002.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0003.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0004.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0005.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0006.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0007.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0008.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0009.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0010.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0011.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0012.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0013.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0014.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0015.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0016.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0017.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0018.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0019.dzi"
+                  ]
+                }
+              ]
+            },
+            "maze": {
+              "gid": "maze",
+              "title": "maze",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0000_files/9/0_0.jpg",
+              "description": "maze",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0000.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0005.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0010.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0015.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0020.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0025.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0030.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0035.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0040.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0045.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0050.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0055.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0060.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0065.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0070.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0075.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0080.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0085.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0090.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0095.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0100.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0105.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0110.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0115.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0120.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0125.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0130.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0135.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0140.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0145.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0150.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0155.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0160.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0165.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0170.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0175.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0180.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0185.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0190.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0195.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0200.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0205.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0210.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0215.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0220.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0225.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0230.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0235.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0240.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0245.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0250.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0255.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0260.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0265.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0270.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0275.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0280.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0285.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0290.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0295.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0300.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0305.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0310.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0315.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0320.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0325.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0330.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0335.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0340.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0345.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0350.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0355.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0360.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0365.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0370.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0375.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0380.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0385.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0390.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0395.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0400.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0405.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0410.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0415.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0420.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0425.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0430.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0435.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0440.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0445.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0450.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0455.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0460.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0465.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0470.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0475.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0480.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0485.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0490.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0495.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0500.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0505.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0510.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0515.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0520.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0525.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0530.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0535.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0540.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0545.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0550.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0555.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0560.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0565.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0570.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0575.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0580.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0585.dzi"
+                  ]
+                }
+              ]
+            },
+            "long_zebra": {
+              "gid": "long_zebra",
+              "title": "long_zebra",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0000_files/8/0_0.jpg",
+              "description": "long_zebra",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0000.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0001.dzi"
+                  ]
+                }
               ]
             }
-          ]
+          }
         },
-        "6_28_giga": {
-          "gid": "6_28_giga",
-          "title": "6_28_giga",
+        "Portable Microscope": {
           "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0000_files/9/0_0.jpg",
-          "description": "6_28_giga",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0000.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0001.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0002.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0003.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0004.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0005.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0006.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0007.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0008.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0009.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0010.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0011.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0012.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0013.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0014.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0015.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0016.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0017.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0018.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0019.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0020.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0021.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0022.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0023.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0024.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0025.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0026.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0027.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0028.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0029.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/6_28_giga/movie0_stitched_0030.dzi"
+          "description": "Portable Microscope",
+          "title": "Portable Microscope",
+          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Portable Microscope/thumbnail.jpg",
+          "kind": "project",
+          "groups": {
+            "Portable microscope test images with 40X objective": {
+              "gid": "Portable microscope test images with 40X objective",
+              "title": "Portable microscope test images with 40X objective",
+              "author": "Horstmeyer Lab",
+              "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-0_files/8/0_0.jpg",
+              "description": "Portable microscope test images with 40X objective",
+              "idx": 0,
+              "kind": "capture",
+              "height": 0.07424,
+              "sources": [
+                {
+                  "type": "Visible",
+                  "tileSources": [
+                    "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-0.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-1.dzi",
+                    "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-2.dzi"
+                  ]
+                }
               ]
             }
-          ]
-        },
-        "c_elegans": {
-          "gid": "c_elegans",
-          "title": "c_elegans",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0000_files/9/0_0.jpg",
-          "description": "c_elegans",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0000.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0001.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0002.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0003.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0004.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0005.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0006.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0007.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0008.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0009.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0010.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0011.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0012.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0013.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0014.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0015.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0016.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0017.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0018.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/c_elegans/movie0_stitched_0019.dzi"
-              ]
-            }
-          ]
-        },
-        "maze": {
-          "gid": "maze",
-          "title": "maze",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0000_files/9/0_0.jpg",
-          "description": "maze",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0000.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0005.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0010.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0015.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0020.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0025.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0030.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0035.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0040.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0045.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0050.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0055.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0060.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0065.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0070.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0075.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0080.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0085.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0090.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0095.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0100.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0105.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0110.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0115.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0120.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0125.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0130.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0135.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0140.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0145.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0150.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0155.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0160.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0165.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0170.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0175.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0180.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0185.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0190.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0195.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0200.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0205.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0210.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0215.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0220.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0225.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0230.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0235.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0240.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0245.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0250.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0255.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0260.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0265.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0270.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0275.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0280.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0285.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0290.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0295.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0300.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0305.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0310.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0315.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0320.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0325.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0330.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0335.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0340.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0345.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0350.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0355.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0360.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0365.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0370.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0375.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0380.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0385.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0390.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0395.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0400.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0405.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0410.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0415.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0420.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0425.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0430.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0435.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0440.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0445.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0450.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0455.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0460.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0465.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0470.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0475.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0480.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0485.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0490.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0495.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0500.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0505.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0510.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0515.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0520.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0525.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0530.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0535.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0540.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0545.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0550.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0555.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0560.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0565.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0570.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0575.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0580.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/maze/stitched_0585.dzi"
-              ]
-            }
-          ]
-        },
-        "long_zebra": {
-          "gid": "long_zebra",
-          "title": "long_zebra",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0000_files/8/0_0.jpg",
-          "description": "long_zebra",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0000.dzi",
-                "https://gigazoom.rc.duke.edu/auto/MCAM-Bio/long_zebra/gigahour_stitched_0001.dzi"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "Polarization": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "Polarization",
-      "title": "Polarization",
-      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Polarization/thumbnail.jpg",
-      "groups": {
-        "Polarization Scan Test": {
-          "gid": "Polarization Scan Test",
-          "title": "Polarization Scan Test",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Polarization/Polarization Scan Test/giga_1_files/8/0_0.jpg",
-          "description": "Polarization Scan Test",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Polarization/Polarization Scan Test/giga_1.dzi",
-                "https://gigazoom.rc.duke.edu/auto/Polarization/Polarization Scan Test/giga_2.dzi"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "Portable Microscope": {
-      "folder": true,
-      "author": "Horstmeyer Lab",
-      "description": "Portable Microscope",
-      "title": "Portable Microscope",
-      "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Portable Microscope/thumbnail.jpg",
-      "groups": {
-        "Portable microscope test images with 40X objective": {
-          "gid": "Portable microscope test images with 40X objective",
-          "title": "Portable microscope test images with 40X objective",
-          "author": "Horstmeyer Lab",
-          "thumbnailImg": "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-0_files/8/0_0.jpg",
-          "description": "Portable microscope test images with 40X objective",
-          "idx": 0,
-          "folder": false,
-          "height": 0.07424,
-          "sources": [
-            {
-              "type": "Visible",
-              "tileSources": [
-                "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-0.dzi",
-                "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-1.dzi",
-                "https://gigazoom.rc.duke.edu/auto/Portable Microscope/Portable microscope test images with 40X objective/40x-test-2.dzi"
-              ]
-            }
-          ]
+          }
         }
       }
     }

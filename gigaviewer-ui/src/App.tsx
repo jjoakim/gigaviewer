@@ -20,37 +20,25 @@ const App = () => {
                 <Route
                     exact path="/"
                     children={<RenderBrowser/>}/>
-                {/*Folder Page*/}
+                {/*Render image*/}
                 <Route
-                    path="/folder/:folderId"
-                    children={<RenderFolderBrowser/>}
+                    path="/viewer/:teamId/:projectId/:captureId/:frameId"
+                    children={<RenderViewer/>}
                 />
-                {/*Render image from folder*/}
+                {/*Render a single Project*/}
                 <Route
-                    path="/viewer/:folderId/:groupId/:frame"
-                    children={<RenderViewerFolder/>}
+                    path="/team/:teamId/:projectId"
+                    children={<RenderProjectBrowser/>}
                 />
-                {/*Render image not in a folder*/}
+                {/*Render a single Team*/}
                 <Route
-                    path="/viewer/:groupId/:frame"
-                    children={<RenderViewerSingle/>}
+                    path="/team/:teamId"
+                    children={<RenderTeamBrowser/>}
                 />
-
             </Switch>
         </div>
     );
 };
-
-
-function RenderFolderBrowser(){
-    const {folderId} = useParams();
-    const folderMap = new Map(Object.entries(data.groups));
-    return (
-        <div>
-            <Grid folderId={folderId} gridData={folderMap.get(folderId)}/>
-        </div>
-    );
-}
 
 
 function RenderBrowser(){
@@ -61,34 +49,51 @@ function RenderBrowser(){
     );
 }
 
-// Rendering a viewer thats not in a folder
-function RenderViewerSingle() {
-    let groupMap = new Map(Object.entries(data.groups));
-    let {groupId, frame} = useParams();
-    // @ts-ignore
-    const groupData = groupMap.get(groupId);
-    return RenderViewer(groupData, frame);
-}
-
-// Code duplication to deal with folders....
-function RenderViewerFolder() {
-    const folderMap = new Map(Object.entries(data.groups));
-    const {folderId, groupId, frame} = useParams();
-    // @ts-ignore
-    const groupMap = new Map(Object.entries(folderMap.get(folderId).groups));
-    // @ts-ignore
-    const groupData = groupMap.get(groupId);
-    return RenderViewer(groupData, frame);
-}
-
-function RenderViewer(groupData: any, frame: number) {
-    const imageSources = groupData.sources;
-    // @ts-ignore
-    const title = groupData.title;
-    // @ts-ignore
-    const height = groupData.hasOwnProperty("height") ? groupData.height : 0;
+function RenderTeamBrowser(){
+    console.log("render team");
+    const {teamId} = useParams();
+    const teamMap = new Map(Object.entries(data.groups));
     return (
-        <Viewer imageSources={imageSources} title={title} height={height} idx={frame}/>
+        <div>
+            <Grid teamId={teamId} gridData={teamMap.get(teamId)}/>
+        </div>
+    );
+}
+
+function RenderProjectBrowser(){
+    const {teamId, projectId} = useParams();
+    const teamMap = new Map(Object.entries(data.groups));
+    const teamData = teamMap.get(teamId);
+    // @ts-ignore
+    const projectMap = new Map(Object.entries(teamData.groups));
+    return (
+        <div>
+            <Grid teamId={teamId} projectId={projectId} gridData={projectMap.get(projectId)}/>
+        </div>
+    );
+}
+
+function RenderViewer() {
+    const {teamId, projectId, captureId, frameId} = useParams();
+
+    const teamMap = new Map(Object.entries(data.groups));
+    const teamData = teamMap.get(teamId);
+    // @ts-ignore
+    const projectMap = new Map(Object.entries(teamData.groups));
+    const projectData = projectMap.get(projectId);
+    // @ts-ignore
+    const captureMap = new Map(Object.entries(projectData.groups));
+    const captureData = captureMap.get(captureId);
+
+    // @ts-ignore
+    const imageSources = captureData.sources;
+    const frameNumber = parseInt(frameId);
+    // @ts-ignore
+    const title = captureData.title;
+    // @ts-ignore
+    const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
+    return (
+        <Viewer imageSources={imageSources} title={title} height={height} idx={frameNumber}/>
     );
 }
 
