@@ -9,8 +9,6 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 
 import {makeStyles} from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -46,9 +44,6 @@ const ImageGrid = (props: any) => {
     const [frameNumber, setFrameNumber] = useState(0);
     const [redirect, setRedirect] = useState(false);
 
-    function consoleIcon(e: any) {
-        e.stopPropagation();
-    }
 
     const renderGrid = (tile: any, tile_id: string) => {
         const tile_kind: string = tile.kind
