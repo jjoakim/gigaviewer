@@ -60,14 +60,16 @@ const ImageGrid = (props: any) => {
             console.log('project id', "N/A");
         } else if (tile_kind === 'project') {
             // grab team id from the URL (first param)
-            const tid =window.location.pathname.split('/')[2]
+            const path = window.location.pathname.split('/');
+            const tid = path[path.length-1];
             setTeamId(tid)
             setProjectId(tile_id)
             console.log("team id", tid)
             console.log('project id', tile_id);
         } else if (tile_kind === 'capture') {
-            const tid = window.location.pathname.split('/')[2]
-            const pid = window.location.pathname.split('/')[3]
+            const path = window.location.pathname.split('/');
+            const tid = path[path.length-2];
+            const pid = path[path.length-1];
             setTeamId(tid);
             setProjectId(pid);
             setCaptureId(tile_id);
