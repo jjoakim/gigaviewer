@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-import {Home, Viewer} from './pages';
+import {Viewer} from './pages';
 import {TopNavbar} from './components/top-navbar';
 import {Route, Switch, useParams} from 'react-router-dom';
 import { ImageGrid as Grid } from 'components/grid-view';
-
+import url from "url.js"
 
 import './App.css';
 
-import data from 'components/image-viewer/imageMetadata.json';
-
+const data_path = url + "/imageMetadata.json"
+let data = null;
 
 const App = () => {
+    const [is_data, setData] = useState();
+
+    if ( ! is_data)
+    {
+      fetch(data_path).then( async (response) => {
+        data = await response.json();
+        setData(true);
+      });
+      return "Loading";
+    }
+
     return (
         <div className="App">
             <TopNavbar/>
