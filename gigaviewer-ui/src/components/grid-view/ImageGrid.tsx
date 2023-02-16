@@ -12,6 +12,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
+import url from "url.js"
+
 const useStyles = makeStyles((theme) => ({
     container: {
         marginLeft: '1vw',
@@ -45,6 +47,20 @@ const ImageGrid = (props: any) => {
     const [captureId, setCaptureId] = useState('');
     const [frameNumber, setFrameNumber] = useState(0);
     const [redirect, setRedirect] = useState(false);
+
+    function getPath(key: string)
+    {
+      const item = gridData.groups[key];
+      const pathname = window.location.pathname;
+      let path = `${pathname}/${key}/${item.thumbnailImg}`;
+
+      if (path.startsWith("/team/"))
+        path = url + path.replace("/team/", "/auto/");
+      else
+        path = url + "/auto" + path;
+      
+      return path;
+    }
 
     function consoleIcon(e: any) {
         e.stopPropagation();
@@ -124,7 +140,7 @@ const ImageGrid = (props: any) => {
                                         renderGrid(gridData.groups[item], item);
                                     }}
                                 >
-                                    <img src={gridData.groups[item].thumbnailImg} alt={gridData.groups[item].title}/>
+                                    <img src={getPath(item)} alt={gridData.groups[item].title}/>
                                     <GridListTileBar
                                         title={gridData.groups[item].title}
 

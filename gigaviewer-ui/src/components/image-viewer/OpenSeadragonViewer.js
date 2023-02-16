@@ -6,6 +6,7 @@ import '@openseadragon-imaging/openseadragon-imaginghelper';
 
 import {getScalebarSizeAndTextForMetric} from './utils';
 import Draggable from 'react-draggable';
+import url from "url.js"
 
 import {
     Box,
@@ -181,13 +182,26 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
     const leftBound = new OpenSeaDragon.Point(0, 0);
     const rightBound = new OpenSeaDragon.Point(13000, 0);
 
+    function getPath(tileSources)
+    {
+        let pathname = window.location.pathname;
+        pathname = pathname.slice(0, pathname.lastIndexOf('/'));
+        pathname = pathname.replace("/viewer/", "/auto/")
+
+        if ( Array.isArray(tileSources) )
+          return tileSources.map( val => `${url}${pathname}/${val}` );
+        else
+          return [`${url}${pathname}/${tileSources}`];
+    }
+
     useEffect(() => {
         if (sources) {
             if (sources.length > 0) {
                 const tempTotal = sources[0].tileSources.length;
                 setTotalFrames(tempTotal);
                 setCacheSliderValue(10 > tempTotal ? tempTotal : 10);
-                InitOpenseadragon(sources[0].tileSources);
+
+                InitOpenseadragon( getPath(sources[0].tileSources) );
                 setFrameAtIndex(0, 0, sources[0].tileSources.length);
             }
             resizeWindow();
