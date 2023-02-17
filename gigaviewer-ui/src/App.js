@@ -27,10 +27,6 @@ const App = () => {
         <div className="App">
             <TopNavbar/>
             <Switch>
-                {/*Home Page*/}
-                <Route
-                    exact path="/"
-                    children={<RenderBrowser/>}/>
                 {/*Render image*/}
                 <Route
                     path="/viewer/:teamId/:projectId/:captureId/:frameId"
@@ -46,6 +42,10 @@ const App = () => {
                     path="/team/:teamId"
                     children={<RenderTeamBrowser/>}
                 />
+                {/*Home Page*/}
+                <Route
+                    path="/"
+                    children={<RenderBrowser/>}/>
             </Switch>
         </div>
     );

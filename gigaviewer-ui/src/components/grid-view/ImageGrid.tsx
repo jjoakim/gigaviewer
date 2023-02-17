@@ -55,11 +55,11 @@ const ImageGrid = (props: any) => {
 
       let path = `${pathname}/${key}/${item.thumbnailImg}`;
 
-      console.log({pathname, key, item, path}, path.replace("/team/", "/auto/"));
+      console.log({pathname, key, item, path});
 
       if (path.startsWith("/team/"))
       {
-        path = path.replace("/team/", "/auto/");
+        // path = path.replace("team/", "auto/");
         console.log("path", path)
         path = url + url_orig + path.replace("/team/", "/auto/");
       }
