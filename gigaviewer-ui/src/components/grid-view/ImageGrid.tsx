@@ -51,13 +51,14 @@ const ImageGrid = (props: any) => {
     function getPath(key: string)
     {
       const item = gridData.groups[key];
-      const pathname = window.location.pathname;
+      const pathname = window.location.pathname.slice(0, window.base_url.length);
+
       let path = `${pathname}/${key}/${item.thumbnailImg}`;
 
-      if (path.startsWith("/team/"))
-        path = url + path.replace("/team/", "/auto/");
+      if (path.startsWith("team/"))
+        path = url + window.base_url + path.replace("/team/", "/auto/");
       else
-        path = url + "/auto" + path;
+        path = url + window.base_url + "auto" + path;
       
       return path;
     }

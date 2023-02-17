@@ -184,14 +184,14 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
 
     function getPath(tileSources)
     {
-        let pathname = window.location.pathname;
+        let pathname = window.location.pathname.slice(0, window.base_url.length);
         pathname = pathname.slice(0, pathname.lastIndexOf('/'));
         pathname = pathname.replace("/viewer/", "/auto/")
 
         if ( Array.isArray(tileSources) )
-          return tileSources.map( val => `${url}${pathname}/${val}` );
+          return tileSources.map( val => `${url+window.base_url}${pathname}/${val}` );
         else
-          return [`${url}${pathname}/${tileSources}`];
+          return [`${url+window.base_url}${pathname}/${tileSources}`];
     }
 
     useEffect(() => {
