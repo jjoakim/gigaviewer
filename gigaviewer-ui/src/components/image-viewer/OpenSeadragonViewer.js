@@ -6,7 +6,7 @@ import '@openseadragon-imaging/openseadragon-imaginghelper';
 
 import {getScalebarSizeAndTextForMetric} from './utils';
 import Draggable from 'react-draggable';
-import url from "url.js"
+import {url, url_orig} from "url.js"
 
 import {
     Box,
@@ -184,14 +184,14 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
 
     function getPath(tileSources)
     {
-        let pathname = window.location.pathname.slice(0, window.base_url.length);
+        let pathname = window.location.pathname.slice(url_orig.length);
         pathname = pathname.slice(0, pathname.lastIndexOf('/'));
         pathname = pathname.replace("/viewer/", "/auto/")
 
         if ( Array.isArray(tileSources) )
-          return tileSources.map( val => `${url+window.base_url}${pathname}/${val}` );
+          return tileSources.map( val => `${url+url_orig}${pathname}/${val}` );
         else
-          return [`${url+window.base_url}${pathname}/${tileSources}`];
+          return [`${url+url_orig}${pathname}/${tileSources}`];
     }
 
     useEffect(() => {
