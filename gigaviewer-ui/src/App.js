@@ -10,6 +10,7 @@ import './App.css';
 
 const data_path = url + "/imageMetadata.json"
 let data = null;
+window.base_url = window.location.pathname;
 
 const App = () => {
     const [is_data, setData] = useState();
@@ -29,21 +30,21 @@ const App = () => {
             <Switch>
                 {/*Home Page*/}
                 <Route
-                    exact path="/"
+                    exact path=""
                     children={<RenderBrowser/>}/>
                 {/*Render image*/}
                 <Route
-                    path="/viewer/:teamId/:projectId/:captureId/:frameId"
+                    path="viewer/:teamId/:projectId/:captureId/:frameId"
                     children={<RenderViewer/>}
                 />
                 {/*Render a single Project*/}
                 <Route
-                    path="/team/:teamId/:projectId"
+                    path="team/:teamId/:projectId"
                     children={<RenderProjectBrowser/>}
                 />
                 {/*Render a single Team*/}
                 <Route
-                    path="/team/:teamId"
+                    path="team/:teamId"
                     children={<RenderTeamBrowser/>}
                 />
             </Switch>
