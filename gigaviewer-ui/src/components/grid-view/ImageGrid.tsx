@@ -12,7 +12,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
-import url from "url.js"
+import {url, url_orig} from "url.js"
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -51,13 +51,14 @@ const ImageGrid = (props: any) => {
     function getPath(key: string)
     {
       const item = gridData.groups[key];
-      const pathname = window.location.pathname;
+      const pathname = window.location.pathname.slice(url_orig.length);
+
       let path = `${pathname}/${key}/${item.thumbnailImg}`;
 
       if (path.startsWith("/team/"))
-        path = url + path.replace("/team/", "/auto/");
+        path = url + url_orig + path.replace("/team/", "/auto/");
       else
-        path = url + "/auto" + path;
+        path = url + url_orig + "/auto/" + path;
       
       return path;
     }

@@ -4,7 +4,7 @@ import {Viewer} from './pages';
 import {TopNavbar} from './components/top-navbar';
 import {Route, Switch, useParams} from 'react-router-dom';
 import { ImageGrid as Grid } from 'components/grid-view';
-import url from "url.js"
+import {url} from "url.js"
 
 import './App.css';
 
@@ -27,10 +27,6 @@ const App = () => {
         <div className="App">
             <TopNavbar/>
             <Switch>
-                {/*Home Page*/}
-                <Route
-                    exact path="/"
-                    children={<RenderBrowser/>}/>
                 {/*Render image*/}
                 <Route
                     path="/viewer/:teamId/:projectId/:captureId/:frameId"
@@ -46,6 +42,10 @@ const App = () => {
                     path="/team/:teamId"
                     children={<RenderTeamBrowser/>}
                 />
+                {/*Home Page*/}
+                <Route
+                    path="/"
+                    children={<RenderBrowser/>}/>
             </Switch>
         </div>
     );
