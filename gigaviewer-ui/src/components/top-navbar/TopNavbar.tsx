@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import {url_orig} from "url.js"
 
 /**
  * Uncomment for navbar items (About, Home, Signup, etc.)
@@ -39,7 +40,7 @@ const TopNavbar = (props: PublicProps) => {
   // };
 
   const goToHome = () => {
-    history.push('');
+    history.push(url_orig);
   }
 
   return (
