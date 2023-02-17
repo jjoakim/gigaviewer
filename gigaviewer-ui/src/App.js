@@ -55,9 +55,86 @@ const App = () => {
 function RenderBrowser(){
     return (
         <div>
+            <br/>
+            <center>
+            <h2>Multi-Gigapixel Video Viewing Platform</h2>
+            <h3>Duke University Computational Optics Lab</h3>
+            </center><br/>
             <Grid gridData={data}/>
+            <br/>
+            <center>
+            <div class="widget">
+            <p>
+                Welcome to the <a href = "http://horstmeyer.pratt.duke.edu/">
+                Computational Optics Lab's</a> gigapixel video viewing platform,
+                through which we can present raw and final composite images captured
+                by our suite of multi-camera array microscopes. Please refer to the
+                following publications listed below for additional information about
+                this collection of computational microscopes, as well as
+                our <a href = "https://mcam.deepimaging.io/">project page</a>.
+                Additional information about this technology can also be found
+                at <a href = "https://ramonaoptics.com/">Ramona Optics</a>.
+            </p>
+            <br/><ul className='pub'>
+                
+                <Pub authers={"K. C. Zhou, M. Harfouche, C. L. Cooke, J. Park, P. C. Konda, "+
+                              "L. Kreiss, K. Kim, J. Jönsson, T. Doman, P. Reamey, V. Saliu, "+
+                              "C. B. Cook, M. Zheng, J. P. Bechtel, A. Begue, M. McCarroll, "+
+                              "J. Bagwell, G. Horstmeyer, M. Bagnat and R. Horstmeyer"}
+                     title="Parallelized computational 3D video microscopy of freely moving organisms at multiple gigapixels per second"
+                     publisher="Accepted to Nature Photonics"
+                     year={2023} />
+                
+                <Pub authers={"M. Harfouche, K. Kim, P. C. Konda, S. Sharma, E. E. Thomson, "+
+                              "K. C. Zhou, C. Cooke, S. Xu, X. Yang, X. Yao, V. Pathak, "+
+                              "R. Appel. C. Cooke, J. Doman, G. Horstmeyer, J. Park, P. Reamey, "+
+                              "V. Saliu, E. Naumann and R. Horstmeyer"}
+                     title="Multi-scale gigapixel microscopy using a multi-camera array microscope"
+                     publisher="Accepted to Optica"
+                     year={2023} />
+                
+                <Pub authers="X. Yang, M. Harfouche, K. C. Zhou, L. Kreiss, S. Xu, K. Kim, R. Horstmeyer"
+                     title="Multimodal imaging using a cascaded microscope design"
+                     publisher="Accepted to Optics Letters"
+                     year={2023} />
+                
+                <Pub authers={"E. E. Thomson, M. Harfouche, P. C Konda, C. Seitz, K. Kim, "+
+                              "C. Cooke, S. Xu, R. Blazing, Y. Chen, W. S. Jacobs, S. Sharma, "+
+                              "T. W. Dunn, J. Park, R. Horstmeyer*  and E. A. Naumann*"}
+                     title="Gigapixel imaging with a novel multi-camera array microscope"
+                     publisher="eLife 11, e74988"
+                     year={2022}
+                     other="(*co-corresponding authors)" />
+                
+            </ul>
+            </div>
+            </center>
         </div>
     );
+}
+
+class Pub extends React.Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state = { is_visible: false };
+  }
+
+  render() {
+    const title = this.props.title;
+    const authers = this.props.authers;
+    const year = this.props.year;
+    const publisher = this.props.publisher;
+    const other = this.props.other;
+
+    const set = () => this.setState( { is_visible: true } );
+
+    if ( this.state.is_visible )
+      return <li>{authers}, <b><q>{title}</q></b>, {publisher} ({year}) {other}</li>;
+    else
+      return <li onClick={set}><b><q>{title}</q></b>, {publisher} ({year})</li>;
+  }
 }
 
 function RenderTeamBrowser(){
