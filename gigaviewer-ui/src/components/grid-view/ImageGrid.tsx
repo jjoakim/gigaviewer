@@ -107,18 +107,18 @@ const ImageGrid = (props: any) => {
             {redirect ? (
                 // RENDERING THE IMAGE VIEWER
                 captureId !== '' ? (
-                    <Redirect push to={`/viewer/${teamId}/${projectId}/${captureId}/${frameNumber}`}/>
+                    <Redirect push to={`${url_orig}/viewer/${teamId}/${projectId}/${captureId}/${frameNumber}`}/>
                 ) : (
                     // RENDER A SINGLE PROJECT
                     projectId !== '' ? (
-                        <Redirect push to={`/team/${teamId}/${projectId}`}/>
+                        <Redirect push to={`${url_orig}/team/${teamId}/${projectId}`}/>
                     ) : (
                         // RENDER A SINGLE TEAM
                         teamId !== '' ? (
-                            <Redirect push to={`/team/${teamId}`}/>
+                            <Redirect push to={`${url_orig}/team/${teamId}`}/>
                         ) : (
                             // RENDER THE HOME PAGE
-                            <Redirect push to={`/`}/>
+                            <Redirect push to={`${url_orig}/`}/>
                         )
                     )
                 )
