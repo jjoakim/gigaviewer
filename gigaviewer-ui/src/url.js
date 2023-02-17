@@ -5,4 +5,15 @@
 // No external url needed when running on the server.
 const url = "";
 
-export default url;
+// Variable used to remember original url.
+const url_orig = get_orig()
+
+export {url, url_orig};
+
+function get_orig()
+{
+  let orig = window.location.pathname;
+  orig = orig.split("/team")[0];
+  orig = orig.split("/viewer")[0];
+  return orig == "/" ? "" : orig;
+}
