@@ -83,6 +83,10 @@
   box-shadow: 2px 2px 10px gray;
   border-radius: 1em;
   text-align: left;
+
+  margin-right: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
 }
 
 .pub
