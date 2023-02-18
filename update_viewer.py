@@ -118,10 +118,10 @@ if __name__ == "__main__":
             thumb_img_path = os.path.join(project, f'{project_name}-thumbnail.jpg')
             # print("writing thumb to", thumb_img_path)
             # cv.imwrite(thumb_img_path, composite_image)
-            project_data['thumbnailImg'] = make_url(thumb_img_path)
+            project_data['thumbnailImg'] = f'{project_name}-thumbnail.jpg' #make_url(thumb_img_path)
             team_data['groups'][project_name] = project_data
         # lazily grabbing the last thumbnail image
-        team_data['thumbnailImg'] = thumb_img_path
+        team_data['thumbnailImg'] = f'{project_name}/{project_name}-thumbnail.jpg'#thumb_img_path
         manifest_data['groups'][team_data['title']] = team_data
 
     with open('image_manifest.json', 'w') as fp:
