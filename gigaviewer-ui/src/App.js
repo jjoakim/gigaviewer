@@ -20,7 +20,7 @@ const App = () => {
         data = await response.json();
         setData(true);
       });
-      return "Loading";
+      return <div>Loading</div>;
     }
 
     return (
@@ -177,7 +177,7 @@ function RenderViewer() {
     const imageSources = captureData.sources;
     const frameNumber = parseInt(frameId);
     // @ts-ignore
-    const title = captureData.title;
+    const title = captureId;
     // @ts-ignore
     const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
     return (

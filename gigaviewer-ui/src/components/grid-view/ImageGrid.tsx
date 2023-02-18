@@ -141,9 +141,9 @@ const ImageGrid = (props: any) => {
                                         renderGrid(gridData.groups[item], item);
                                     }}
                                 >
-                                    <img src={getPath(item)} alt={gridData.groups[item].title}/>
+                                    <img src={getPath(item)} alt={item}/>
                                     <GridListTileBar
-                                        title={gridData.groups[item].title}
+                                        title={item}
 
                                     />
                                 </GridListTile>
