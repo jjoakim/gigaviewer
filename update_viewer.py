@@ -4,7 +4,7 @@ import glob
 from natsort import natsorted
 import shutil
 from distutils.dir_util import copy_tree
-import cv2 as cv
+# import cv2 as cv
 import numpy as np
 
 GV_BASE_URL = 'https://gigazoom.rc.duke.edu/'
@@ -17,27 +17,27 @@ def make_url(path):
     # return os.path.join(GV_BASE_URL, path)
     return path
 
-def make_composite(image_paths):
-    images = [cv.imread(image_path) for image_path in image_paths]
-    print(image_paths[0:4])
-    composite = np.zeros((300,300,3), dtype=np.uint8)
-    if len(images) == 0:
-        raise RuntimeError()
-    elif len(images) == 1:
-        composite = cv.resize(images[0], (300, 300))
-    elif len(images) == 2:
-        composite = cv.resize(images[0], (300, 300))
-        composite[:, 150:] = cv.resize(images[1], (300, 300))[:, 150:]
-    elif len(images) == 3:
-        composite[:150, :150] = cv.resize(images[0], (150, 150))
-        composite[:, 150:] = cv.resize(images[1], (300, 300))[:, 150:]
-        composite[150:, :150] = cv.resize(images[2], (150, 150))
-    else:
-        composite[:150, :150] = cv.resize(images[0], (150, 150))
-        composite[:150, 150:] = cv.resize(images[1], (150, 150))
-        composite[150:, :150] = cv.resize(images[2], (150, 150))
-        composite[150:, 150:] = cv.resize(images[3], (150, 150))
-    return composite
+# def make_composite(image_paths):
+#     images = [cv.imread(image_path) for image_path in image_paths]
+#     print(image_paths[0:4])
+#     composite = np.zeros((300,300,3), dtype=np.uint8)
+#     if len(images) == 0:
+#         raise RuntimeError()
+#     elif len(images) == 1:
+#         composite = cv.resize(images[0], (300, 300))
+#     elif len(images) == 2:
+#         composite = cv.resize(images[0], (300, 300))
+#         composite[:, 150:] = cv.resize(images[1], (300, 300))[:, 150:]
+#     elif len(images) == 3:
+#         composite[:150, :150] = cv.resize(images[0], (150, 150))
+#         composite[:, 150:] = cv.resize(images[1], (300, 300))[:, 150:]
+#         composite[150:, :150] = cv.resize(images[2], (150, 150))
+#     else:
+#         composite[:150, :150] = cv.resize(images[0], (150, 150))
+#         composite[:150, 150:] = cv.resize(images[1], (150, 150))
+#         composite[150:, :150] = cv.resize(images[2], (150, 150))
+#         composite[150:, 150:] = cv.resize(images[3], (150, 150))
+#     return composite
 
 def generate_group(base_dir):
     with open(os.path.join(base_dir, 'order.json')) as fp:
