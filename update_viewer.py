@@ -92,6 +92,7 @@ if __name__ == "__main__":
     for team in teams:
         team_data = {'groups': {}, 'kind': 'team'}
         # team_data['title'] = os.path.basename(team[:-1])
+        team_title = os.path.basename(team[:-1])
         # then get the projects
         projects = glob.glob(os.path.join(team, '*/'))
         print("projects: ", projects)
@@ -120,7 +121,7 @@ if __name__ == "__main__":
             team_data['groups'][project_name] = project_data
         # lazily grabbing the last thumbnail image
         team_data['thumbnailImg'] = f'{project_name}/{project_name}-thumbnail.jpg'
-        manifest_data['groups'][team_data['title']] = team_data
+        manifest_data['groups'][team_title] = team_data
 
     with open('image_manifest.json', 'w') as fp:
         json.dump(manifest_data, fp)
