@@ -9,10 +9,6 @@ import numpy as np
 
 GV_BASE_URL = 'https://gigazoom.rc.duke.edu/'
 
-def get_path_from_url(url):
-    # return os.path.join('~', url[len(GV_BASE_URL):])
-    return url
-
 # def make_composite(image_paths):
 #     images = [cv.imread(image_path) for image_path in image_paths]
 #     print(image_paths[0:4])
@@ -102,7 +98,7 @@ if __name__ == "__main__":
         for project in projects:
             project_data = {'groups': {}, "kind": "project"}
             project_name = os.path.basename(project[:-1])
-            project_data['title'] = project_name
+            # project_data['title'] = project_name
             captures = glob.glob(os.path.join(project, '*/'))
             print("captures: ", captures)
             for capture in captures:
@@ -111,7 +107,7 @@ if __name__ == "__main__":
                 project_data['groups'][capture_name] = capture_data
             groups = project_data['groups']
             # make the composite image for the project
-            target_image_paths = [get_path_from_url(group['thumbnailImgPath']) for group in groups.values()]
+            target_image_paths = [group['thumbnailImgPath'] for group in groups.values()]
 
             for group in groups.values():
               del group['thumbnailImgPath']
