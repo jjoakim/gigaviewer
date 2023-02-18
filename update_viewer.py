@@ -10,13 +10,16 @@ import numpy as np
 GV_BASE_URL = 'https://gigazoom.rc.duke.edu/'
 
 def get_path_from_url(url):
-    return os.path.join('/home/rapiduser/', url[len(GV_BASE_URL):])
+    # return os.path.join('~', url[len(GV_BASE_URL):])
+    return url
 
 def make_url(path):
-    return os.path.join(GV_BASE_URL, path)
+    # return os.path.join(GV_BASE_URL, path)
+    return path
 
 def make_composite(image_paths):
     images = [cv.imread(image_path) for image_path in image_paths]
+    print(image_paths[0:4])
     composite = np.zeros((300,300,3), dtype=np.uint8)
     if len(images) == 0:
         raise RuntimeError()
@@ -64,7 +67,10 @@ def generate_group(base_dir):
         images = glob.glob(os.path.join(pf, '*.*'))
         if len(images) == 1:
             break
-    thumbnail_image = images[0]
+    try:
+        thumbnail_image = images[0]
+    except:
+        raise Exception('Problematic directory: ' + base_dir)
     
     group_data = {
         'gid': gid,
@@ -86,20 +92,20 @@ def generate_group(base_dir):
 if __name__ == "__main__":
     manifest_data = {}
     # first get the team folders
-    teams = glob.glob(os.path.join('auto', '*/')
+    teams = glob.glob(os.path.join('auto', '*/'))
     print("teams: ", teams)
     manifest_data = {"groups": {}}
     for team in teams:
         team_data = {'groups': {}, 'kind': 'team'}
         team_data['title'] = os.path.basename(team[:-1])
         # then get the projects
-        projects = glob.glob(os.path.join(team, '*/')
+        projects = glob.glob(os.path.join(team, '*/'))
         print("projects: ", projects)
         for project in projects:
-            project_data = {'groups': {}}
+            project_data = {'groups': {}, "kind": "project"}
             project_name = os.path.basename(project[:-1])
             project_data['title'] = project_name
-            captures = glob.glob(os.path.join(project, '*/')
+            captures = glob.glob(os.path.join(project, '*/'))
             print("captures: ", captures)
             for capture in captures:
                 capture_data = generate_group(capture)
@@ -108,9 +114,10 @@ if __name__ == "__main__":
             groups = project_data['groups']
             # make the composite image for the project
             target_image_paths = [get_path_from_url(group['thumbnailImg']) for group in groups.values()]
-            composite_image = make_composite(target_image_paths)
-            thumb_img_path = os.path.join(project, f'{project_name}-thumbnail.jpg').replace(' ', '-')
-            cv.imwrite(thumb_img_path, composite_image)
+            # composite_image = make_composite(target_image_paths)
+            thumb_img_path = os.path.join(project, f'{project_name}-thumbnail.jpg')
+            # print("writing thumb to", thumb_img_path)
+            # cv.imwrite(thumb_img_path, composite_image)
             project_data['thumbnailImg'] = make_url(thumb_img_path)
             team_data['groups'][project_name] = project_data
         # lazily grabbing the last thumbnail image
@@ -120,6 +127,6 @@ if __name__ == "__main__":
     with open('image_manifest.json', 'w') as fp:
         json.dump(manifest_data, fp)
 
-    shutil.copy2('image_manifest.json', '/home/rapiduser/gigaviewer/gigaviewer-ui/src/components/image-viewer/imageMetadata.json')
-    os.system('yarn --cwd /home/rapiduser/gigaviewer/gigaviewer-ui/ build')
-    copy_tree('/home/rapiduser/gigaviewer/gigaviewer-ui/build/', '/var/www/html/')
+    # shutil.copy2('image_manifest.json', '/home/kk349/gigaviewer/gigaviewer-ui/src/components/image-viewer/imageMetadata.json')
+    # os.system('yarn --cwd /home/kk349/gigaviewer/gigaviewer-ui/ build')
+    # copy_tree('/home/kk349/gigaviewer/gigaviewer-ui/build/', '/var/www/html/')
