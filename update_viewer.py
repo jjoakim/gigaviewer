@@ -13,10 +13,6 @@ def get_path_from_url(url):
     # return os.path.join('~', url[len(GV_BASE_URL):])
     return url
 
-def make_url(path):
-    # return os.path.join(GV_BASE_URL, path)
-    return path
-
 # def make_composite(image_paths):
 #     images = [cv.imread(image_path) for image_path in image_paths]
 #     print(image_paths[0:4])
@@ -69,15 +65,15 @@ def generate_group(base_dir):
         if len(images) == 1:
             break
     try:
-        thumbnail_image = images[0]
-        thumbnail_image = thumbnail_image.split(title)[-1][1:]
+        thumbnail_image = images[0].split(title)[-1][1:]
     except:
         raise Exception('Problematic directory: ' + base_dir)
         
     group_data = {
         'gid': gid,
         'title': title,
-        'thumbnailImg': make_url(thumbnail_image),
+        'thumbnailImg': thumbnail_image,
+        "thumbnailImgPath" : images[0],
         'idx': idx,
         'kind': 'capture',
         'height': height,
@@ -115,20 +111,24 @@ if __name__ == "__main__":
                 project_data['groups'][capture_name] = capture_data
             groups = project_data['groups']
             # make the composite image for the project
-            target_image_paths = [get_path_from_url(group['thumbnailImg']) for group in groups.values()]
+            target_image_paths = [get_path_from_url(group['thumbnailImgPath']) for group in groups.values()]
+
+            for group in groups.values():
+              del group['thumbnailImgPath']
+
             # composite_image = make_composite(target_image_paths)
             thumb_img_path = os.path.join(project, f'{project_name}-thumbnail.jpg')
             # print("writing thumb to", thumb_img_path)
             # cv.imwrite(thumb_img_path, composite_image)
-            project_data['thumbnailImg'] = f'{project_name}-thumbnail.jpg' #make_url(thumb_img_path)
+            project_data['thumbnailImg'] = f'{project_name}-thumbnail.jpg'
             team_data['groups'][project_name] = project_data
         # lazily grabbing the last thumbnail image
-        team_data['thumbnailImg'] = f'{project_name}/{project_name}-thumbnail.jpg'#thumb_img_path
+        team_data['thumbnailImg'] = f'{project_name}/{project_name}-thumbnail.jpg'
         manifest_data['groups'][team_data['title']] = team_data
 
     with open('image_manifest.json', 'w') as fp:
         json.dump(manifest_data, fp)
 
-    # shutil.copy2('image_manifest.json', '/home/kk349/gigaviewer/gigaviewer-ui/src/components/image-viewer/imageMetadata.json')
-    # os.system('yarn --cwd /home/kk349/gigaviewer/gigaviewer-ui/ build')
-    # copy_tree('/home/kk349/gigaviewer/gigaviewer-ui/build/', '/var/www/html/')
+    # shutil.copy2('image_manifest.json', '~/gigaviewer/gigaviewer-ui/src/components/image-viewer/imageMetadata.json')
+    # os.system('yarn --cwd ~/gigaviewer/gigaviewer-ui/ build')
+    # copy_tree('~/gigaviewer/gigaviewer-ui/build/', '/var/www/html/')
