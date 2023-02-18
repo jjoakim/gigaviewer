@@ -70,22 +70,22 @@ def generate_group(base_dir):
         raise Exception('Problematic directory: ' + base_dir)
         
     group_data = {
-        'gid': gid,
-        'title': title,
+        # 'gid': gid,
+        # 'title': title,
         'thumbnailImg': thumbnail_image,
         "thumbnailImgPath" : images[0],
-        'idx': idx,
+        # 'idx': idx,
         'kind': 'capture',
         'height': height,
         'sources': [
             {
-                'type': source_type,
+                # 'type': source_type,
                 'tileSources': dzi_files_short
             }
         ]
     }
     
-    return group_data
+    return group_data, title
 
 if __name__ == "__main__":
     manifest_data = {}
@@ -106,8 +106,8 @@ if __name__ == "__main__":
             captures = glob.glob(os.path.join(project, '*/'))
             print("captures: ", captures)
             for capture in captures:
-                capture_data = generate_group(capture)
-                capture_name = capture_data['title']
+                capture_data, capture_name = generate_group(capture)
+                # capture_name = capture_data['title']
                 project_data['groups'][capture_name] = capture_data
             groups = project_data['groups']
             # make the composite image for the project
