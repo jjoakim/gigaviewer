@@ -91,7 +91,7 @@ if __name__ == "__main__":
     manifest_data = {"groups": {}}
     for team in teams:
         team_data = {'groups': {}, 'kind': 'team'}
-        team_data['title'] = os.path.basename(team[:-1])
+        # team_data['title'] = os.path.basename(team[:-1])
         # then get the projects
         projects = glob.glob(os.path.join(team, '*/'))
         print("projects: ", projects)
