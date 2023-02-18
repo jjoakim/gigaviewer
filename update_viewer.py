@@ -43,6 +43,7 @@ def generate_group(base_dir):
     with open(os.path.join(base_dir, 'order.json')) as fp:
         order_data = json.load(fp)['order']
     dzi_files = [os.path.join(base_dir, of) for of in order_data]
+    dzi_files_short = [of for of in order_data]
     meta_path = os.path.join(base_dir, 'metadata.json')
     if os.path.exists(meta_path):
         with open(meta_path) as fp:
@@ -69,9 +70,10 @@ def generate_group(base_dir):
             break
     try:
         thumbnail_image = images[0]
+        thumbnail_image = thumbnail_image.split(title)[-1][1:]
     except:
         raise Exception('Problematic directory: ' + base_dir)
-    
+        
     group_data = {
         'gid': gid,
         'title': title,
@@ -82,7 +84,7 @@ def generate_group(base_dir):
         'sources': [
             {
                 'type': source_type,
-                'tileSources': [make_url(dzi_file) for dzi_file in dzi_files]
+                'tileSources': dzi_files_short
             }
         ]
     }
