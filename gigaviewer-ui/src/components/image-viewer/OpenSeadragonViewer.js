@@ -591,7 +591,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
 
                 <div className={classes.root}>
                     <Box flexDirection="column" position="absolute" top="0%" right="1%" zIndex="tooltip"
-                         justifyContent="center">
+                         justifyContent="center" className="viewer-control" >
                         <h1 style={{backgroundColor: 'white'}}>{collectionTitle}</h1>
                         {totalFrames > 1 &&
                         <div>

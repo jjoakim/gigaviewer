@@ -116,6 +116,16 @@
   border-bottom-left-radius: 1em; */
 }
 
+.viewer-control
+{
+  pointer-events: none;
+}
+
+.viewer-control *
+{
+  pointer-events: auto;
+}
+
 @media screen and (max-width: 960px) {
   .navbar-items {
     position: relative;
