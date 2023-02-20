@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 
 import {Viewer} from './pages';
 import {TopNavbar} from './components/top-navbar';
-import {Route, Switch, useParams} from 'react-router-dom';
+import {Route, Switch, useParams, Redirect} from 'react-router-dom';
 import { ImageGrid as Grid } from 'components/grid-view';
-import {url} from "url.js"
+import {url, url_orig} from "url.js"
 
 import './App.css';
 
@@ -25,7 +25,6 @@ const App = () => {
 
     return (
         <div className="App">
-            <TopNavbar/>
             <Switch>
                 {/*Render image*/}
                 <Route
@@ -42,6 +41,11 @@ const App = () => {
                     path="/team/:teamId"
                     children={<RenderTeamBrowser/>}
                 />
+                {/*Redirect to page from tag*/}
+                <Route
+                    path="/tag/:tag"
+                    children={<RenderFromTag/>}
+                />
                 {/*Home Page*/}
                 <Route
                     path="/"
@@ -55,6 +59,7 @@ const App = () => {
 function RenderBrowser(){
     return (
         <div>
+            <TopNavbar/>
             <br/>
             <center>
             <h2>Multi-Gigapixel Video Viewing Platform</h2>
@@ -140,23 +145,78 @@ class Pub extends React.Component {
 function RenderTeamBrowser(){
     console.log("render team");
     const {teamId} = useParams();
-    const teamMap = new Map(Object.entries(data.groups));
     return (
         <div>
-            <Grid teamId={teamId} gridData={teamMap.get(teamId)}/>
+          <TopNavbar tag={data.groups[teamId].tag} />
+          <Grid teamId={teamId} gridData={data.groups[teamId]}/>
         </div>
     );
 }
 
+function find_tag(tag, obj=data, path="")
+{
+  if ( obj == null )
+    return null;
+  
+  if ( obj.tag == tag )
+  {
+    // console.log("Found link for", {tag, obj, path});
+
+    return obj.kind == "capture" ? "viewer"+path+"/0" :
+           obj.kind ==null ? path : "team"+path;;
+  }
+
+  for ( let key in obj.groups)
+  {
+    let res = find_tag(tag, obj.groups[key], path+"/"+key);
+
+    if ( res != null )
+      return res;
+    
+    // console.log("No link at", path);
+  }
+
+  // console.log("No link at", path);
+
+  return null;
+}
+
+function RenderFromTag(){
+  console.log("render direct link");
+  const {tag} = useParams();
+
+  let res = find_tag(tag);
+
+  if ( res != null )
+  {
+    return (
+      <Redirect to={"/" + url_orig + res} />
+    );
+  }
+  else
+  {
+    return (
+    <div>
+    <TopNavbar/>
+    <center><b>
+      <br /><div>
+        Tag not found "{tag}".
+      </div>
+    </b></center>
+    </div>
+    );
+  }
+}
+
 function RenderProjectBrowser(){
     const {teamId, projectId} = useParams();
-    const teamMap = new Map(Object.entries(data.groups));
-    const teamData = teamMap.get(teamId);
-    // @ts-ignore
-    const projectMap = new Map(Object.entries(teamData.groups));
+    const teamData = data.groups[teamId];
+    const gridData = teamData.groups[projectId];
+
     return (
         <div>
-            <Grid teamId={teamId} projectId={projectId} gridData={projectMap.get(projectId)}/>
+             <TopNavbar tag={gridData.tag}/>
+            <Grid teamId={teamId} projectId={projectId} gridData={gridData}/>
         </div>
     );
 }
@@ -164,24 +224,20 @@ function RenderProjectBrowser(){
 function RenderViewer() {
     const {teamId, projectId, captureId, frameId} = useParams();
 
-    const teamMap = new Map(Object.entries(data.groups));
-    const teamData = teamMap.get(teamId);
-    // @ts-ignore
-    const projectMap = new Map(Object.entries(teamData.groups));
-    const projectData = projectMap.get(projectId);
-    // @ts-ignore
-    const captureMap = new Map(Object.entries(projectData.groups));
-    const captureData = captureMap.get(captureId);
+    const projectData =  data.groups[teamId].groups[projectId];
+    const captureData = projectData.groups[captureId];
 
-    // @ts-ignore
     const imageSources = captureData.sources;
     const frameNumber = parseInt(frameId);
-    // @ts-ignore
     const title = captureId;
-    // @ts-ignore
     const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
+
+    console.log("Has tag", captureData)
     return (
+      <div>
+        <TopNavbar tag={captureData.tag}/>
         <Viewer imageSources={imageSources} title={title} height={height} idx={frameNumber}/>
+      </div>
     );
 }
 

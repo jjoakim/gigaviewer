@@ -15,5 +15,7 @@ function get_orig()
   let orig = window.location.pathname;
   orig = orig.split("/team")[0];
   orig = orig.split("/viewer")[0];
+  orig = orig.split("/tag")[0];
+  console.log(orig);
   return orig == "/" ? "" : orig;
 }
