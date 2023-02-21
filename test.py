@@ -57,14 +57,13 @@ def list_dir(path=start_dir, depth=0):
   os.chdir(path)
 
   obj={}
-  dir = os.scandir()
-  # dir = natsorted(os.scandir(),key=attrgetter("name"))
+  # dir = os.scandir()
+  dir = natsorted(os.scandir(),key=attrgetter("name"))
 
   groups = {}
   files = []
   
   for item in dir:
-    # if ( os.path.isdir(item) ):
     if item.is_dir():
       res = list_dir(item.name, depth+1)
       if res:
@@ -91,7 +90,7 @@ def list_dir(path=start_dir, depth=0):
 def list_dir_add_tag(obj, path=start_dir):
   if not obj:
     return
-  # print("Enter dir", path)
+  
   os.chdir(path)
 
   if "groups" in obj:
