@@ -3,7 +3,7 @@ import random
 import os
 from natsort import natsorted
 import json
-
+from operator import attrgetter
 
 nb_char_tag = 4
 start_dir = "auto"
@@ -39,7 +39,7 @@ def list_dir(path=start_dir):
   os.chdir(path)
 
   obj={}
-  dir = os.scandir() # natsorted( os.scandir(".") )
+  dir = natsorted(os.scandir(),key=attrgetter("name")) # natsorted( os.scandir(".") )
 
   groups = {}
   files = []
