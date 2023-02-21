@@ -232,7 +232,6 @@ function RenderViewer() {
     const title = captureId;
     const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
 
-    console.log("Has tag", captureData)
     return (
       <div>
         <TopNavbar tag={captureData.tag}/>
