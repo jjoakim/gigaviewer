@@ -76,7 +76,8 @@ def list_dir(path=start_dir, depth=0):
     obj["groups"] = groups
   # if "order" in files:
   #   loadOrder(obj)
-    # obj["files"] = files
+  if files:
+    obj["files"] = files
   
   meta = get_meta()
   
