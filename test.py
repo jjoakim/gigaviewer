@@ -35,7 +35,7 @@ def get_meta():
 tags=[]
 
 def list_dir(path=start_dir):
-  if path.find("stitched") != -1 or path.starswith("height_map") or path.isnumeric():
+  if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
     return {}
   
   print("Enter dir", path)
