@@ -74,10 +74,10 @@ def list_dir(path=start_dir, depth=0):
   
   if groups:
     obj["groups"] = groups
-  # if "order" in files:
-  #   loadOrder(obj)
-  if files:
-    obj["files"] = files
+  if "order.json" in files:
+    loadOrder(obj)
+  # if files:
+  #   obj["files"] = files
   
   meta = get_meta()
   
