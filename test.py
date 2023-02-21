@@ -16,7 +16,7 @@ characters = string.ascii_uppercase + string.digits
 character_array = list(characters)
 
 nb_char = len(character_array)
-print("Number of unique tags possible", nb_char**nb_char_tag)
+# print("Number of unique tags possible", nb_char**nb_char_tag)
 
 def generate_random_string(length=nb_char_tag):
   result = ''.join(random.choice(character_array) for i in range(length))
@@ -30,6 +30,7 @@ def get_meta():
     f = open('meta.json')
     data = json.load(f)
     f.close()
+    return data
   except:
     return {}
 
@@ -45,8 +46,8 @@ def list_dir(path=start_dir, depth=0):
   os.chdir(path)
 
   obj={}
-  dir = os.scandir()
-  # dir = natsorted(os.scandir(),key=attrgetter("name"))
+  # dir = os.scandir()
+  dir = natsorted(os.scandir(),key=attrgetter("name"))
 
   groups = {}
   files = []
@@ -57,7 +58,7 @@ def list_dir(path=start_dir, depth=0):
       res = list_dir(item.name, depth+1)
       if res:
         groups[item.name] = res
-    else:
+    elif item.name != "meta.json":
       files.append(item.name)
   
   if groups:
@@ -86,6 +87,9 @@ def list_dir_add_tag(obj, path=start_dir):
   
   if not "tag" in obj:
     obj["tag"] = createUniqueTag()
+    meta = {"tag" : obj["tag"]}
+    # with open("meta.json", "w") as file:
+    #   file.write( json.dumps(meta) )
   
   os.chdir("../")
 
@@ -105,9 +109,9 @@ os.chdir(orig_path)
 list_dir_add_tag(obj)
 os.chdir(orig_path)
 
-print(obj)
+# print(obj)
 
-print("Number of tags in use", len(tags))
+print("Number of tags in use", len(tags), "of", nb_char**nb_char_tag)
 
 with open("test.json", "w") as file:
   file.write( json.dumps(obj) )
