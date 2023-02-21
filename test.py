@@ -39,7 +39,8 @@ def list_dir(path=start_dir):
   os.chdir(path)
 
   obj={}
-  dir = natsorted(os.scandir(),key=attrgetter("name")) # natsorted( os.scandir(".") )
+  dir = os.scandir()
+  # dir = natsorted(os.scandir(),key=attrgetter("name"))
 
   groups = {}
   files = []
