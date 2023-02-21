@@ -34,9 +34,11 @@ def get_meta():
 
 tags=[]
 
-def list_dir(path=start_dir):
-  if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
-    return {}
+def list_dir(path=start_dir, depth=0):
+  if depth == 2:
+    return
+  # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
+  #   return {}
   
   print("Enter dir", path)
   os.chdir(path)
@@ -51,7 +53,7 @@ def list_dir(path=start_dir):
   for item in dir:
     # if ( os.path.isdir(item) ):
     if item.is_dir():
-      groups[item.name] = list_dir(item.name)
+      groups[item.name] = list_dir(item.name, depth+1)
     else:
       files.append(item.name)
   
