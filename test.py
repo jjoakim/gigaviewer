@@ -7,7 +7,7 @@ from operator import attrgetter
 
 nb_char_tag = 4
 start_dir = "auto"
-max_depth = 3
+max_depth = 4
 
 # Create a string containing all uppercase letters and digits.
 characters = string.ascii_uppercase + string.digits
