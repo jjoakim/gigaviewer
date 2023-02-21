@@ -47,6 +47,32 @@ def loadOrder(obj):
   except:
     return False
 
+def addThumbnailImage(obj):
+  path = os.path.splitext(obj["sources"]["0"][0])[0] + "_files"
+  os.chdir(path)
+
+  dir = natsorted(os.scandir(),key=attrgetter("name"))
+
+  thumbnailImg = None
+
+  for item in dir:
+    if item.is_dir():
+      # os.chdir(item.name)
+      res = os.scandir(item.name)
+      # os.chdir("../")
+
+      if len(res) == 1:
+        thumbnailImg = item.name
+      elif len(res) > 1:
+        break
+  
+  if thumbnailImg == None:
+    raise Exception('Problem finding thumbnail')
+  
+  os.chdir("../")
+
+  obj["thumbnailImg"] = thumbnailImg
+
 def list_dir(path=start_dir, depth=0):
   if depth == max_depth:
     return
@@ -75,6 +101,7 @@ def list_dir(path=start_dir, depth=0):
     obj["groups"] = groups
   if "order.json" in files:
     loadOrder(obj)
+    addThumbnailImage(obj)
   # if files:
   #   obj["files"] = files
   
