@@ -36,6 +36,16 @@ def get_meta():
 
 tags=[]
 
+def loadOrder(obj):
+  try:
+    f = open('order.json')
+    data = json.load(f)
+    f.close()
+    obj["sources"]["0"] = data
+    return True
+  except:
+    return False
+
 def list_dir(path=start_dir, depth=0):
   if depth == max_depth:
     return
@@ -63,8 +73,9 @@ def list_dir(path=start_dir, depth=0):
   
   if groups:
     obj["groups"] = groups
-  if files:
-    obj["files"] = files
+  if "order" in files:
+    loadOrder(obj)
+    # obj["files"] = files
   
   meta = get_meta()
   
