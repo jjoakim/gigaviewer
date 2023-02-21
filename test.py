@@ -7,6 +7,7 @@ from operator import attrgetter
 
 nb_char_tag = 4
 start_dir = "auto"
+max_depth = 3
 
 # Create a string containing all uppercase letters and digits.
 characters = string.ascii_uppercase + string.digits
@@ -35,7 +36,7 @@ def get_meta():
 tags=[]
 
 def list_dir(path=start_dir, depth=0):
-  if depth == 2:
+  if depth == max_depth:
     return
   # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
   #   return {}
