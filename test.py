@@ -42,7 +42,7 @@ def loadOrder(obj):
     data = json.load(f)
     f.close()
     obj["sources"] = {}
-    obj["sources"]["0"] = data
+    obj["sources"]["0"] = data["sources"]
     return True
   except:
     return False
@@ -58,11 +58,11 @@ def addThumbnailImage(obj):
   for item in dir:
     if item.is_dir():
       # os.chdir(item.name)
-      res = os.scandir(item.name)
+      res = os.listdir(item.name)
       # os.chdir("../")
 
       if len(res) == 1:
-        thumbnailImg = item.name
+        thumbnailImg = item.name + "/" + res[0]
       elif len(res) > 1:
         break
   
