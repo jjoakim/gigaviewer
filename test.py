@@ -41,6 +41,7 @@ def loadOrder(obj):
     f = open('order.json')
     data = json.load(f)
     f.close()
+    obj["sources"] = {}
     obj["sources"]["0"] = data
     return True
   except:
@@ -73,8 +74,8 @@ def list_dir(path=start_dir, depth=0):
   
   if groups:
     obj["groups"] = groups
-  if "order" in files:
-    loadOrder(obj)
+  # if "order" in files:
+  #   loadOrder(obj)
     # obj["files"] = files
   
   meta = get_meta()
