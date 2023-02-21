@@ -54,7 +54,9 @@ def list_dir(path=start_dir, depth=0):
   for item in dir:
     # if ( os.path.isdir(item) ):
     if item.is_dir():
-      groups[item.name] = list_dir(item.name, depth+1)
+      res = list_dir(item.name, depth+1)
+      if res:
+        groups[item.name] = res
     else:
       files.append(item.name)
   
