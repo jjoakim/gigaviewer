@@ -39,16 +39,17 @@ def list_dir(path=start_dir):
   os.chdir(path)
 
   obj={}
-  dir = natsorted( os.listdir(".") )
+  dir = os.scandir() # natsorted( os.scandir(".") )
 
   groups = {}
   files = []
   
   for item in dir:
-    if ( os.path.isdir(item) ):
-      groups[item] = list_dir(item)
+    # if ( os.path.isdir(item) ):
+    if item.is_dir():
+      groups[item.name] = list_dir(item.name)
     else:
-      files.append(item)
+      files.append(item.name)
   
   if groups:
     obj["groups"] = groups
