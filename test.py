@@ -47,7 +47,7 @@ def list_dir(path=start_dir):
   
   for item in dir:
     # if ( os.path.isdir(item) ):
-    if item.is_dir() and not item.path.startswith("stiched"):
+    if item.is_dir() and not item.path.find("stiched"):
       groups[item.name] = list_dir(item.name)
     else:
       files.append(item.name)
