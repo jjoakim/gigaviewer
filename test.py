@@ -47,7 +47,7 @@ def list_dir(path=start_dir):
   
   for item in dir:
     # if ( os.path.isdir(item) ):
-    if item.is_dir():
+    if item.is_dir() and not item.path.startswith("stiched"):
       groups[item.name] = list_dir(item.name)
     else:
       files.append(item.name)
@@ -96,6 +96,8 @@ list_dir_add_tag(obj)
 os.chdir(orig_path)
 
 print(obj)
+
+print("Number of tags in use", len(tags))
 
 with open("test.json", "w") as file:
   file.write( json.dumps(obj) )
