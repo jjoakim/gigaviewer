@@ -35,6 +35,9 @@ def get_meta():
 tags=[]
 
 def list_dir(path=start_dir):
+  if path.find("stitched") and path.isnumeric():
+    return {}
+  
   print("Enter dir", path)
   os.chdir(path)
 
@@ -47,7 +50,7 @@ def list_dir(path=start_dir):
   
   for item in dir:
     # if ( os.path.isdir(item) ):
-    if item.is_dir() and item.path.find("stitched") == -1 and not item.path.isnumeric():
+    if item.is_dir():
       groups[item.name] = list_dir(item.name)
     else:
       files.append(item.name)
@@ -67,6 +70,8 @@ def list_dir(path=start_dir):
   return obj
 
 def list_dir_add_tag(obj, path=start_dir):
+  if not obj:
+    return
   # print("Enter dir", path)
   os.chdir(path)
 
