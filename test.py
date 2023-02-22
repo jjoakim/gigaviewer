@@ -78,7 +78,7 @@ def list_dir(path=start_dir, depth=0):
   # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
   #   return {}
   
-  print("Enter dir", path)
+  # print("Enter dir", path)
   os.chdir(path)
 
   obj={}
@@ -101,6 +101,8 @@ def list_dir(path=start_dir, depth=0):
   if "order.json" in files:
     loadOrder(obj)
     addThumbnailImage(obj)
+  if "metadata.json" in files:
+    print("metadata found!!")
   elif path + "-thumbnail.jpg" in files:
     obj["thumbnailImg"] = path + "-thumbnail.jpg"
   # if files:
