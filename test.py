@@ -20,7 +20,7 @@ characters = "0123456789ABCDEF"
 # Convert the string to an array of characters.
 # character_array = list(characters)
 
-nb_char = len(character_array)
+nb_char = len(characters)
 # print("Number of unique tags possible", nb_char**nb_char_tag)
 
 def generate_random_string(length=nb_char_tag):
