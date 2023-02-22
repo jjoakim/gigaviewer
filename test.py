@@ -99,6 +99,8 @@ def list_dir(path=start_dir, depth=0):
   if "order.json" in files:
     loadOrder(obj)
     addThumbnailImage(obj)
+  elif path + "-thumbnail.jpg" in files:
+    obj["thumbnailImg"] = path + "-thumbnail.jpg"
   # if files:
   #   obj["files"] = files
   
