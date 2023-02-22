@@ -150,13 +150,14 @@ def list_dir_add_tag(obj, path=start_dir, depth=0):
 def createUniqueTag():
   # tag = generate_random_string()
   # while tag in tags:
+  global nb_char_tag
+  
   for i in range(20):
-    tag = generate_random_string()
+    tag = generate_random_string(nb_char_tag)
     if tag not in tags:
       tags.append(tag)
       return tag
   
-  global nb_char_tag
   nb_char_tag = nb_char_tag + 1
   print("Increase tag length to", nb_char_tag)
   return createUniqueTag()
