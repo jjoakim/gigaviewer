@@ -105,9 +105,9 @@ def list_dir(path=start_dir, depth=0):
     print("Metadata found but not supported!!")
   # if path + "-thumbnail.jpg" in files:
   #   obj["thumbnailImg"] = path + "-thumbnail.jpg"
-  if not (path + "-thumbnail.jpg") in files:
-    images = [name+"/"+obj["groups"][name]['thumbnailImg'] for name in obj["groups"]]
-    print( images )
+  # if not (path + "-thumbnail.jpg") in files:
+  #   images = [name+"/"+obj["groups"][name]['thumbnailImg'] for name in obj["groups"]]
+  #   print( images )
   
   meta = get_meta()
   
