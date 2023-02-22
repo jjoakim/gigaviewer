@@ -123,7 +123,7 @@ def list_dir(path=start_dir, depth=0):
   os.chdir("../")
   return obj
 
-def list_dir_add_tag(obj, path=start_dir):
+def list_dir_add_tag(obj, path=start_dir, depth=0):
   if not obj:
     return
   
@@ -131,9 +131,9 @@ def list_dir_add_tag(obj, path=start_dir):
 
   if "groups" in obj:
     for item in obj["groups"]:
-      list_dir_add_tag(obj["groups"][item], item)
+      list_dir_add_tag(obj["groups"][item], item, depth+1)
   
-  if not "tag" in obj:
+  if depth > 0 and not "tag" in obj:
     obj["tag"] = createUniqueTag()
     meta = {"tag" : obj["tag"]}
     # with open("meta.json", "w") as file:
