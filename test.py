@@ -9,6 +9,8 @@ nb_char_tag = 1
 start_dir = "auto"
 max_depth = 3
 
+config_file_name="config.json"
+
 kind=[None, 'team', 'project', 'capture']
 
 # Create a string containing all lowercase letters and digits.
@@ -29,7 +31,7 @@ def generate_random_string(length=nb_char_tag):
 
 def get_meta():
   try:
-    with open( 'meta.json') as file:
+    with open(config_file_name) as file:
       data = json.load(file)
 
     return data
@@ -93,7 +95,7 @@ def list_dir(path=start_dir, depth=0):
       res = list_dir(item.name, depth+1)
       if res:
         groups[item.name] = res
-    elif item.name != "meta.json":
+    elif item.name != config_file_name:
       files.append(item.name)
   
   if groups:
@@ -139,7 +141,7 @@ def list_dir_add_tag(obj, path=start_dir, depth=0):
   if depth > 0 and not "tag" in obj:
     obj["tag"] = createUniqueTag()
     meta = {"tag" : obj["tag"]}
-    # with open("meta.json", "w") as file:
+    # with open(config_file_name, "w") as file:
     #   file.write( json.dumps(meta) )
   
   os.chdir("../")
@@ -154,6 +156,7 @@ def createUniqueTag():
       tags.append(tag)
       return tag
   
+  global nb_char_tag
   nb_char_tag = nb_char_tag + 1
   print("Increase tag length to", nb_char_tag)
   return createUniqueTag()
