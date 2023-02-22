@@ -5,7 +5,7 @@ from natsort import natsorted
 import json
 from operator import attrgetter
 
-nb_char_tag = 4
+nb_char_tag = 1
 start_dir = "auto"
 max_depth = 3
 
@@ -146,12 +146,17 @@ def list_dir_add_tag(obj, path=start_dir, depth=0):
 
 
 def createUniqueTag():
-  tag = generate_random_string()
-  while tag in tags:
+  # tag = generate_random_string()
+  # while tag in tags:
+  for i in range(20):
     tag = generate_random_string()
+    if tag not in tags:
+      tags.append(tag)
+      return tag
   
-  tags.append(tag)
-  return tag
+  nb_char_tag = nb_char_tag + 1
+  print("Increase tag length to", nb_char_tag)
+  return createUniqueTag()
 
 orig_path = os.getcwd()
 
