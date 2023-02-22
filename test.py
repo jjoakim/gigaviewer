@@ -103,8 +103,8 @@ def list_dir(path=start_dir, depth=0):
     addThumbnailImage(obj)
   if "metadata.json" in files:
     print("Metadata found but not supported!!")
-  elif path + "-thumbnail.jpg" in files:
-    obj["thumbnailImg"] = path + "-thumbnail.jpg"
+  # elif path + "-thumbnail.jpg" in files:
+  #   obj["thumbnailImg"] = path + "-thumbnail.jpg"
   
   meta = get_meta()
   
