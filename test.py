@@ -42,7 +42,7 @@ def loadOrder(obj):
     data = json.load(f)
     f.close()
     obj["sources"] = {}
-    obj["sources"]["0"] = data["sources"]
+    obj["sources"]["0"] = data["order"]
     return True
   except:
     return False
