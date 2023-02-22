@@ -106,7 +106,7 @@ def list_dir(path=start_dir, depth=0):
   # if path + "-thumbnail.jpg" in files:
   #   obj["thumbnailImg"] = path + "-thumbnail.jpg"
   if (path + "-thumbnail.jpg") in files:
-    print( [group['thumbnailImg'] for group in obj["groups"].values()] )
+    print( [obj["groups"][name]['thumbnailImg'] for name in obj["groups"]] )
     exit(0)
   
   meta = get_meta()
