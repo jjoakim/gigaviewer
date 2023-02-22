@@ -5,7 +5,7 @@ from natsort import natsorted
 import json
 from operator import attrgetter
 
-nb_char_tag = 1
+nb_char_tag = 4
 start_dir = "auto"
 max_depth = 3
 
@@ -14,7 +14,11 @@ config_file_name="config.json"
 kind=[None, 'team', 'project', 'capture']
 
 # Create a string containing all lowercase letters and digits.
+# To use this option the RenderFromTag (App.js) function needs to be
+# updated for lower case. 
 # characters = string.ascii_lowercase + string.digits
+
+# Using a hex array.
 characters = "0123456789ABCDEF"
 
 # Convert the string to an array of characters.
