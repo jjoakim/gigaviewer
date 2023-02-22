@@ -29,9 +29,9 @@ def generate_random_string(length=nb_char_tag):
 
 def get_meta():
   try:
-    f = open('meta.json')
-    data = json.load(f)
-    f.close()
+    with open( 'meta.json') as file:
+      data = json.load(file)
+
     return data
   except:
     return {}
@@ -40,10 +40,10 @@ tags=[]
 
 def loadOrder(obj):
   try:
-    f = open('order.json')
-    data = json.load(f)
-    f.close()
-    obj["sources"] = {"0" : {"tileSources" : data["order"]}}
+    with open( 'order.json') as file:
+      data = json.load(file)['order']
+
+    obj["sources"] = {"0" : {"tileSources" : data}}
     return True
   except:
     return False
@@ -78,7 +78,7 @@ def list_dir(path=start_dir, depth=0):
   # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
   #   return {}
   
-  # print("Enter dir", path)
+  print(' ' * depth + "Enter dir", path)
   os.chdir(path)
 
   obj={}
@@ -102,11 +102,9 @@ def list_dir(path=start_dir, depth=0):
     loadOrder(obj)
     addThumbnailImage(obj)
   if "metadata.json" in files:
-    print("metadata found!!")
+    print("Metadata found but not supported!!")
   elif path + "-thumbnail.jpg" in files:
     obj["thumbnailImg"] = path + "-thumbnail.jpg"
-  # if files:
-  #   obj["files"] = files
   
   meta = get_meta()
   
@@ -158,8 +156,6 @@ obj = list_dir()
 os.chdir(orig_path)
 list_dir_add_tag(obj)
 os.chdir(orig_path)
-
-# print(obj)
 
 print("Number of tags in use", len(tags), "of", nb_char**nb_char_tag)
 
