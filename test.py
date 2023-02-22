@@ -41,7 +41,6 @@ def loadOrder(obj):
     f = open('order.json')
     data = json.load(f)
     f.close()
-    obj["sources"] = {}
     obj["sources"]["0"] = data["order"]
     return True
   except:
@@ -62,7 +61,7 @@ def addThumbnailImage(obj):
       # os.chdir("../")
 
       if len(res) == 1:
-        thumbnailImg = item.name + "/" + res[0]
+        thumbnailImg = path + "/" + item.name + "/" + res[0]
       elif len(res) > 1:
         break
   
