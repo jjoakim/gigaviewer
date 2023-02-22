@@ -7,7 +7,9 @@ from operator import attrgetter
 
 nb_char_tag = 4
 start_dir = "auto"
-max_depth = 4
+max_depth = 3
+
+kind=[None, 'team', 'project', 'capture']
 
 # Create a string containing all uppercase letters and digits.
 characters = string.ascii_uppercase + string.digits
@@ -71,7 +73,7 @@ def addThumbnailImage(obj):
   obj["thumbnailImg"] = thumbnailImg
 
 def list_dir(path=start_dir, depth=0):
-  if depth == max_depth:
+  if depth > max_depth:
     return
   # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
   #   return {}
@@ -114,7 +116,9 @@ def list_dir(path=start_dir, depth=0):
     tmp = list(obj["groups"].items())[-1]
     if "thumbnailImg" in tmp[1]:
       obj["thumbnailImg"] = tmp[0] + "/" + tmp[1]["thumbnailImg"]
-      
+  
+  if kind[depth]:
+    obj["kind"] = kind[depth]
 
   os.chdir("../")
   return obj
