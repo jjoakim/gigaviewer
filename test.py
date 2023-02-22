@@ -41,14 +41,13 @@ def loadOrder(obj):
     f = open('order.json')
     data = json.load(f)
     f.close()
-    obj["sources"] = {"0" : data["order"]}
-    # obj["sources"]["0"] = data["order"]
+    obj["sources"] = {"0" : {"tileSources" : data["order"]}}
     return True
   except:
     return False
 
 def addThumbnailImage(obj):
-  path = os.path.splitext(obj["sources"]["0"][0])[0] + "_files"
+  path = os.path.splitext(obj["sources"]["0"]["tileSources"][0])[0] + "_files"
   os.chdir(path)
 
   dir = natsorted(os.scandir(),key=attrgetter("name"))
@@ -57,9 +56,7 @@ def addThumbnailImage(obj):
 
   for item in dir:
     if item.is_dir():
-      # os.chdir(item.name)
       res = os.listdir(item.name)
-      # os.chdir("../")
 
       if len(res) == 1:
         thumbnailImg = path + "/" + item.name + "/" + res[0]
