@@ -78,7 +78,7 @@ def list_dir(path=start_dir, depth=0):
   # if path.find("stitched") != -1 or path.startswith("height_map") or path.isnumeric():
   #   return {}
   
-  print(' ' * depth + "Enter dir", path)
+  print('  ' * depth + "", path)
   os.chdir(path)
 
   obj={}
