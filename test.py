@@ -11,8 +11,8 @@ max_depth = 3
 
 kind=[None, 'team', 'project', 'capture']
 
-# Create a string containing all uppercase letters and digits.
-characters = string.ascii_uppercase + string.digits
+# Create a string containing all lowercase letters and digits.
+characters = string.ascii_lowercase + string.digits
 
 # Convert the string to an array of characters.
 character_array = list(characters)
