@@ -13,6 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
 import {url, url_orig} from "url.js"
+import {ImageThumb, getThumbnailArray} from "./imageThumb.js"
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -22,18 +23,27 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
+        justifyContent: 'center',
+        padding:'1em',
         backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: 'auto',
-        height: 'auto',
-        justifyContent: 'space-evenly',
+        justifyContent: 'center',
+        overflow: 'visible',
+        gap:"1em",
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
     },
+    gridItem : {
+      borderRadius: "1em",
+      boxShadow: "5px 5px 10px #8080806b",
+      cursor : "pointer",
+      width: "300px !important" as any,
+      height: "300px !important" as any,
+      padding: "0px !important" as any,
+    }
+
 }));
 
 /**
@@ -100,7 +110,6 @@ const ImageGrid = (props: any) => {
         console.log("Redirecting to render grid");
     }
 
-    // @ts-ignore
     return (
         <div className={classes.container}>
             <br/>
@@ -132,20 +141,15 @@ const ImageGrid = (props: any) => {
                             spacing={10}
                         >
                             {/*RENDERING A GRID*/}
-                            {Object.keys(gridData.groups).map((item, index) => (
+                            {Object.keys(gridData.groups).map(key => (
                                 // Doesn't have a folder property
-                                <GridListTile
-                                    key={item}
-                                    style={{height: 300, width: 300}}
+                                <GridListTile className={classes.gridItem}
                                     onClick={() => {
-                                        renderGrid(gridData.groups[item], item);
+                                      renderGrid(gridData.groups[key], key);
                                     }}
                                 >
-                                    <img src={getPath(item)} alt={item}/>
-                                    <GridListTileBar
-                                        title={item}
-
-                                    />
+                                    <ImageThumb img={getThumbnailArray(gridData,key)}/>
+                                    <GridListTileBar title={key} />
                                 </GridListTile>
                             ))}
                         </GridList>

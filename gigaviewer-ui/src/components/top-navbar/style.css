@@ -60,12 +60,6 @@
   transition: all 0.2s ease-out;
 }
 
-.MuiGridList-root
-{
-  padding:1em !important;
-  justify-content: center !important;
-}
-
 .navbar-upload {
   margin-left: -20px;
 }
@@ -108,12 +102,7 @@
 {
   border-radius: 1em;
   box-shadow: 5px 5px 10px #8080806b;
-}
-
-.MuiGridListTileBar-titlePositionBottom
-{
-  /* border-bottom-right-radius: 1em;
-  border-bottom-left-radius: 1em; */
+  cursor : "pointer",
 }
 
 .viewer-control

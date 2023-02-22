@@ -8,7 +8,8 @@ import {url, url_orig} from "url.js"
 
 import './App.css';
 
-const data_path = url + "/imageMetadata.json"
+const data_path = url + "/test.json"
+// const data_path = url + "/imageMetadata.json"
 let data = null;
 
 const App = () => {
@@ -57,6 +58,8 @@ const App = () => {
 
 
 function RenderBrowser(){
+    let tmp = { groups: {...data.groups}};
+    delete tmp.groups["Sandbox"];
     return (
         <div>
             <TopNavbar/>
@@ -65,7 +68,7 @@ function RenderBrowser(){
             <h2>Multi-Gigapixel Video Viewing Platform</h2>
             <h3>Duke University Computational Optics Lab</h3>
             </center><br/>
-            <Grid gridData={data}/>
+            <Grid gridData={tmp}/>
             <br/>
             <center>
             <div class="widget">
@@ -230,7 +233,10 @@ function RenderViewer() {
     const imageSources = captureData.sources;
     const frameNumber = parseInt(frameId);
     const title = captureId;
-    const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
+    // const height = captureData.hasOwnProperty("height") ? captureData.height : 0;
+
+    // Hardcoded height value as there are no metadata.json to grab it from.
+    const height = 0.07424;
 
     return (
       <div>
