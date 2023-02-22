@@ -112,7 +112,7 @@ def list_dir(path=start_dir, depth=0):
     obj["tag"] = meta["tag"]
     tags.append(meta["tag"])
 
-  if not "thumbnailImg" in obj and obj['groups']:
+  if depth > 0 and not "thumbnailImg" in obj and obj['groups']:
     tmp = list(obj["groups"].items())[-1]
     if "thumbnailImg" in tmp[1]:
       obj["thumbnailImg"] = tmp[0] + "/" + tmp[1]["thumbnailImg"]
