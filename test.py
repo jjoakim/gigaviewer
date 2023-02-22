@@ -14,16 +14,17 @@ config_file_name="config.json"
 kind=[None, 'team', 'project', 'capture']
 
 # Create a string containing all lowercase letters and digits.
-characters = string.ascii_lowercase + string.digits
+# characters = string.ascii_lowercase + string.digits
+characters = "0123456789ABCDEF"
 
 # Convert the string to an array of characters.
-character_array = list(characters)
+# character_array = list(characters)
 
 nb_char = len(character_array)
 # print("Number of unique tags possible", nb_char**nb_char_tag)
 
 def generate_random_string(length=nb_char_tag):
-  result = ''.join(random.choice(character_array) for i in range(length))
+  result = ''.join(random.choice(characters) for i in range(length))
   return result
 
 # random_string = generate_random_string()
@@ -151,7 +152,7 @@ def createUniqueTag():
   # tag = generate_random_string()
   # while tag in tags:
   global nb_char_tag
-  
+
   for i in range(20):
     tag = generate_random_string(nb_char_tag)
     if tag not in tags:
