@@ -108,7 +108,7 @@ def list_dir(path=start_dir, depth=0):
   
   meta = get_meta()
   
-  if "tag" in meta:
+  if depth > 0 and "tag" in meta:
     obj["tag"] = meta["tag"]
     tags.append(meta["tag"])
 
