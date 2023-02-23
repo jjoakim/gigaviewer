@@ -186,7 +186,8 @@ function find_tag(tag, obj=data, path="")
 
 function RenderFromTag(){
   console.log("render direct link");
-  const {tag} = useParams();
+  let {tag} = useParams();
+  tag = tag.toUpperCase()
 
   let res = find_tag(tag);
 
