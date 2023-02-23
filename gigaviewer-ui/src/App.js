@@ -8,8 +8,8 @@ import {url, url_orig} from "url.js"
 
 import './App.css';
 
-const data_path = url + "/test.json"
-// const data_path = url + "/imageMetadata.json"
+// const data_path = url + "/test.json"
+const data_path = url + "/imageMetadata.json"
 let data = null;
 
 const App = () => {
