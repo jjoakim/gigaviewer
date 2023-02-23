@@ -4,6 +4,7 @@ import os
 from natsort import natsorted
 import json
 from operator import attrgetter
+import shutil
 
 nb_char_tag = 4
 start_dir = "auto"
@@ -174,7 +175,9 @@ os.chdir(orig_path)
 list_dir_add_tag(obj)
 os.chdir(orig_path)
 
-print("Number of tags in use", len(tags), "of", nb_char**nb_char_tag)
+print("Number of tags in use", len(tags), "of", nb_char**nb_char_tag, "(%i^%i)"%(nb_char,nb_char_tag))
 
 with open("test.json", "w") as file:
   file.write( json.dumps(obj) )
+
+# shutil.copy2('imageMetadata.json', '/var/www/html/imageMetadata.json')
