@@ -88,12 +88,12 @@
   flex-direction: column;
 }
 
-.pub li
+.pub span
 {
   cursor: pointer;
 }
 
-.pub li:hover
+.pub span:hover
 {
   text-decoration: underline;
 }

@@ -112,6 +112,7 @@ function RenderBrowser(){
                      title="Gigapixel imaging with a novel multi-camera array microscope"
                      publisher="eLife 11, e74988"
                      year={2022}
+                     link="/test"
                      other="(*co-corresponding authors)" />
                 
             </ul>
@@ -135,13 +136,17 @@ class Pub extends React.Component {
     const year = this.props.year;
     const publisher = this.props.publisher;
     const other = this.props.other;
+    const link = this.props.link;
 
     const set = () => this.setState( { is_visible: true } );
 
+    const setLink = () => link ? <div><a href={link}>Link</a></div> : "";
+    const setOther = () => other ? <div><i>{other}</i></div> : "";
+
     if ( this.state.is_visible )
-      return <li>{authors}, <b><q>{title}</q></b>, {publisher} ({year}) {other}</li>;
+      return <li>{authors}, <b><q>{title}</q></b>, {publisher} ({year}){setOther()}{setLink()}</li>;
     else
-      return <li onClick={set}><b><q>{title}</q></b>, {publisher} ({year})</li>;
+      return <li onClick={set}><span><b><q>{title}</q></b>, {publisher} ({year})</span></li>;
   }
 }
 
