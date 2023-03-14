@@ -85,7 +85,7 @@ function RenderBrowser(){
             </p>
             <br/><ul className='pub'>
                 
-                <Pub authers={"K. C. Zhou, M. Harfouche, C. L. Cooke, J. Park, P. C. Konda, "+
+                <Pub authors={"K. C. Zhou, M. Harfouche, C. L. Cooke, J. Park, P. C. Konda, "+
                               "L. Kreiss, K. Kim, J. Jönsson, T. Doman, P. Reamey, V. Saliu, "+
                               "C. B. Cook, M. Zheng, J. P. Bechtel, A. Begue, M. McCarroll, "+
                               "J. Bagwell, G. Horstmeyer, M. Bagnat and R. Horstmeyer"}
@@ -93,7 +93,7 @@ function RenderBrowser(){
                      publisher="Accepted to Nature Photonics"
                      year={2023} />
                 
-                <Pub authers={"M. Harfouche, K. Kim, P. C. Konda, S. Sharma, E. E. Thomson, "+
+                <Pub authors={"M. Harfouche, K. Kim, P. C. Konda, S. Sharma, E. E. Thomson, "+
                               "K. C. Zhou, C. Cooke, S. Xu, X. Yang, X. Yao, V. Pathak, "+
                               "R. Appel. C. Cooke, J. Doman, G. Horstmeyer, J. Park, P. Reamey, "+
                               "V. Saliu, E. Naumann and R. Horstmeyer"}
@@ -101,12 +101,12 @@ function RenderBrowser(){
                      publisher="Accepted to Optica"
                      year={2023} />
                 
-                <Pub authers="X. Yang, M. Harfouche, K. C. Zhou, L. Kreiss, S. Xu, K. Kim, R. Horstmeyer"
+                <Pub authors="X. Yang, M. Harfouche, K. C. Zhou, L. Kreiss, S. Xu, K. Kim, R. Horstmeyer"
                      title="Multimodal imaging using a cascaded microscope design"
                      publisher="Accepted to Optics Letters"
                      year={2023} />
                 
-                <Pub authers={"E. E. Thomson, M. Harfouche, P. C Konda, C. Seitz, K. Kim, "+
+                <Pub authors={"E. E. Thomson, M. Harfouche, P. C Konda, C. Seitz, K. Kim, "+
                               "C. Cooke, S. Xu, R. Blazing, Y. Chen, W. S. Jacobs, S. Sharma, "+
                               "T. W. Dunn, J. Park, R. Horstmeyer*  and E. A. Naumann*"}
                      title="Gigapixel imaging with a novel multi-camera array microscope"
@@ -131,7 +131,7 @@ class Pub extends React.Component {
 
   render() {
     const title = this.props.title;
-    const authers = this.props.authers;
+    const authors = this.props.authors;
     const year = this.props.year;
     const publisher = this.props.publisher;
     const other = this.props.other;
@@ -139,7 +139,7 @@ class Pub extends React.Component {
     const set = () => this.setState( { is_visible: true } );
 
     if ( this.state.is_visible )
-      return <li>{authers}, <b><q>{title}</q></b>, {publisher} ({year}) {other}</li>;
+      return <li>{authors}, <b><q>{title}</q></b>, {publisher} ({year}) {other}</li>;
     else
       return <li onClick={set}><b><q>{title}</q></b>, {publisher} ({year})</li>;
   }
