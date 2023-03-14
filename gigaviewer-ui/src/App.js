@@ -92,7 +92,8 @@ function RenderBrowser(){
                      title="Parallelized computational 3D video microscopy of freely moving organisms at multiple gigapixels per second"
                      publisher="Accepted to Nature Photonics"
                      // link="https://gigazoom.rc.duke.edu/"
-                     year={2023} />
+                     year={2023}
+                     project="MCAM-54" />
                 
                 <Pub authors={"M. Harfouche, K. Kim, P. C. Konda, S. Sharma, E. E. Thomson, "+
                               "K. C. Zhou, C. Cooke, S. Xu, X. Yang, X. Yao, V. Pathak, "+
@@ -101,21 +102,24 @@ function RenderBrowser(){
                      title="Multi-scale gigapixel microscopy using a multi-camera array microscope"
                      publisher="Accepted to Optica"
                      // link="https://gigazoom.rc.duke.edu/"
-                     year={2023} />
+                     year={2023}
+                     project="MCAM-54" />
                 
                 <Pub authors="X. Yang, M. Harfouche, K. C. Zhou, L. Kreiss, S. Xu, K. Kim, R. Horstmeyer"
                      title="Multimodal imaging using a cascaded microscope design"
                      publisher="Accepted to Optics Letters"
                      // link="https://gigazoom.rc.duke.edu/"
-                     year={2023} />
+                     year={2023}
+                     project="MCAM-96" />
                 
                 <Pub authors={"E. E. Thomson, M. Harfouche, P. C Konda, C. Seitz, K. Kim, "+
                               "C. Cooke, S. Xu, R. Blazing, Y. Chen, W. S. Jacobs, S. Sharma, "+
                               "T. W. Dunn, J. Park, R. Horstmeyer*  and E. A. Naumann*"}
                      title="Gigapixel imaging with a novel multi-camera array microscope"
                      publisher="eLife 11, e74988"
+                     link="https://doi.org/10.7554/eLife.74988"
                      year={2022}
-                     // link="https://gigazoom.rc.duke.edu/"
+                     project="MCAM-96"
                      other="(*co-corresponding authors)" />
                 
             </ul>
@@ -140,16 +144,27 @@ class Pub extends React.Component {
     const publisher = this.props.publisher;
     const other = this.props.other;
     const link = this.props.link;
+    const project = this.props.project;
 
     const set = () => this.setState( { is_visible: true } );
 
-    const setLink = () => link ? <div><a href={link}>Link</a></div> : "";
+    const setPrj = () => project ? <b>({project}) </b> : "";
+    const setLink = () => link ? <a href={link} target="_blank">Link</a> : "";
     const setOther = () => other ? <div><i>{other}</i></div> : "";
 
     if ( this.state.is_visible )
-      return <li>{authors}, <b><q>{title}</q></b>, {publisher} ({year}){setOther()}{setLink()}</li>;
+      return <li>
+        <div>{setPrj()}</div>
+        {authors}, <b><q>{title}</q></b>,&nbsp;
+        {publisher} ({year}){setOther()}
+        <div>{setLink()}</div>
+      </li>;
     else
-      return <li onClick={set}><span><b><q>{title}</q></b>, {publisher} ({year})</span></li>;
+      return <li>
+          <span onClick={set}>{setPrj()}
+            <b><q>{title}</q></b>, {publisher} ({year})
+          </span> {setLink()}
+        </li>;
   }
 }
 
