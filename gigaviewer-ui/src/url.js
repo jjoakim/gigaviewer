@@ -1,9 +1,9 @@
 // If you're running on a local machine and want
 // retrieve data from server.
-const url = "https://gigazoom.rc.duke.edu";
+// const url = "https://gigazoom.rc.duke.edu";
 
 // No external url needed when running on the server.
-// const url = "";
+const url = "";
 
 // Variable used to remember original url.
 const url_orig = get_orig()
