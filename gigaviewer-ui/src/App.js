@@ -91,6 +91,7 @@ function RenderBrowser(){
                               "J. Bagwell, G. Horstmeyer, M. Bagnat and R. Horstmeyer"}
                      title="Parallelized computational 3D video microscopy of freely moving organisms at multiple gigapixels per second"
                      publisher="Accepted to Nature Photonics"
+                     // link="https://gigazoom.rc.duke.edu/"
                      year={2023} />
                 
                 <Pub authors={"M. Harfouche, K. Kim, P. C. Konda, S. Sharma, E. E. Thomson, "+
@@ -99,11 +100,13 @@ function RenderBrowser(){
                               "V. Saliu, E. Naumann and R. Horstmeyer"}
                      title="Multi-scale gigapixel microscopy using a multi-camera array microscope"
                      publisher="Accepted to Optica"
+                     // link="https://gigazoom.rc.duke.edu/"
                      year={2023} />
                 
                 <Pub authors="X. Yang, M. Harfouche, K. C. Zhou, L. Kreiss, S. Xu, K. Kim, R. Horstmeyer"
                      title="Multimodal imaging using a cascaded microscope design"
                      publisher="Accepted to Optics Letters"
+                     // link="https://gigazoom.rc.duke.edu/"
                      year={2023} />
                 
                 <Pub authors={"E. E. Thomson, M. Harfouche, P. C Konda, C. Seitz, K. Kim, "+
@@ -112,7 +115,7 @@ function RenderBrowser(){
                      title="Gigapixel imaging with a novel multi-camera array microscope"
                      publisher="eLife 11, e74988"
                      year={2022}
-                     link="/test"
+                     // link="https://gigazoom.rc.duke.edu/"
                      other="(*co-corresponding authors)" />
                 
             </ul>
