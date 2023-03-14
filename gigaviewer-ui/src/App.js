@@ -149,7 +149,7 @@ class Pub extends React.Component {
     const set = () => this.setState( { is_visible: true } );
 
     const setPrj = () => project ? <b>({project}) </b> : "";
-    const setLink = () => link ? <a href={link} target="_blank">Link</a> : "";
+    const setLink = (text="Link") => link ? <a href={link} target="_blank">{text}</a> : "";
     const setOther = () => other ? <div><i>{other}</i></div> : "";
 
     if ( this.state.is_visible )
@@ -157,7 +157,7 @@ class Pub extends React.Component {
         <div>{setPrj()}</div>
         {authors}, <b><q>{title}</q></b>,&nbsp;
         {publisher} ({year}){setOther()}
-        <div>{setLink()}</div>
+        <div>{setLink(link)}</div>
       </li>;
     else
       return <li>
