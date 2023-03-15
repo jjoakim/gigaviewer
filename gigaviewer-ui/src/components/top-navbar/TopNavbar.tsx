@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import {url_orig} from "url.js"
+import {NavBar} from "./NavBar.js"
 
 import {
   faMicroscope,
@@ -10,6 +11,7 @@ import './style.css';
 
 interface PublicProps {
   isViewerMode?: boolean;
+  path: string[];
   tag?: string;
 }
 
@@ -34,6 +36,8 @@ const TopNavbar = (props: PublicProps) => {
         <h1 className="navbar-logo" onClick={goToHome}>
           Gigaviewer <FontAwesomeIcon icon={faMicroscope}/>
         </h1>
+
+        <NavBar path={props.path} />
 
         <div style={{ flexGrow: 1 }}></div>
 

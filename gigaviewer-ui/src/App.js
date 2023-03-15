@@ -62,7 +62,7 @@ function RenderBrowser(){
     delete tmp.groups["Sandbox"];
     return (
         <div>
-            <TopNavbar/>
+            <TopNavbar path={[]} />
             <br/>
             <center>
             <h2>Multi-Gigapixel Video Viewing Platform</h2>
@@ -173,7 +173,7 @@ function RenderTeamBrowser(){
     const {teamId} = useParams();
     return (
         <div>
-          <TopNavbar tag={data.groups[teamId].tag} />
+          <TopNavbar path={[]} tag={data.groups[teamId].tag} />
           <Grid teamId={teamId} gridData={data.groups[teamId]}/>
         </div>
     );
@@ -224,7 +224,7 @@ function RenderFromTag(){
   {
     return (
     <div>
-    <TopNavbar/>
+    <TopNavbar path={[]}/>
     <center><b>
       <br /><div>
         Tag not found "{tag}".
@@ -242,7 +242,7 @@ function RenderProjectBrowser(){
 
     return (
         <div>
-             <TopNavbar tag={gridData.tag}/>
+             <TopNavbar path={[teamId]} tag={gridData.tag}/>
             <Grid teamId={teamId} projectId={projectId} gridData={gridData}/>
         </div>
     );
@@ -264,7 +264,7 @@ function RenderViewer() {
 
     return (
       <div>
-        <TopNavbar tag={captureData.tag}/>
+        <TopNavbar path={[teamId, projectId]} tag={captureData.tag}/>
         <Viewer imageSources={imageSources} title={title} height={height} idx={frameNumber}/>
       </div>
     );
