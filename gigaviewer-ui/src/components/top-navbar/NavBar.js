@@ -49,9 +49,13 @@ class NavBar extends React.Component {
       ]
     }
 
+    if (array.length)
     return <div style={style}>
       {array.map(setItem)}
+      <FontAwesomeIcon icon={faAngleRight}/>
     </div>
+    else
+      return <div></div>
   }
 }
 

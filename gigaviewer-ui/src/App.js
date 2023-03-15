@@ -173,7 +173,7 @@ function RenderTeamBrowser(){
     const {teamId} = useParams();
     return (
         <div>
-          <TopNavbar path={[]} tag={data.groups[teamId].tag} />
+          <TopNavbar path={[teamId]} tag={data.groups[teamId].tag} />
           <Grid teamId={teamId} gridData={data.groups[teamId]}/>
         </div>
     );
@@ -242,7 +242,7 @@ function RenderProjectBrowser(){
 
     return (
         <div>
-             <TopNavbar path={[teamId]} tag={gridData.tag}/>
+             <TopNavbar path={[teamId, projectId]} tag={gridData.tag}/>
             <Grid teamId={teamId} projectId={projectId} gridData={gridData}/>
         </div>
     );
