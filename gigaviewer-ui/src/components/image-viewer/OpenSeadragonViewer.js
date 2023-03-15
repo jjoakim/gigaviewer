@@ -70,6 +70,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const style_title = {
+  backgroundColor: "rgba(255, 255, 255, 0.7)",
+  borderRadius: "0.5em",
+  paddingLeft: "0.3em",
+//   boxShadow: "2px 2px 10px #8080804d",
+  paddingRight: "0.3em",
+};
+
 const PrettoSlider = withStyles({
     root: {
         color: 'primary',
@@ -592,7 +600,7 @@ const OpenSeadragonViewer = ({sources, realImageHeight, initialFrame, collection
                 <div className={classes.root}>
                     <Box flexDirection="column" position="absolute" top="0%" right="1%" zIndex="tooltip"
                          justifyContent="center" className="viewer-control" >
-                        <h1 style={{backgroundColor: 'white'}}>{collectionTitle}</h1>
+                        <h1 style={style_title}>{collectionTitle}</h1>
                         {totalFrames > 1 &&
                         <div>
                             <Box display="flex" flexDirection="row" justifyContent="center">
